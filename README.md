@@ -7,7 +7,7 @@ get_frame_set()
 
 for sign in [made_signs]:
 	match()
-	position()
+	get_3d_coor()
 	列方程
 
 least_squares_method()

@@ -2,6 +2,7 @@
 
 from cv2 import *
 from typing import List
+import os
 
 
 class Positioning:
@@ -9,11 +10,16 @@ class Positioning:
 	Xc, Yc, Zc = [0.0] * 3
 	phi, omega, kappa = [0.0] * 3
 	
+	sign_template_dir = "positioning_data"
+	
 	def get_camera_position(self, frameset):
-		
+		self._find_signs(frameset)
 		pass
 	
-	def _find_signs(self) -> List:
+	def _find_signs(self, frameset) -> List:
+		workdir = os.getcwd()
+		sign_dir = workdir + "/" + self.sign_template_dir + "/"
+		
 		pass
 	
 	def _match_sign(self, img, sign_img, hi) -> (float, float):
