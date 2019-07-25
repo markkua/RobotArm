@@ -39,46 +39,55 @@ class Positioning:
 		least_squares_method
 		:return:
 		"""
-	
-	def test(self):
-		print(self.Xc, self.Zc)
-		
-	def calculate_R(self, angel_arr):
-		print("angle_arr=", angel_arr)
-		phi, omega, kappa = angel_arr[:3]
-		Rz = np.asarray([
-			[cos(kappa), -sin(kappa), 0],
-			[sin(kappa), cos(kappa), 0],
-			[0, 0, 1]
-		])
-		Rx = np.asarray([
-			[1, 0, 0],
-			[0, cos(omega), -sin(omega)],
-			[0, sin(omega), cos(omega)]
-		])
-		Ry = np.asarray([
-			[cos(phi), 0, sin(phi)],
-			[0, 1, 0],
-			[-sin(phi), 0, cos(phi)]
-		])
-		return Rx, Ry, Rz
+		pass
 		
 	def test_R(self, angle_arr, xyz_arr):
+		""" 测试旋转矩阵 """
 		print("init=\n", xyz_arr)
-		Rx, Ry, Rz = self.calculate_R(angle_arr)
+		Rx, Ry, Rz = calculate_R(angle_arr)
 		R = np.matmul(np.matmul(Rx, Ry), Rz)
 		print("R=\n", R)
 		temp = np.matmul(R, xyz_arr)
 		print("temp=\n", temp)
-		Rx, Ry, Rz = self.calculate_R(-1 * angle_arr)
+		Rx, Ry, Rz = calculate_R(-1 * angle_arr)
 		R = np.matmul(np.matmul(Rz, Ry), Rx)
 		print("R2=\n", R)
 		result = np.matmul(R, temp)
 		print("result=\n", result)
-	
 
-def deg2rad(deg):
-	return pi * deg / 180
+
+"""
+	基础公用函数
+"""
+
+
+def calculate_R(angel_arr):
+	print("angle_arr=", angel_arr)
+	phi, omega, kappa = angel_arr[:3]
+	Rz = np.asarray([
+		[cos(kappa), -sin(kappa), 0],
+		[sin(kappa), cos(kappa), 0],
+		[0, 0, 1]
+	])
+	Rx = np.asarray([
+		[1, 0, 0],
+		[0, cos(omega), -sin(omega)],
+		[0, sin(omega), cos(omega)]
+	])
+	Ry = np.asarray([
+		[cos(phi), 0, sin(phi)],
+		[0, 1, 0],
+		[-sin(phi), 0, cos(phi)]
+	])
+	return Rx, Ry, Rz
+
+
+def deg2rad(deg: float):
+	return deg * pi / 180
+
+
+def rad2deg(rad: float):
+	return rad * 180 / pi
 
 		
 if __name__ == '__main__':

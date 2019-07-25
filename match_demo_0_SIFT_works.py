@@ -10,8 +10,8 @@ def template_match(template_imgname: str, target_imgname, output_imgname=None, t
 	print("start matching:")
 	MIN_MATCH_COUNT = 10  # 设置最低特征点匹配数量为10
 
-	template = cv2.imread(template_imgname, cv2.IMREAD_GRAYSCALE)  # queryImage
-	target = cv2.imread(target_imgname, cv2.IMREAD_GRAYSCALE)  # trainImage
+	template = cv2.imread(template_imgname, cv2.IMREAD_COLOR)  # queryImage
+	target = cv2.imread(target_imgname, cv2.IMREAD_COLOR)  # trainImage
 	
 	# 缩小尺寸
 	template = resize_img(template, 0.5)
@@ -26,6 +26,7 @@ def template_match(template_imgname: str, target_imgname, output_imgname=None, t
 	key_point1, des1 = sift.detectAndCompute(template, None)
 	key_point2, des2 = sift.detectAndCompute(target, None)
 	print("Find %d key points in template" % key_point1.__len__())
+	# TODO
 	print("Find %d key points in target" % key_point2.__len__())
 	
 	# 创建设置FLANN匹配
@@ -59,25 +60,34 @@ def template_match(template_imgname: str, target_imgname, output_imgname=None, t
 		pts = np.float32([[0, 0], [0, h - 1], [w - 1, h - 1], [w - 1, 0]]).reshape(-1, 1, 2)
 		dst = cv2.perspectiveTransform(pts, M)
 		
-		cv2.polylines(target, [np.int32(dst)], True, 0, 2, cv2.LINE_AA)
+		cv2.polylines(target, [np.int32(dst)], True, [0,0,255], 2, cv2.LINE_AA)
 	else:
 		print("Not enough matches are found - %d/%d" % (len(good), MIN_MATCH_COUNT))
 		matchesMask = None
+		
+	# Test
+	print("match mask:", matchesMask)
 	
-	draw_params = dict(matchColor=(255, 0, 0),  # BGR ??
-	                   singlePointColor=None,
+	# draw_params = dict(matchColor=(255, 0, 0),  # BGR ??
+	#                    singlePointColor=None,
+	#                    matchesMask=matchesMask,
+	#                    flags=2)
+	
+	draw_params = dict(matchColor=(255, 0, 0),
+	                   # singlePointColor=(0, 0, 255),
 	                   matchesMask=matchesMask,
 	                   flags=2)
 
 	end_time = time.time()
 	print("Matching time: ", end_time-start_time)
 	
-	result = cv2.drawMatches(template, key_point1, target, key_point2, good, None, **draw_params)
+	result_image = cv2.drawMatches(template, key_point1, target, key_point2, good, None, **draw_params)
 	
 	print("Done.")
 	
-	return result
-	
+	return result_image
+	# return target
+
 
 def resize_img(img, percentage):
 	h, w = img.shape[:2]
@@ -88,5 +98,6 @@ def resize_img(img, percentage):
 if __name__ == '__main__':
 	template = 'data/template-2.jpg'
 	target = 'data/img-2-2.jpg'
-	output = 'data/result-2-2.jpg'
-	template_match(template, target, output, threshold=0.8)
+	output = 'data/result-2-3.jpg'
+	final_image = template_match(template, target, output, threshold=0.8)
+	cv2.imwrite(output, final_image)

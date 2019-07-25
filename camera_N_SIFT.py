@@ -5,6 +5,8 @@ import numpy as np
 import cv2
 import time
 
+import pyrealsense2 as rs
+
 
 def resize_img(img, percentage):
 	if percentage == 1:
@@ -98,10 +100,7 @@ def camera_loop(template, threshold=0.7):
 	###############################################
 	##      Open CV and Numpy integration        ##
 	###############################################
-	
-	import pyrealsense2 as rs
-	import numpy as np
-	import cv2
+
 	
 	# Configure depth and color streams
 	pipeline = rs.pipeline()
@@ -114,7 +113,6 @@ def camera_loop(template, threshold=0.7):
 	
 	try:
 		while True:
-			
 			# Wait for a coherent pair of frames: depth and color
 			frames = pipeline.wait_for_frames()
 			depth_frame = frames.get_depth_frame()
@@ -129,7 +127,7 @@ def camera_loop(template, threshold=0.7):
 			# Apply colormap on depth image (image must be converted to 8-bit per pixel first)
 			depth_colormap = cv2.applyColorMap(cv2.convertScaleAbs(depth_image, alpha=0.03), cv2.COLORMAP_JET)
 			
-			images = template_match(template, color_image, threshold)
+			# images = template_match(template, color_image, threshold)
 			
 			# Show images
 			cv2.namedWindow('RealSense', cv2.WINDOW_AUTOSIZE)
