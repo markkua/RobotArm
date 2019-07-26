@@ -28,16 +28,18 @@ class TemplateMatcher:
 		if 0 == len(self.tpl_files):
 			print("No template image! Please check the path!")
 	
-	def match_templates(self, color_image, depth_scale=None, draw_polygon=True, MIN_MATCH_COUNT=15, select_threshold=0.9):
+	def match_templates(self, color_image, draw_polygon=True, MIN_MATCH_COUNT=15, select_threshold=0.9):
 		start_time = time.time()
 		match_result = []  # ['point_name', [x, y], 置信指数]
+	
+		result_image = color_image
 		try:
 			# Initiate SIFT detector创建sift检测器
 			sift = cv2.xfeatures2d.SIFT_create()
 			
 			# find the keypoints and descriptors with SIFT
 			key_point_image, des_image = sift.detectAndCompute(color_image, None)
-			print("Find %d key points in image" % key_point_image.__len__())
+			# print("Find %d key points in image" % key_point_image.__len__())
 			
 			# 逐个模板处理
 			for img_file in self.tpl_files:
@@ -54,11 +56,11 @@ class TemplateMatcher:
 				# 匹配算法
 				index_params = dict(algorithm=FLANN_INDEX_KDTREE, trees=5)
 				# 搜索次数
-				search_params = dict(checks=10)
+				search_params = dict(checks=10)  # TODO 调参
 				flann = cv2.FlannBasedMatcher(index_params, search_params)
 				# knnMatch
 				matches = flann.knnMatch(des_image, des, k=2)
-				print("Find %d FLANN matches" % matches.__len__())
+				# print("Find %d FLANN matches" % matches.__len__())
 				
 				# store all the good matches as per Lowe's ratio test.
 				good_match = []
@@ -66,9 +68,10 @@ class TemplateMatcher:
 				for m, n in matches:
 					if m.distance < select_threshold * n.distance:
 						good_match.append(m)
-				print("Find %d good match points" % good_match.__len__())
 				
 				if len(good_match) > MIN_MATCH_COUNT:
+					# 认为找到了目标
+					print('\033[32mMatch %s with %d good match points！\033[0m' % (img_file, good_match.__len__()))
 					# 获取关键点的坐标
 					src_pts = np.float32([key_point_image[m.queryIdx].pt for m in good_match]).reshape(-1, 1, 2)
 					dst_pts = np.float32([key_point[m.trainIdx].pt for m in good_match]).reshape(-1, 1, 2)
@@ -78,39 +81,40 @@ class TemplateMatcher:
 					h, w = template_img.shape[:2]
 					# 使用得到的变换矩阵对原图像的四个角进行变换，获得在目标图像上对应的坐标
 					corner_pts = np.float32([[0, 0], [0, h - 1], [w - 1, h - 1], [w - 1, 0]]).reshape(-1, 1, 2)
-					dst = cv2.perspectiveTransform(corner_pts, M)
+					corner_dst = cv2.perspectiveTransform(corner_pts, M)
 					# 画出四角
 					if draw_polygon:
-						cv2.polylines(color_image, [np.int32(dst)], True, [0, 0, 255], 2, cv2.LINE_AA)
+						result_image = cv2.polylines(result_image, [np.int32(corner_dst)], True, [0, 0, 255], 2, cv2.LINE_AA)
+					match_result.append([img_file, corner_dst, len(good_match)])
 					
 					# TODO 根据mask筛选关键点dst，画出关键点   这关键点是错的啊，
-					match_pts_dst = []
-					ave_x, ave_y = 0, 0
-					for i in range(len(dst_pts)):
-						if 1 == mask[i]:
-							match_pts_dst.append(dst_pts[i][0])
-							ave_x += dst_pts[i][0][0]
-							ave_y += dst_pts[i][0][1]
-							# 画出关键点
-							cv2.circle(color_image, (dst_pts[i][0][0], dst_pts[i][0][0]), 3, (0, 0, 255))
-					center_point = np.asarray([ave_x, ave_y])
+					# match_pts_dst = []
+					# ave_x, ave_y = 0, 0
+					# for i in range(len(dst_pts)):
+					# 	if 1 == mask[i]:
+					# 		match_pts_dst.append(dst_pts[i][0])
+					# 		ave_x += dst_pts[i][0][0]
+					# 		ave_y += dst_pts[i][0][1]
+					# 		# 画出关键点
+					# 		cv2.circle(color_image, (dst_pts[i][0][0], dst_pts[i][0][0]), 3, (0, 0, 255))
+					# center_point = np.asarray([ave_x, ave_y])
 					# TODO 计算置信指数
 					
 					# 返回结果
-					match_result.append([img_file, center_point, len(good_match) / MIN_MATCH_COUNT])
-					pass
+					
 				else:
 					print("Not enough matches are found - %d/%d" % (len(good_match), MIN_MATCH_COUNT))
 					# matchesMask = None
 		
-		except IOError as e:
-			print("IOERROR", e.__str__())
-		# except cv2.error as e:
-		# 	print("[CV2 ERROR] ", e.__str__())
+		# except IOError as e:
+		# 	print("IOERROR", e.__str__())
+		except cv2.error as e:
+			print('\033[31mCV2ERROR！\033[0m', e.__str__())
 		finally:
 			end_time = time.time()
 			print("Matching time: ", end_time - start_time)
-			return color_image, match_result # TODO 返回坐标
+		
+		return result_image, match_result  # TODO 返回坐标
 
 
 def remove_background(clipping_distance_in_meters, depth_scale: float,
@@ -158,8 +162,8 @@ def test():
 	align = rs.align(align_to)
 	
 	# Streaming loop
-	try:
-		while True:
+	while True:
+		try:
 			# Get frameset of color and depth
 			frames = pipeline.wait_for_frames()
 			# frames.get_depth_frame() is a 640x360 depth image
@@ -178,23 +182,32 @@ def test():
 			color_image = np.asanyarray(color_frame.get_data())
 			
 			# 清除背景
-			if depth_scale:
-				color_image = remove_background(1, depth_scale, depth_image, color_image)
+			# if depth_scale:
+			# 	color_image = remove_background(1, depth_scale, depth_image, color_image)
 			
-			images, temp = matcher.match_templates(aligned_frames, depth_scale)
-
-			cv2.namedWindow('Align Example', cv2.WINDOW_AUTOSIZE)
-			cv2.imshow('Align Example', images)
-			key = cv2.waitKey(1000)
+			""""""
+			images, match_result = matcher.match_templates(color_image, select_threshold=0.9, MIN_MATCH_COUNT=30)
+			
+			cv2.namedWindow('Match', cv2.WINDOW_AUTOSIZE)
+			cv2.imshow('Match', images)
+			key = cv2.waitKey(1)
 			# Press esc or 'q' to close the image window
 			if key & 0xFF == ord('q') or key == 27:
 				cv2.destroyAllWindows()
+				print('\033[31mQuit.\033[0m')
 				break
 			elif key == ord('s'):
 				cv2.imwrite('data/cv_save.jpg', images)
 				print("image saved.")
-	finally:
-		pipeline.stop()
+			
+		except cv2.error as e:
+			print('\033[31mCV2ERROR: %s \033[0m' % (e.__str__()))
+			break
+		finally:
+			pass
+	
+	pipeline.stop()
+	cv2.destroyAllWindows()
 
 
 def test_2():
@@ -202,7 +215,7 @@ def test_2():
 	cap = cv2.VideoCapture(0)
 	while True:
 		ret, image = cap.read()
-		final_image, match_result = matcher.match_templates(image, MIN_MATCH_COUNT=20)
+		final_image, match_result = matcher.match_templates(image, MIN_MATCH_COUNT=20, select_threshold=0.8)
 		print("match result =", match_result)
 		cv2.imshow("Result", final_image)
 		key = cv2.waitKey(1)
@@ -214,5 +227,5 @@ def test_2():
 
 
 if __name__ == '__main__':
-	# test()
-	test_2()
+	test()
+	# test_2()

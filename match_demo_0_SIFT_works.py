@@ -59,17 +59,6 @@ def template_match(template_imgname: str, target_imgname, output_imgname=None, t
 		pts = np.float32([[0, 0], [0, h - 1], [w - 1, h - 1], [w - 1, 0]]).reshape(-1, 1, 2)
 		dst = cv2.perspectiveTransform(pts, M)
 		cv2.polylines(target, [np.int32(dst)], True, [0, 0, 255], 2, cv2.LINE_AA)
-		
-		match_pts_dst = []
-		ave_x, ave_y = 0, 0
-		for i in range(len(dst_pts)):
-			if 1 == mask[i]:
-				match_pts_dst.append(dst_pts[i][0])
-				ave_x += dst_pts[i][0][0]
-				ave_y += dst_pts[i][0][1]
-				# TODO 画出关键点
-				cv2.circle(target, (dst_pts[i][0][0], dst_pts[i][0][0]), 3, (0, 0, 255))
-		center_point = np.asarray([ave_x, ave_y])
 	else:
 		print("Not enough matches are found - %d/%d" % (len(good_match), MIN_MATCH_COUNT))
 		matchesMask = None
