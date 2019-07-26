@@ -40,18 +40,17 @@ def template_match(template_imgname: str, target_imgname, output_imgname=None, t
 	print("Find %d FLANN matches" % matches.__len__())
 	
 	# store all the good matches as per Lowe's ratio test.
-	good = []
-	
+	good_match = []
 	# 舍弃大于threshold的匹配, threshold越小越严格
 	for m, n in matches:
 		if m.distance < threshold * n.distance:
-			good.append(m)
-	print("Find %d good match points with threshold=%.3f" % (good.__len__(), threshold))
+			good_match.append(m)
+	print("Find %d good match points with threshold=%.3f" % (good_match.__len__(), threshold))
 	
-	if len(good) > MIN_MATCH_COUNT:
+	if len(good_match) > MIN_MATCH_COUNT:
 		# 获取关键点的坐标
-		src_pts = np.float32([key_point1[m.queryIdx].pt for m in good]).reshape(-1, 1, 2)
-		dst_pts = np.float32([key_point2[m.trainIdx].pt for m in good]).reshape(-1, 1, 2)
+		src_pts = np.float32([key_point1[m.queryIdx].pt for m in good_match]).reshape(-1, 1, 2)
+		dst_pts = np.float32([key_point2[m.trainIdx].pt for m in good_match]).reshape(-1, 1, 2)
 		# 计算变换矩阵和MASK
 		M, mask = cv2.findHomography(src_pts, dst_pts, cv2.RANSAC, 5.0)
 		matchesMask = mask.ravel().tolist()
@@ -59,10 +58,20 @@ def template_match(template_imgname: str, target_imgname, output_imgname=None, t
 		# 使用得到的变换矩阵对原图像的四个角进行变换，获得在目标图像上对应的坐标
 		pts = np.float32([[0, 0], [0, h - 1], [w - 1, h - 1], [w - 1, 0]]).reshape(-1, 1, 2)
 		dst = cv2.perspectiveTransform(pts, M)
+		cv2.polylines(target, [np.int32(dst)], True, [0, 0, 255], 2, cv2.LINE_AA)
 		
-		cv2.polylines(target, [np.int32(dst)], True, [0,0,255], 2, cv2.LINE_AA)
+		match_pts_dst = []
+		ave_x, ave_y = 0, 0
+		for i in range(len(dst_pts)):
+			if 1 == mask[i]:
+				match_pts_dst.append(dst_pts[i][0])
+				ave_x += dst_pts[i][0][0]
+				ave_y += dst_pts[i][0][1]
+				# TODO 画出关键点
+				cv2.circle(target, (dst_pts[i][0][0], dst_pts[i][0][0]), 3, (0, 0, 255))
+		center_point = np.asarray([ave_x, ave_y])
 	else:
-		print("Not enough matches are found - %d/%d" % (len(good), MIN_MATCH_COUNT))
+		print("Not enough matches are found - %d/%d" % (len(good_match), MIN_MATCH_COUNT))
 		matchesMask = None
 		
 	# Test
@@ -81,7 +90,7 @@ def template_match(template_imgname: str, target_imgname, output_imgname=None, t
 	end_time = time.time()
 	print("Matching time: ", end_time-start_time)
 	
-	result_image = cv2.drawMatches(template, key_point1, target, key_point2, good, None, **draw_params)
+	result_image = cv2.drawMatches(template, key_point1, target, key_point2, good_match, None, **draw_params)
 	
 	print("Done.")
 	
@@ -96,8 +105,10 @@ def resize_img(img, percentage):
 
 
 if __name__ == '__main__':
-	template = 'data/template-2.jpg'
-	target = 'data/img-2-2.jpg'
-	output = 'data/result-2-3.jpg'
-	final_image = template_match(template, target, output, threshold=0.8)
+	# template = 'data/template-2.jpg'
+	template = 'positioning_data/template/419.jpg'
+	# target = 'data/img-2-2.jpg'
+	target = 'data/cv_save.jpg'
+	output = 'data/cv_result.jpg'
+	final_image = template_match(template, target, output, threshold=0.9)
 	cv2.imwrite(output, final_image)

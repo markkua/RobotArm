@@ -1,6 +1,5 @@
 # -*- encoding: utf-8 -*-
 
-# 基于FLANN的匹配器(FLANN based Matcher)定位图片
 import numpy as np
 import cv2
 import time
@@ -10,125 +9,124 @@ import pyrealsense2 as rs
 
 
 class TemplateMatcher:
-	# SIFT parameter
-	MIN_MATCH_COUNT = 15  # 设置最低特征点匹配数量为10
-	select_threshold = 0.7
 	
 	# 公共变量
 	tpl_path = ""  # template_path
 	tpl_files = []  # template_files
 	
-	def __init__(self, MIN_MATCH_COUNT=15, select_threshold=0.7):
+	def __init__(self, ):
 		# init data path
 		cwd = os.getcwd()
-		self.set_template_dir(cwd + '\\positioning_data\\')
-		# init SIFT
-		self.MIN_MATCH_COUNT = MIN_MATCH_COUNT
-		self.select_threshold = select_threshold
-	
+		self.set_template_dir(cwd + '\\positioning_data\\template\\')
+		
 	def set_template_dir(self, data_dir: str):
 		self.tpl_path = data_dir
-		self.tpl_files = os.listdir(self.tpl_path)
 		self.tpl_files.clear()
 		for file in os.listdir(self.tpl_path):
 			if file.lower().endswith('.jpg'):
 				self.tpl_files.append(file)
-		
-	def solve_camera_pose(self, aligned_frames):
-		# Get aligned frames
-		color_frame = aligned_frames.get_color_frame()
-		
-		# Validate that frame is valid
-		if not color_frame:
-			print("Color frame not valid!")
-			return None
-		
-		color_image = np.asanyarray(aligned_frames.get_color_frame().get_data())
-		
-		output_img, target_list = self._match_templates(color_image)
-		# TODO 返回target_list
-		return output_img
-		
-	def _match_templates(self, image) -> [List, List]:
-		"""
-		在数据路径中，逐个进行模板匹配，并返回对应的像素坐标及可信度[point_name, x, y, %]
-		:param image: 要进行识别的图像数据
-		:return: image, [point_name, x, y, %]
-		"""
-		# 判断路径是否为空
-		if 0 == self.tpl_files.__len__():
-			print("Path is empty.")
-			return []
-
-		# record start time
-		start_time = time.time()
-		print("Start matching. ", start_time)
-		
-		# Initiate SIFT detector创建sift检测器
-		sift = cv2.xfeatures2d.SIFT_create()
-		
-		# find the keypoints and descriptors of color_image with SIFT
-		key_point_color, des_color = sift.detectAndCompute(image, None)
-		
-		output_img = image.copy()
-		for file in self.tpl_files:
-			filename = self.tpl_path + file
-			template_img = cv2.imread(filename, cv2.IMREAD_COLOR)
-			
-			# SIFT
-			key_point, des = sift.detectAndCompute(template_img, None)
-			print("Find %d key points in %s" % (key_point.__len__(), file))
-			
-			# FLANN
-			self._FLANN_match(key_point_color, des_color, key_point, des, template_img, output_img)
-			# TODO 处理匹配点
-		return output_img, []		# TODO 返回[point_num, x, y, %]
+		if 0 == len(self.tpl_files):
+			print("No template image! Please check the path!")
 	
-	def _FLANN_match(self, key_point1, des1, key_point2, des2, template_img, target_img):
-		# 创建设置FLANN匹配
-		FLANN_INDEX_KDTREE = 0
-		# 匹配算法
-		index_params = dict(algorithm=FLANN_INDEX_KDTREE, trees=5)
-		# 搜索次数
-		search_params = dict(checks=10)
-		flann = cv2.FlannBasedMatcher(index_params, search_params)
-		matches = flann.knnMatch(des1, des2, k=2)
-		print("Find %d FLANN matches" % matches.__len__())
-		
-		# store all the good matches as per Lowe's ratio test.
-		good = []
-		
-		# 舍弃大于threshold的匹配, threshold越小越严格
-		for m, n in matches:
-			if m.distance < self.select_threshold * n.distance:
-				good.append(m)
-		print("Find %d good match points with threshold=%.3f" % (good.__len__(), self.select_threshold))
-		
-		if len(good) > self.MIN_MATCH_COUNT:
-			# 获取关键点的坐标
-			src_pts = np.float32([key_point1[m.queryIdx].pt for m in good]).reshape(-1, 1, 2)
-			dst_pts = np.float32([key_point2[m.trainIdx].pt for m in good]).reshape(-1, 1, 2)
-			# 计算变换矩阵和MASK
-			M, mask = cv2.findHomography(src_pts, dst_pts, cv2.RANSAC, 5.0)
-			matchesMask = mask.ravel().tolist()
-			h, w = template_img.shape[:2]
-			# 使用得到的变换矩阵对原图像的四个角进行变换，获得在目标图像上对应的坐标
-			pts = np.float32([[0, 0], [0, h - 1], [w - 1, h - 1], [w - 1, 0]]).reshape(-1, 1, 2)
-			dst = cv2.perspectiveTransform(pts, M)
+	def match_templates(self, color_image, depth_scale=None, draw_polygon=True, MIN_MATCH_COUNT=15, select_threshold=0.9):
+		start_time = time.time()
+		match_result = []  # ['point_name', [x, y], 置信指数]
+		try:
+			# Initiate SIFT detector创建sift检测器
+			sift = cv2.xfeatures2d.SIFT_create()
 			
-			# 画出识别到的区域
-			cv2.polylines(target_img, [np.int32(dst)], True, [0, 0, 255], 2, cv2.LINE_AA)
-			# TODO 找中心点
-		else:
-			print("Not enough matches are found - %d/%d" % (len(good), self.MIN_MATCH_COUNT))
-			matchesMask = None
+			# find the keypoints and descriptors with SIFT
+			key_point_image, des_image = sift.detectAndCompute(color_image, None)
+			print("Find %d key points in image" % key_point_image.__len__())
 			
-		# TODO 画匹配点
+			# 逐个模板处理
+			for img_file in self.tpl_files:
+				# Read image
+				filename = self.tpl_path + img_file
+				template_img = cv2.imread(filename, cv2.IMREAD_COLOR)
+				
+				# SIFT
+				key_point, des = sift.detectAndCompute(template_img, None)
+				
+				# 创建设置FLANN匹配
+				FLANN_INDEX_KDTREE = 0
+				
+				# 匹配算法
+				index_params = dict(algorithm=FLANN_INDEX_KDTREE, trees=5)
+				# 搜索次数
+				search_params = dict(checks=10)
+				flann = cv2.FlannBasedMatcher(index_params, search_params)
+				# knnMatch
+				matches = flann.knnMatch(des_image, des, k=2)
+				print("Find %d FLANN matches" % matches.__len__())
+				
+				# store all the good matches as per Lowe's ratio test.
+				good_match = []
+				# 舍弃大于threshold的匹配, threshold越小越严格
+				for m, n in matches:
+					if m.distance < select_threshold * n.distance:
+						good_match.append(m)
+				print("Find %d good match points" % good_match.__len__())
+				
+				if len(good_match) > MIN_MATCH_COUNT:
+					# 获取关键点的坐标
+					src_pts = np.float32([key_point_image[m.queryIdx].pt for m in good_match]).reshape(-1, 1, 2)
+					dst_pts = np.float32([key_point[m.trainIdx].pt for m in good_match]).reshape(-1, 1, 2)
+					# 计算变换矩阵和MASK
+					M, mask = cv2.findHomography(src_pts, dst_pts, cv2.RANSAC, 5.0)
+					# matchesMask = mask.ravel().tolist()
+					h, w = template_img.shape[:2]
+					# 使用得到的变换矩阵对原图像的四个角进行变换，获得在目标图像上对应的坐标
+					corner_pts = np.float32([[0, 0], [0, h - 1], [w - 1, h - 1], [w - 1, 0]]).reshape(-1, 1, 2)
+					dst = cv2.perspectiveTransform(corner_pts, M)
+					# 画出四角
+					if draw_polygon:
+						cv2.polylines(color_image, [np.int32(dst)], True, [0, 0, 255], 2, cv2.LINE_AA)
+					
+					# TODO 根据mask筛选关键点dst，画出关键点   这关键点是错的啊，
+					match_pts_dst = []
+					ave_x, ave_y = 0, 0
+					for i in range(len(dst_pts)):
+						if 1 == mask[i]:
+							match_pts_dst.append(dst_pts[i][0])
+							ave_x += dst_pts[i][0][0]
+							ave_y += dst_pts[i][0][1]
+							# 画出关键点
+							cv2.circle(color_image, (dst_pts[i][0][0], dst_pts[i][0][0]), 3, (0, 0, 255))
+					center_point = np.asarray([ave_x, ave_y])
+					# TODO 计算置信指数
+					
+					# 返回结果
+					match_result.append([img_file, center_point, len(good_match) / MIN_MATCH_COUNT])
+					pass
+				else:
+					print("Not enough matches are found - %d/%d" % (len(good_match), MIN_MATCH_COUNT))
+					# matchesMask = None
 		
-		return # TODO 坐标
+		except IOError as e:
+			print("IOERROR", e.__str__())
+		# except cv2.error as e:
+		# 	print("[CV2 ERROR] ", e.__str__())
+		finally:
+			end_time = time.time()
+			print("Matching time: ", end_time - start_time)
+			return color_image, match_result # TODO 返回坐标
 
 
-def test(matcher):
+def remove_background(clipping_distance_in_meters, depth_scale: float,
+                      depth_image, color_image):
+	clipping_distance = clipping_distance_in_meters / depth_scale
+	
+	grey_color = 153
+	depth_image_3d = np.dstack(
+		(depth_image, depth_image, depth_image))  # depth image is 1 channel, color is 3 channels
+	bg_removed = np.where((depth_image_3d > clipping_distance) | (depth_image_3d <= 0), grey_color, color_image)
+	return bg_removed
+
+
+def test():
+	matcher = TemplateMatcher()
+	
 	# Create a pipeline
 	pipeline = rs.pipeline()
 	
@@ -143,6 +141,8 @@ def test(matcher):
 	
 	# Getting the depth sensor's depth scale (see rs-align example for explanation)
 	depth_sensor = profile.get_device().first_depth_sensor()
+	# depth_sensor.set_option(rs.RS2_OPTION_VISUAL_PRESET, rs.RS2_RS400_VISUAL_PRESET_HIGH_ACCURACY)
+	
 	depth_scale = depth_sensor.get_depth_scale()
 	print("Depth Scale is: ", depth_scale)
 	
@@ -167,12 +167,25 @@ def test(matcher):
 			# Align the depth frame to color frame
 			aligned_frames = align.process(frames)
 			
-			images = matcher.solve_camera_pose(aligned_frames)
+			depth_frame = aligned_frames.get_depth_frame()
+			color_frame = aligned_frames.get_color_frame()
 			
-			# Render images
+			# Validate that frames are valid
+			if not color_frame:
+				return
+			
+			depth_image = np.asanyarray(depth_frame.get_data())
+			color_image = np.asanyarray(color_frame.get_data())
+			
+			# 清除背景
+			if depth_scale:
+				color_image = remove_background(1, depth_scale, depth_image, color_image)
+			
+			images, temp = matcher.match_templates(aligned_frames, depth_scale)
+
 			cv2.namedWindow('Align Example', cv2.WINDOW_AUTOSIZE)
 			cv2.imshow('Align Example', images)
-			key = cv2.waitKey(1)
+			key = cv2.waitKey(1000)
 			# Press esc or 'q' to close the image window
 			if key & 0xFF == ord('q') or key == 27:
 				cv2.destroyAllWindows()
@@ -184,6 +197,22 @@ def test(matcher):
 		pipeline.stop()
 
 
-if __name__ == '__main__':
+def test_2():
 	matcher = TemplateMatcher()
-	test(matcher)
+	cap = cv2.VideoCapture(0)
+	while True:
+		ret, image = cap.read()
+		final_image, match_result = matcher.match_templates(image, MIN_MATCH_COUNT=20)
+		print("match result =", match_result)
+		cv2.imshow("Result", final_image)
+		key = cv2.waitKey(1)
+		if ord('q') == key:
+			break
+	output = 'data/cv_result.jpg'
+	cv2.imwrite(output, final_image)
+	cv2.destroyAllWindows()
+
+
+if __name__ == '__main__':
+	# test()
+	test_2()
