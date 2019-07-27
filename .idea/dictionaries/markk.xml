@@ -1,11 +1,14 @@
 <component name="ProjectDictionaryState">
   <dictionary name="markk">
     <words>
+      <w>asanyarray</w>
+      <w>coor</w>
       <w>flann</w>
       <w>imgdata</w>
       <w>imgname</w>
       <w>kdtree</w>
       <w>keypoints</w>
+      <w>realsense</w>
     </words>
   </dictionary>
 </component>

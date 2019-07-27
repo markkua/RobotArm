@@ -56,7 +56,7 @@ class TemplateMatcher:
 				# 匹配算法
 				index_params = dict(algorithm=FLANN_INDEX_KDTREE, trees=5)
 				# 搜索次数
-				search_params = dict(checks=10)  # TODO 调参
+				search_params = dict(checks=30)  # TODO 调参
 				flann = cv2.FlannBasedMatcher(index_params, search_params)
 				# knnMatch
 				matches = flann.knnMatch(des_image, des, k=2)
@@ -85,19 +85,11 @@ class TemplateMatcher:
 					# 画出四角
 					if draw_polygon:
 						result_image = cv2.polylines(result_image, [np.int32(corner_dst)], True, [0, 0, 255], 2, cv2.LINE_AA)
+						print("polygon drawn")
 					match_result.append([img_file, corner_dst, len(good_match)])
 					
 					# TODO 根据mask筛选关键点dst，画出关键点   这关键点是错的啊，
-					# match_pts_dst = []
-					# ave_x, ave_y = 0, 0
-					# for i in range(len(dst_pts)):
-					# 	if 1 == mask[i]:
-					# 		match_pts_dst.append(dst_pts[i][0])
-					# 		ave_x += dst_pts[i][0][0]
-					# 		ave_y += dst_pts[i][0][1]
-					# 		# 画出关键点
-					# 		cv2.circle(color_image, (dst_pts[i][0][0], dst_pts[i][0][0]), 3, (0, 0, 255))
-					# center_point = np.asarray([ave_x, ave_y])
+
 					# TODO 计算置信指数
 					
 					# 返回结果
@@ -138,7 +130,7 @@ def test():
 	#  different resolutions of color and depth streams
 	config = rs.config()
 	config.enable_stream(rs.stream.depth, 640, 360, rs.format.z16, 30)
-	config.enable_stream(rs.stream.color, 640, 480, rs.format.bgr8, 30)
+	config.enable_stream(rs.stream.color, 1920, 1080, rs.format.bgr8, 30)
 	
 	# Start streaming
 	profile = pipeline.start(config)
@@ -186,10 +178,14 @@ def test():
 			# 	color_image = remove_background(1, depth_scale, depth_image, color_image)
 			
 			""""""
-			images, match_result = matcher.match_templates(color_image, select_threshold=0.9, MIN_MATCH_COUNT=30)
-			
+			images, match_result = matcher.match_templates(color_image, select_threshold=0.7, MIN_MATCH_COUNT=20)
+
 			cv2.namedWindow('Match', cv2.WINDOW_AUTOSIZE)
 			cv2.imshow('Match', images)
+			
+			if 0 != match_result.__len__():
+				cv2.waitKey(2000)
+			
 			key = cv2.waitKey(1)
 			# Press esc or 'q' to close the image window
 			if key & 0xFF == ord('q') or key == 27:
