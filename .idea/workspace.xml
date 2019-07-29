@@ -2,15 +2,25 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="101c23f9-c355-4481-86e3-e27a0c499b44" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/ImgProcessor.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Threads.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/markk.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/markk.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Main.py" beforeDir="false" afterPath="$PROJECT_DIR$/Main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MainWindow.py" beforeDir="false" afterPath="$PROJECT_DIR$/MainWindow.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MainWindow.ui" beforeDir="false" afterPath="$PROJECT_DIR$/MainWindow.ui" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QRcode_demo_0.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/QRcode_demo_1.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/QRcode_demo_2.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TemplateMatcher_old.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Threads.py" beforeDir="false" afterPath="$PROJECT_DIR$/Threads.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/camera_N_SIFT.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/match_demo_0_SIFT_works.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/match_demo_1.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/match_demo_2.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/match_demo_3_SIFT_CNN.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/match_demo_4.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/positioning.py" beforeDir="false" afterPath="$PROJECT_DIR$/Positioning.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/re_demo_0.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/re_demo_1_align.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/taking_photo.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templet_demo0.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_manage_point.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_process.py" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -36,11 +46,11 @@
     <splitter split-orientation="horizontal" split-proportion="0.49865952">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file pinned="false" current-in-tab="true">
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/Main.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="378">
-                  <caret line="36" column="8" lean-forward="true" selection-start-line="36" selection-start-column="8" selection-end-line="36" selection-end-column="8" />
+                <state relative-caret-position="594">
+                  <caret line="36" column="8" selection-start-line="36" selection-start-column="8" selection-end-line="36" selection-end-column="8" />
                   <folding>
                     <element signature="e#27#45#0" expanded="true" />
                     <element signature="e#1025#1109#0" />
@@ -50,13 +60,14 @@
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="false">
+          <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/Threads.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="306">
-                  <caret line="32" column="42" selection-start-line="32" selection-start-column="42" selection-end-line="32" selection-end-column="42" />
+                <state relative-caret-position="562">
+                  <caret line="53" selection-start-line="53" selection-end-line="53" />
                   <folding>
                     <element signature="e#27#45#0" expanded="true" />
+                    <element signature="e#1015#1046#0" />
                   </folding>
                 </state>
               </provider>
@@ -88,7 +99,7 @@
       </split-first>
       <split-second>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file pinned="false" current-in-tab="true">
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/RealsenseManager.py">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="148">
@@ -108,35 +119,14 @@
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/QRcode_demo_2.py">
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/Positioning.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="270">
-                  <caret line="42" column="4" selection-start-line="42" selection-start-column="4" selection-end-line="43" selection-end-column="4" />
+                <state relative-caret-position="432">
+                  <caret line="24" column="12" selection-start-line="24" selection-start-column="12" selection-end-line="24" selection-end-column="12" />
                   <folding>
-                    <element signature="e#27#37#0" expanded="true" />
+                    <element signature="e#27#44#0" expanded="true" />
                   </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/test_process.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="402">
-                  <caret line="60" column="30" selection-start-line="60" selection-start-column="24" selection-end-line="60" selection-end-column="30" />
-                  <folding>
-                    <element signature="e#0#25#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/test_manage_point.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state>
-                  <caret selection-end-line="1" />
                 </state>
               </provider>
             </entry>
@@ -202,8 +192,8 @@
         <option value="$PROJECT_DIR$/MainWindow.py" />
         <option value="$PROJECT_DIR$/ImgProcessor.py" />
         <option value="$PROJECT_DIR$/.gitignore" />
-        <option value="$PROJECT_DIR$/Threads.py" />
         <option value="$PROJECT_DIR$/Main.py" />
+        <option value="$PROJECT_DIR$/Threads.py" />
       </list>
     </option>
   </component>
@@ -352,7 +342,7 @@
       <workItem from="1564133917202" duration="4429000" />
       <workItem from="1564138491480" duration="12100000" />
       <workItem from="1564250953829" duration="20829000" />
-      <workItem from="1564356988531" duration="19778000" />
+      <workItem from="1564356988531" duration="20311000" />
     </task>
     <task id="LOCAL-00001" summary="run Realsense success.">
       <created>1563893443117</created>
@@ -403,11 +393,18 @@
       <option name="project" value="LOCAL" />
       <updated>1564397957933</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="框架外框完成，待填充代码">
+      <created>1564432817041</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1564432817041</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="112415000" />
+    <option name="totallyTimeSpent" value="112948000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -452,7 +449,7 @@
       <window_info anchor="bottom" id="Concurrent Activities Diagram" order="0" weight="0.32911393" />
       <window_info anchor="bottom" id="Message" order="1" />
       <window_info anchor="bottom" id="Find" order="2" weight="0.32911393" />
-      <window_info anchor="bottom" id="Run" order="3" sideWeight="0.49932975" visible="true" weight="0.2936709" />
+      <window_info anchor="bottom" id="Run" order="3" sideWeight="0.49932975" weight="0.2936709" />
       <window_info anchor="bottom" id="Debug" order="4" weight="0.39873418" />
       <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
@@ -522,26 +519,12 @@
     <MESSAGE value="新增拍照程序" />
     <MESSAGE value="【重大突破】相机设置成功，能获取目标点在相机坐标系坐标" />
     <MESSAGE value="新建窗体，用于框架" />
-    <option name="LAST_COMMIT_MESSAGE" value="新建窗体，用于框架" />
+    <MESSAGE value="框架外框完成，待填充代码" />
+    <option name="LAST_COMMIT_MESSAGE" value="框架外框完成，待填充代码" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/templet_demo0.py</url>
-          <line>12</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/templet_demo0.py</url>
-          <line>26</line>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/match_demo_0_SIFT_works.py</url>
-          <line>78</line>
-          <option name="timeStamp" value="5" />
-        </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/TemplateMatcher.py</url>
           <line>220</line>
@@ -657,16 +640,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="162">
           <caret line="9" column="11" selection-start-line="9" selection-start-column="11" selection-end-line="9" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/positioning.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="364">
-          <caret line="24" column="12" lean-forward="true" selection-start-line="24" selection-start-column="12" selection-end-line="24" selection-end-column="12" />
-          <folding>
-            <element signature="e#27#44#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -864,6 +837,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="594">
+          <caret line="36" column="8" selection-start-line="36" selection-start-column="8" selection-end-line="36" selection-end-column="8" />
+          <folding>
+            <element signature="e#27#45#0" expanded="true" />
+            <element signature="e#1025#1109#0" />
+            <element signature="e#676#955#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/RealsenseManager.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="148">
@@ -882,24 +867,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Threads.py">
+    <entry file="file://$PROJECT_DIR$/Positioning.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="32" column="42" selection-start-line="32" selection-start-column="42" selection-end-line="32" selection-end-column="42" />
+        <state relative-caret-position="432">
+          <caret line="24" column="12" selection-start-line="24" selection-start-column="12" selection-end-line="24" selection-end-column="12" />
           <folding>
-            <element signature="e#27#45#0" expanded="true" />
+            <element signature="e#27#44#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Main.py">
+    <entry file="file://$PROJECT_DIR$/Threads.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="36" column="8" lean-forward="true" selection-start-line="36" selection-start-column="8" selection-end-line="36" selection-end-column="8" />
+        <state relative-caret-position="562">
+          <caret line="53" selection-start-line="53" selection-end-line="53" />
           <folding>
             <element signature="e#27#45#0" expanded="true" />
-            <element signature="e#1025#1109#0" />
-            <element signature="e#676#955#0" />
+            <element signature="e#1015#1046#0" />
           </folding>
         </state>
       </provider>
