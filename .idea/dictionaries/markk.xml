@@ -9,6 +9,7 @@
       <w>kdtree</w>
       <w>keypoints</w>
       <w>realsense</w>
+      <w>webcam</w>
     </words>
   </dictionary>
 </component>

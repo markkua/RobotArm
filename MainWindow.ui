@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1106</width>
-    <height>740</height>
+    <width>1080</width>
+    <height>720</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,41 +17,73 @@
    <widget class="QSlider" name="thresholdSlider">
     <property name="geometry">
      <rect>
-      <x>560</x>
-      <y>660</y>
+      <x>720</x>
+      <y>613</y>
       <width>160</width>
       <height>22</height>
      </rect>
+    </property>
+    <property name="maximum">
+     <number>255</number>
     </property>
     <property name="orientation">
      <enum>Qt::Horizontal</enum>
     </property>
    </widget>
-   <widget class="QWidget" name="horizontalLayoutWidget">
+   <widget class="QLabel" name="slider_lable">
     <property name="geometry">
      <rect>
-      <x>100</x>
-      <y>70</y>
-      <width>971</width>
-      <height>551</height>
+      <x>760</x>
+      <y>633</y>
+      <width>111</width>
+      <height>31</height>
      </rect>
     </property>
-    <layout class="QHBoxLayout" name="horizontalLayout">
-     <item>
-      <widget class="QLabel" name="label_2">
-       <property name="text">
-        <string>TextLabel</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLabel" name="imgLabel_r">
-       <property name="text">
-        <string>TextLabel</string>
-       </property>
-      </widget>
-     </item>
-    </layout>
+    <property name="text">
+     <string>TextLabel</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="exitButton">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>643</y>
+      <width>93</width>
+      <height>28</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>exit</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="startButton">
+    <property name="geometry">
+     <rect>
+      <x>960</x>
+      <y>590</y>
+      <width>93</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Start</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="imgLabel_r">
+    <property name="geometry">
+     <rect>
+      <x>190</x>
+      <y>50</y>
+      <width>880</width>
+      <height>495</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(255, 255, 255);</string>
+    </property>
+    <property name="text">
+     <string>ImgLabel</string>
+    </property>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
@@ -59,7 +91,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1106</width>
+     <width>1080</width>
      <height>26</height>
     </rect>
    </property>
