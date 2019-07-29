@@ -2,17 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="101c23f9-c355-4481-86e3-e27a0c499b44" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/ConsolePrinter.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/RealsenseManager.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/via_project_25Jul2019_10h43m.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/positioning_data/output2.mp4" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test_manage_point.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test_process.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/markk.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/markk.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Main.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MainWindow.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MainWindow.ui" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/QRcode_demo_0.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/QRcode_demo_1.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/QRcode_demo_2.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TemplateMatcher.py" beforeDir="false" afterPath="$PROJECT_DIR$/TemplateMatcher.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/taking_photo.py" beforeDir="false" afterPath="$PROJECT_DIR$/taking_photo.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RealsenseManager.py" beforeDir="false" afterPath="$PROJECT_DIR$/RealsenseManager.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -41,8 +38,8 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/TemplateMatcher.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="428">
-                  <caret line="218" column="17" lean-forward="true" selection-start-line="218" selection-start-column="17" selection-end-line="218" selection-end-column="17" />
+                <state relative-caret-position="1458">
+                  <caret line="86" column="87" selection-start-line="86" selection-start-column="77" selection-end-line="86" selection-end-column="87" />
                   <folding>
                     <element signature="e#27#45#0" expanded="true" />
                   </folding>
@@ -51,49 +48,73 @@
             </entry>
           </file>
           <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/ConsolePrinter.py">
+            <entry file="file://$PROJECT_DIR$/QRcode_demo_1.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="298">
-                  <caret line="30" column="26" lean-forward="true" selection-start-line="30" selection-start-column="26" selection-end-line="30" selection-end-column="26" />
+                <state relative-caret-position="72">
+                  <caret line="4" column="32" selection-start-line="4" selection-start-column="32" selection-end-line="5" selection-end-column="45" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/QRcode_demo_2.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="216">
+                  <caret line="33" lean-forward="true" selection-start-line="33" selection-end-line="33" />
+                  <folding>
+                    <element signature="e#27#37#0" expanded="true" />
+                  </folding>
                 </state>
               </provider>
             </entry>
           </file>
           <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/RealsenseManager.py">
+            <entry file="file://$PROJECT_DIR$/Main.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="644">
-                  <caret line="131" column="41" selection-start-line="131" selection-start-column="41" selection-end-line="131" selection-end-column="41" />
+                <state relative-caret-position="270">
+                  <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
                   <folding>
-                    <element signature="e#0#25#0" expanded="true" />
-                    <element signature="e#909#1223#0" />
-                    <element signature="e#1313#2014#0" />
-                    <element signature="e#2297#3074#0" />
-                    <element signature="e#2051#2600#0" />
-                    <element signature="e#3810#4729#0" />
-                    <element signature="e#4677#5663#0" />
+                    <element signature="e#27#63#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
             </entry>
           </file>
           <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/match_demo_4.py">
+            <entry file="file://$PROJECT_DIR$/MainWindow.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="356">
-                  <caret line="142" column="12" lean-forward="true" selection-start-line="142" selection-start-column="12" selection-end-line="142" selection-end-column="12" />
-                  <folding>
-                    <element signature="e#66#84#0" expanded="true" />
-                  </folding>
+                <state relative-caret-position="195">
+                  <caret line="41" column="38" lean-forward="true" selection-start-line="41" selection-start-column="38" selection-end-line="41" selection-end-column="38" />
                 </state>
               </provider>
             </entry>
           </file>
           <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/re_demo_1_align.py">
+            <entry file="file://$USER_HOME$/.conda/envs/visual36/Lib/site-packages/numpy/core/shape_base.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="184">
-                  <caret line="62" column="44" selection-start-line="62" selection-start-column="44" selection-end-line="62" selection-end-column="44" />
+                <state relative-caret-position="6102">
+                  <caret line="339" selection-start-line="339" selection-end-line="339" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$USER_HOME$/.conda/envs/visual36/Lib/site-packages/numpy/core/numeric.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="9666">
+                  <caret line="537" selection-start-line="537" selection-end-line="537" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/QRcode_demo_0.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="684">
+                  <caret line="43" column="8" selection-start-line="43" selection-start-column="8" selection-end-line="43" selection-end-column="32" />
+                  <folding>
+                    <element signature="e#27#37#0" expanded="true" />
+                  </folding>
                 </state>
               </provider>
             </entry>
@@ -101,12 +122,26 @@
         </leaf>
       </split-first>
       <split-second>
-        <leaf>
+        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/RealsenseManager.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state>
+                  <caret selection-end-line="1" />
+                  <folding>
+                    <element signature="e#0#25#0" expanded="true" />
+                    <element signature="e#245#966#0" />
+                    <element signature="e#1003#1338#0" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/test_process.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="144">
-                  <caret line="8" column="24" lean-forward="true" selection-start-line="8" selection-start-column="24" selection-end-line="8" selection-end-column="24" />
+                <state relative-caret-position="402">
+                  <caret line="60" column="30" selection-start-line="60" selection-start-column="24" selection-end-line="60" selection-end-column="30" />
                   <folding>
                     <element signature="e#0#25#0" expanded="true" />
                   </folding>
@@ -115,25 +150,10 @@
             </entry>
           </file>
           <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/re_demo_0.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="194">
-                  <caret line="40" column="16" selection-start-line="40" selection-start-column="16" selection-end-line="40" selection-end-column="16" />
-                  <folding>
-                    <element signature="e#272#297#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/test_manage_point.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="324">
-                  <caret line="27" column="2" lean-forward="true" selection-start-line="27" selection-start-column="2" selection-end-line="27" selection-end-column="2" />
-                  <folding>
-                    <element signature="e#0#25#0" expanded="true" />
-                  </folding>
+                <state>
+                  <caret selection-end-line="1" />
                 </state>
               </provider>
             </entry>
@@ -193,12 +213,17 @@
         <option value="$PROJECT_DIR$/test_process.py" />
         <option value="$PROJECT_DIR$/ConsolePrinter.py" />
         <option value="$PROJECT_DIR$/TemplateMatcher.py" />
+        <option value="$PROJECT_DIR$/QRcode_demo_0.py" />
+        <option value="$PROJECT_DIR$/QRcode_demo_1.py" />
+        <option value="$PROJECT_DIR$/QRcode_demo_2.py" />
         <option value="$PROJECT_DIR$/RealsenseManager.py" />
+        <option value="$PROJECT_DIR$/Main.py" />
+        <option value="$PROJECT_DIR$/MainWindow.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" fullScreen="true">
-    <option name="width" value="1539" />
+    <option name="width" value="1540" />
     <option name="height" value="865" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -224,9 +249,10 @@
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$USER_HOME$/.conda/envs/visual36/Scripts/pyuic5.exe" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="settings.editor.selected.configurable" value="editor.preferences.completion" />
+    <property name="settings.editor.selected.configurable" value="preferences.externalTools" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -240,8 +266,8 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.TemplateMatcher">
-    <configuration name="ConsolePrinter" type="PythonConfigurationType" factoryName="Python" temporary="true">
+  <component name="RunManager" selected="Python.Main">
+    <configuration name="Main" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="RobotArm" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -254,7 +280,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ConsolePrinter.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Main.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -263,7 +289,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="Print_Color_2_Consolor" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="QRcode_demo_0" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="RobotArm" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -276,7 +302,51 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="C:\Users\markk\OneDrive - whu.edu.cn\Documents\Coding\PythonCode\RobotArm\ConsolePrinter.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/QRcode_demo_0.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="QRcode_demo_1" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="RobotArm" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/QRcode_demo_1.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="QRcode_demo_2" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="RobotArm" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/QRcode_demo_2.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -307,64 +377,20 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="TemplateMatcher" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="RobotArm" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/TemplateMatcher.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="taking_photo" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="RobotArm" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/taking_photo.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <list>
-      <item itemvalue="Python.TemplateMatcher" />
-      <item itemvalue="Python.taking_photo" />
-      <item itemvalue="Python.Print_Color_2_Consolor" />
       <item itemvalue="Python.RealsenseManager" />
-      <item itemvalue="Python.ConsolePrinter" />
+      <item itemvalue="Python.QRcode_demo_0" />
+      <item itemvalue="Python.QRcode_demo_1" />
+      <item itemvalue="Python.QRcode_demo_2" />
+      <item itemvalue="Python.Main" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.TemplateMatcher" />
+        <item itemvalue="Python.Main" />
+        <item itemvalue="Python.QRcode_demo_2" />
         <item itemvalue="Python.RealsenseManager" />
-        <item itemvalue="Python.ConsolePrinter" />
-        <item itemvalue="Python.Print_Color_2_Consolor" />
-        <item itemvalue="Python.taking_photo" />
+        <item itemvalue="Python.QRcode_demo_1" />
+        <item itemvalue="Python.QRcode_demo_0" />
       </list>
     </recent_temporary>
   </component>
@@ -383,7 +409,8 @@
       <workItem from="1564049301357" duration="27610000" />
       <workItem from="1564133917202" duration="4429000" />
       <workItem from="1564138491480" duration="12100000" />
-      <workItem from="1564250953829" duration="11590000" />
+      <workItem from="1564250953829" duration="20829000" />
+      <workItem from="1564356988531" duration="4329000" />
     </task>
     <task id="LOCAL-00001" summary="run Realsense success.">
       <created>1563893443117</created>
@@ -420,13 +447,20 @@
       <option name="project" value="LOCAL" />
       <updated>1564153196379</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="【重大突破】相机设置成功，能获取目标点在相机坐标系坐标">
+      <created>1564262854818</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1564262854818</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="83398000" />
+    <option name="totallyTimeSpent" value="96966000" />
   </component>
-  <component name="TodoView" selected-index="5">
+  <component name="TodoView">
     <todo-panel id="selected-file">
       <is-autoscroll-to-source value="true" />
     </todo-panel>
@@ -439,7 +473,7 @@
     <frame x="0" y="0" width="1536" height="864" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" weight="0.14544237" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.14544237" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -467,11 +501,11 @@
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32911393" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49932975" visible="true" weight="0.32911393" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49932975" weight="0.32911393" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39873418" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" weight="0.32911393" />
+      <window_info active="true" anchor="bottom" id="TODO" order="6" visible="true" weight="0.32911393" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.32911393" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
@@ -535,7 +569,8 @@
     <MESSAGE value="TemplateMatcher与Realsense结合，但识别效果不好" />
     <MESSAGE value="重写了TemplateMatch，效果依然不行" />
     <MESSAGE value="新增拍照程序" />
-    <option name="LAST_COMMIT_MESSAGE" value="新增拍照程序" />
+    <MESSAGE value="【重大突破】相机设置成功，能获取目标点在相机坐标系坐标" />
+    <option name="LAST_COMMIT_MESSAGE" value="【重大突破】相机设置成功，能获取目标点在相机坐标系坐标" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -567,16 +602,20 @@
     <SUITE FILE_PATH="coverage/RobotArm$template_match.coverage" NAME="template_match Coverage Results" MODIFIED="1564066841235" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/RobotArm$taking_photo.coverage" NAME="taking_photo Coverage Results" MODIFIED="1564251357931" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/RobotArm$Print_Color_2_Consolor.coverage" NAME="Print_Color_2_Consolor Coverage Results" MODIFIED="1564255361300" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/RobotArm$QRcode_demo_2.coverage" NAME="QRcode_demo_2 Coverage Results" MODIFIED="1564358524335" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/RobotArm$templet_demo0.coverage" NAME="templet_demo0 Coverage Results" MODIFIED="1563667236436" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/RobotArm$QRcode_demo_0.coverage" NAME="QRcode_demo_0 Coverage Results" MODIFIED="1564349534905" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/RobotArm$match_demo_1.coverage" NAME="match_demo_1 Coverage Results" MODIFIED="1563734039423" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/RobotArm$positioning.coverage" NAME="positioning Coverage Results" MODIFIED="1564061915665" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/RobotArm$TemplateMatcher__1_.coverage" NAME="TemplateMatcher (1) Coverage Results" MODIFIED="1564088385184" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/RobotArm$RealsenseManager.coverage" NAME="RealsenseManager Coverage Results" MODIFIED="1564262582701" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/RobotArm$RealsenseManager.coverage" NAME="RealsenseManager Coverage Results" MODIFIED="1564352874540" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/RobotArm$match_demo_2.coverage" NAME="match_demo_2 Coverage Results" MODIFIED="1563879451078" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/RobotArm$match_demo_0_SIFT_works.coverage" NAME="match_demo_0_SIFT_works Coverage Results" MODIFIED="1564136243263" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/RobotArm$re_demo_1_align.coverage" NAME="re_demo_1_align Coverage Results" MODIFIED="1564083805614" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/RobotArm$QRcode_demo_1.coverage" NAME="QRcode_demo_1 Coverage Results" MODIFIED="1564352108152" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/RobotArm$match_demo_0_works.coverage" NAME="match_demo_0_works Coverage Results" MODIFIED="1563894018240" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/RobotArm$camera_N_SIFT.coverage" NAME="camera_N_SIFT Coverage Results" MODIFIED="1563895453863" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/RobotArm$Main.coverage" NAME="Main Coverage Results" MODIFIED="1564397794723" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/RobotArm$match_demo_3_SIFT_CNN.coverage" NAME="match_demo_3_SIFT_CNN Coverage Results" MODIFIED="1564075660278" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/RobotArm$match_demo_4.coverage" NAME="match_demo_4 Coverage Results" MODIFIED="1564251332664" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/RobotArm$TemplateMatcher.coverage" NAME="TemplateMatcher Coverage Results" MODIFIED="1564262633619" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
@@ -736,7 +775,7 @@
     <entry file="file://$PROJECT_DIR$/match_demo_4.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="356">
-          <caret line="142" column="12" lean-forward="true" selection-start-line="142" selection-start-column="12" selection-end-line="142" selection-end-column="12" />
+          <caret line="142" column="12" selection-start-line="142" selection-start-column="12" selection-end-line="142" selection-end-column="12" />
           <folding>
             <element signature="e#66#84#0" expanded="true" />
           </folding>
@@ -745,7 +784,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/re_demo_0.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="194">
+        <state relative-caret-position="720">
           <caret line="40" column="16" selection-start-line="40" selection-start-column="16" selection-end-line="40" selection-end-column="16" />
           <folding>
             <element signature="e#272#297#0" expanded="true" />
@@ -753,55 +792,106 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test_process.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="8" column="24" lean-forward="true" selection-start-line="8" selection-start-column="24" selection-end-line="8" selection-end-column="24" />
-          <folding>
-            <element signature="e#0#25#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ConsolePrinter.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="298">
-          <caret line="30" column="26" lean-forward="true" selection-start-line="30" selection-start-column="26" selection-end-line="30" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test_manage_point.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="324">
-          <caret line="27" column="2" lean-forward="true" selection-start-line="27" selection-start-column="2" selection-end-line="27" selection-end-column="2" />
-          <folding>
-            <element signature="e#0#25#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="72">
+          <caret line="4" selection-start-line="4" selection-end-line="4" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/TemplateMatcher.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="428">
-          <caret line="218" column="17" lean-forward="true" selection-start-line="218" selection-start-column="17" selection-end-line="218" selection-end-column="17" />
+        <state relative-caret-position="1458">
+          <caret line="86" column="87" selection-start-line="86" selection-start-column="77" selection-end-line="86" selection-end-column="87" />
           <folding>
             <element signature="e#27#45#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/RealsenseManager.py">
+    <entry file="file://$PROJECT_DIR$/QRcode_demo_1.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="644">
-          <caret line="131" column="41" selection-start-line="131" selection-start-column="41" selection-end-line="131" selection-end-column="41" />
+        <state relative-caret-position="72">
+          <caret line="4" column="32" selection-start-line="4" selection-start-column="32" selection-end-line="5" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.conda/envs/visual36/Lib/site-packages/numpy/core/shape_base.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="6102">
+          <caret line="339" selection-start-line="339" selection-end-line="339" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.conda/envs/visual36/Lib/site-packages/numpy/core/numeric.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="9666">
+          <caret line="537" selection-start-line="537" selection-end-line="537" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/QRcode_demo_0.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="684">
+          <caret line="43" column="8" selection-start-line="43" selection-start-column="8" selection-end-line="43" selection-end-column="32" />
+          <folding>
+            <element signature="e#27#37#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test_manage_point.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret selection-end-line="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test_process.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="402">
+          <caret line="60" column="30" selection-start-line="60" selection-start-column="24" selection-end-line="60" selection-end-column="30" />
           <folding>
             <element signature="e#0#25#0" expanded="true" />
-            <element signature="e#909#1223#0" />
-            <element signature="e#1313#2014#0" />
-            <element signature="e#2297#3074#0" />
-            <element signature="e#2051#2600#0" />
-            <element signature="e#3810#4729#0" />
-            <element signature="e#4677#5663#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/RealsenseManager.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret selection-end-line="1" />
+          <folding>
+            <element signature="e#0#25#0" expanded="true" />
+            <element signature="e#245#966#0" />
+            <element signature="e#1003#1338#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/QRcode_demo_2.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="33" lean-forward="true" selection-start-line="33" selection-end-line="33" />
+          <folding>
+            <element signature="e#27#37#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MainWindow.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="41" column="38" lean-forward="true" selection-start-line="41" selection-start-column="38" selection-end-line="41" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
+          <folding>
+            <element signature="e#27#63#0" expanded="true" />
           </folding>
         </state>
       </provider>

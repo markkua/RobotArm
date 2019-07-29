@@ -1,3 +1,5 @@
+# -*- encoding: utf-8 -*-
+
 import pyrealsense2 as rs
 import numpy as np
 import cv2
@@ -77,6 +79,18 @@ class RealsenseManager:
 		
 		return result_coor
 	
+	@staticmethod
+	def get_color_image_from_frames(frames):
+		color_frame = frames.get_color_frame()
+		color_image = np.asanyarray(color_frame.get_data())
+		return color_image
+	
+	@staticmethod
+	def get_depth_image_from_frames(frames):
+		depth_frame = frames.get_depth_frame()
+		depth_image = np.asanyarray(depth_frame.get_data())
+		return depth_image
+		
 	@staticmethod
 	def _filter_depth_frame(depth_frame):
 		"""
