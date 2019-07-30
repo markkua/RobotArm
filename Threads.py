@@ -8,6 +8,7 @@ import time
 from ImgProcessor import ImgProcessor
 from ConsolePrinter import Printer
 from RealsenseManager import RealsenseManager
+from Ob_detect import Ob_detect
 
 from MainWindow import Ui_MainWindow
 from PyQt5.QtCore import QThread, pyqtSignal, Qt
@@ -19,6 +20,8 @@ class MainThread(QThread):
 	img_signal = pyqtSignal(object)  # 输出图像的信号
 	
 	realsense = RealsenseManager()
+	
+	value = 0  # 用来找阈值
 	
 	# frame_start_time = 0
 	
@@ -32,11 +35,18 @@ class MainThread(QThread):
 			# self.frame_start_time = time.time()
 			frames = self.realsense.get_aligned_frames()
 			color_image = self.realsense.get_color_image_from_frames(frames)
-			
+
 			# 识别目标
+			# ob_detect = Ob_detect()
+			# model = ob_detect.create_model()
+			# done_dir = ob_detect.Infer_model(color_image, model)
+			#
+			# print("done_dir=", done_dir)
+			#done_dir包含处理好的图像信息
 			
 			# 识别控制点
-			
+			result_image = ImgProcessor.pick_red(color_image, self.value)
+			self.img_signal.emit(result_image)
 			# 解相机位置
 			
 			# 坐标转换
@@ -47,10 +57,8 @@ class MainThread(QThread):
 			
 			# 控制释放
 			
-			result_image = color_image
-			self.img_signal.emit(result_image)
 			# print("frame rate=", 1 / (time.time() - self.frame_start_time))
-
+		
 
 # class ImgShowThread(QThread):
 # 	"""	用于测试窗体显示的线程 """

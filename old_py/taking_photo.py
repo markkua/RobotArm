@@ -7,47 +7,28 @@ import os
 from typing import List
 import pyrealsense2 as rs
 
+from RealsenseManager import *
+
 
 class DatasetCapture:
 	def __init__(self):
-		# Configure depth and color streams
-		self.pipeline = rs.pipeline()
-		config = rs.config()
-		config.enable_stream(rs.stream.depth, 640, 480, rs.format.z16, 30)
-		config.enable_stream(rs.stream.color, 1280, 720, rs.format.bgr8, 30)
-		
-		# Start streaming
-		self.pipeline.start(config)
-	
-		# Configure depth and color streams
-		self.pipeline = rs.pipeline()
-		config = rs.config()
-		config.enable_stream(rs.stream.depth, 640, 480, rs.format.z16, 30)
-		config.enable_stream(rs.stream.color, 640, 480, rs.format.bgr8, 30)
-
-		# Start streaming
-		self.pipeline.start(config)
+		self.realsense = RealsenseManager()
 
 	def start_photograph(self, path: str):
+		count = 1
 		try:
 			while True:
 		
 				# Wait for a coherent pair of frames: depth and color
-				frames = self.pipeline.wait_for_frames()
-				depth_frame = frames.get_depth_frame()
+				frames = self.realsense.get_aligned_frames()
 				color_frame = frames.get_color_frame()
-				if not depth_frame or not color_frame:
+				if not color_frame:
 					continue
 		
 				# Convert images to numpy arrays
-				depth_image = np.asanyarray(depth_frame.get_data())
 				color_image = np.asanyarray(color_frame.get_data())
-		
-				# Apply colormap on depth image (image must be converted to 8-bit per pixel first)
-				depth_colormap = cv2.applyColorMap(cv2.convertScaleAbs(depth_image, alpha=0.03), cv2.COLORMAP_JET)
-		
+
 				# Stack both images horizontally
-				# images = np.hstack((color_image, depth_colormap))
 				images = color_image
 		
 				# Show images
@@ -59,17 +40,17 @@ class DatasetCapture:
 					cv2.destroyAllWindows()
 					break
 				elif key == ord('s') or key == ord(' '):
-					filename = path + int(time.time()).__str__() + '.jpg'
+					filename = path + "%03d" % count + '.png'
+					count += 1
 					cv2.imwrite(filename, images)
-					print('\033[32m image saved at %s！\033[0m' % filename)
+					print('\033[32m image saved at %s\033[0m' % filename)
 		finally:
-		
-			# Stop streaming
-			self.pipeline.stop()
 			cv2.destroyAllWindows()
 		
 
 if __name__ == '__main__':
 	capture = DatasetCapture()
-	# capture.start_photograph(path="dataset/")
-	capture.start_photograph(path="data/")
+	path = "./ControlPoint/green/"
+	print("working dir: ", path)
+	capture.start_photograph(path=path)
+	# capture.start_photograph(path="data/")

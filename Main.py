@@ -28,8 +28,7 @@ class MyMainWindow(QWidget, Ui_MainWindow):
 		
 		# 绑定信号
 		# self.running_img_thread.img_signal.connect(self._update_image)
-		self.main_thread.img_signal.connect(self._update_image_display)
-		# self.startButton.clicked.connect(self.running_img_thread.start)
+		self.main_thread.img_signal.connect(self._on_update_image_display)
 		self.exitButton.clicked.connect(self._on_exit_button_clicked)
 		self.thresholdSlider.valueChanged.connect(self._on_slider_change_value)
 		
@@ -45,8 +44,8 @@ class MyMainWindow(QWidget, Ui_MainWindow):
 		self.close()  # 关闭窗口
 		Printer.print("exit", Printer.green)
 		
-	def _update_image_display(self, image):
-		# print("update image")
+	def _on_update_image_display(self, image):
+		print("update image")
 		height, width, channel = image.shape
 		bytesPerLine = 3 * width
 		self.qImg = QImage(image.data, width, height, bytesPerLine,
@@ -55,12 +54,26 @@ class MyMainWindow(QWidget, Ui_MainWindow):
 		self.imgLabel_r.setPixmap(QPixmap.fromImage(self.qImg))
 		
 	def _on_slider_change_value(self, value):
-		self.slider_lable.setText(value.__str__())
+		self.slider_lable.setText('%f' % (self.thresholdSlider.value() / 255))
+		self.main_thread.value = self.thresholdSlider.value() / 255
+		
+	def detect_test(self):
+		for i in range(20):
+			frames = self.realsense.get_aligned_frames()
+			color_image = self.realsense.get_color_image_from_frames(frames)
+			
+			# 识别目标
+			ob_detect = Ob_detect()
+			model = ob_detect.create_model()
+			done_dir = ob_detect.Infer_model(color_image, model)
+			
+			print("done_dir=", done_dir)
 
 
 if __name__ == '__main__':
 	app = QApplication(sys.argv)
 	window = MyMainWindow()
 	window.show()
+	# window.detect_test()
 	sys.exit(app.exec_())
 
