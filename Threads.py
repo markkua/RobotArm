@@ -8,6 +8,7 @@ import time
 from ImgProcessor import ImgProcessor
 from ConsolePrinter import Printer
 from RealsenseManager import RealsenseManager
+from Positioning import Positioning
 from Ob_detect import Ob_detect
 
 from MainWindow import Ui_MainWindow
@@ -19,7 +20,9 @@ from PyQt5.QtWidgets import QApplication, QWidget
 class MainThread(QThread):
 	img_signal = pyqtSignal(object)  # 输出图像的信号
 	
-	realsense = RealsenseManager()
+	realsense = RealsenseManager()  # 相机控制器
+	
+	positioner = Positioning()  # 相机定位器
 	
 	value = 0  # 用来找阈值
 	
@@ -30,12 +33,26 @@ class MainThread(QThread):
 		super().__init__()
 		
 	def run(self):
-		"""控制主循环"""
+		"""
+		控制主循环
+		用同一帧进行处理
+		"""
 		while True:
 			# self.frame_start_time = time.time()
+			
 			frames = self.realsense.get_aligned_frames()
 			color_image = self.realsense.get_color_image_from_frames(frames)
 
+			# 相机定位，定位成功了再去识别
+			self.positioner.get_camera_position(frames)
+			if not self.positioner.if_get_position:
+				continue
+			
+			# result_image = ImgProcessor.pick_red(color_image, self.value)
+			# self.img_signal.emit(result_image)
+
+			
+			
 			# 识别目标
 			# ob_detect = Ob_detect()
 			# model = ob_detect.create_model()
@@ -43,12 +60,7 @@ class MainThread(QThread):
 			#
 			# print("done_dir=", done_dir)
 			#done_dir包含处理好的图像信息
-			
-			# 识别控制点
-			result_image = ImgProcessor.pick_red(color_image, self.value)
-			self.img_signal.emit(result_image)
-			# 解相机位置
-			
+
 			# 坐标转换
 			
 			# 控制抓取

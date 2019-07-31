@@ -71,14 +71,11 @@ class ImgProcessor:
 					mask[i][j] = [255, 255, 255]
 				else:
 					mask[i][j] = [0, 0, 0]
-
-		pick_image = np.hstack((mask, image))
-
-		return pick_image
+		return mask
 	
 	@classmethod
 	def pick_red(cls, image, threshold):
-		image = cls._resize(image, 0.1)
+		image = cls.resize(image, 0.1)
 		
 		miu = np.asarray([0.957300173750032, 0.702467503221102, 0.519036449382812])
 		sig = np.asarray([[0.021501230242404, -8.839793231638757e-04, 0.007253323195827],
@@ -88,18 +85,20 @@ class ImgProcessor:
 	
 	@classmethod
 	def pick_green(cls, image, threshold):
-		image = cls._resize(image, 0.1)
+		image = cls.resize(image, 0.1)
 		
 		miu = np.asarray( [0.230604265949190, 0.528880344417954, 0.477433844165268])
 		sig = np.asarray([[8.142333919138685e-05,-3.528365300776935e-04,2.419821012445137e-05],
 		                  [-3.528365300776935e-04,0.004714512541749,-0.001336533557575],
 		                  [2.419821012445137e-05,-0.001336533557575,0.003038826607760]])
-		return cls._pick_color(image, threshold, miu, sig)
+		
+		result = cls._pick_color(image, threshold, miu, sig)
+		return result
 	
 	# TODO green, blue, yellow
 	
 	@staticmethod
-	def _resize(image, percentage):
+	def resize(image, percentage):
 		w, h, c = image.shape
 		return cv2.resize(image, (int(h*percentage), int(w*percentage)))
 		
@@ -130,7 +129,15 @@ if __name__ == '__main__':
 	start_time = time.time()
 	# result = ImgProcessor.pick_red(image, 0.8)
 	result = ImgProcessor.pick_green(image, 0.8)
-	print("time used=", time.time()-start_time)
+	print("time till pick color=", time.time()-start_time)
+	
+	canny = cv2.Canny(result, 100, 150)
+	canny = cv2.cvtColor(canny, cv2.COLOR_GRAY2BGR)
+	
+	result = np.hstack((canny, ImgProcessor.resize(image, 0.1)))
+	
+	print("time till canny=", time.time() - start_time)
+	
 	cv2.imshow("0.8", result)
 	cv2.waitKey(0)
 	cv2.destroyAllWindows()
