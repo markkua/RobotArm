@@ -12,26 +12,29 @@ class RealsenseManager:
 	"""
 	
 	def __init__(self, color_resolution=(1920, 1080), depth_resolution=(1280, 720)):
-		self.pipeline = rs.pipeline()
-		self.config = rs.config()
-		self.config.enable_stream(rs.stream.depth, depth_resolution[0], depth_resolution[1], rs.format.z16, 30)
-		self.config.enable_stream(rs.stream.color, color_resolution[0], color_resolution[1], rs.format.bgr8, 30)
-		
-		# 配置文件
-		self.profile = self.pipeline.start(self.config)
-		
-		# 深度传感器
-		self.depth_sensor = self.profile.get_device().first_depth_sensor()
-		self.depth_sensor.set_option(rs.option.visual_preset, 4)
-		# 深度标尺
-		self.depth_scale = self.depth_sensor.get_depth_scale()
-		print('depth_scale=', self.depth_scale)
-		
-		# 创建align对象
-		self.align_to = rs.stream.color
-		self.align = rs.align(self.align_to)
-		
-		Printer.print("Camera ready", Printer.green)
+		try:
+			self.pipeline = rs.pipeline()
+			self.config = rs.config()
+			self.config.enable_stream(rs.stream.depth, depth_resolution[0], depth_resolution[1], rs.format.z16, 30)
+			self.config.enable_stream(rs.stream.color, color_resolution[0], color_resolution[1], rs.format.bgr8, 30)
+			
+			# 配置文件
+			self.profile = self.pipeline.start(self.config)
+			
+			# 深度传感器
+			self.depth_sensor = self.profile.get_device().first_depth_sensor()
+			self.depth_sensor.set_option(rs.option.visual_preset, 4)
+			# 深度标尺
+			self.depth_scale = self.depth_sensor.get_depth_scale()
+			print('depth_scale=', self.depth_scale)
+			
+			# 创建align对象
+			self.align_to = rs.stream.color
+			self.align = rs.align(self.align_to)
+			
+			Printer.print("Camera ready", Printer.green)
+		except RuntimeError as e:
+			Printer.print("Camera init fail: " + e.__str__(), Printer.red)
 		
 	def get_aligned_frames(self):
 		"""

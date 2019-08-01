@@ -95,9 +95,9 @@ def resize_img(img, percentage):
 
 if __name__ == '__main__':
 	# template = 'data/template-2.jpg'
-	template = 'positioning_data/template/419.jpg'
+	template = 'positioning_data/template/green.png'
 	# target = 'data/img-2-2.jpg'
-	target = 'data/cv_save.jpg'
-	output = 'data/cv_result.jpg'
+	target = 'positioning_data/001.png'
+	output = 'positioning_data/001-result.png'
 	final_image = template_match(template, target, output, threshold=0.9)
 	cv2.imwrite(output, final_image)

@@ -2,6 +2,7 @@
   <dictionary name="markk">
     <words>
       <w>asanyarray</w>
+      <w>asarray</w>
       <w>coor</w>
       <w>flann</w>
       <w>imgdata</w>

@@ -22,7 +22,7 @@ class MainThread(QThread):
 	
 	realsense = RealsenseManager()  # 相机控制器
 	
-	positioner = Positioning()  # 相机定位器
+	positioner = Positioning(realsense)  # 相机定位器
 	
 	value = 0  # 用来找阈值
 	
@@ -47,13 +47,11 @@ class MainThread(QThread):
 			self.positioner.get_camera_position(frames)
 			if not self.positioner.if_get_position:
 				continue
-			
-			# result_image = ImgProcessor.pick_red(color_image, self.value)
-			# self.img_signal.emit(result_image)
-
-			
+				
 			
 			# 识别目标
+			
+			
 			# ob_detect = Ob_detect()
 			# model = ob_detect.create_model()
 			# done_dir = ob_detect.Infer_model(color_image, model)

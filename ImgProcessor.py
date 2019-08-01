@@ -75,7 +75,7 @@ class ImgProcessor:
 	
 	@classmethod
 	def pick_red(cls, image, threshold):
-		image = cls.resize(image, 0.1)
+		image = resize(image, 0.1)
 		
 		miu = np.asarray([0.957300173750032, 0.702467503221102, 0.519036449382812])
 		sig = np.asarray([[0.021501230242404, -8.839793231638757e-04, 0.007253323195827],
@@ -83,25 +83,34 @@ class ImgProcessor:
 		                    [0.007253323195827, -0.001972126596248, 0.006512052763508]])
 		return cls._pick_color(image, threshold, miu, sig)
 	
-	@classmethod
-	def pick_green(cls, image, threshold):
-		image = cls.resize(image, 0.1)
-		
-		miu = np.asarray( [0.230604265949190, 0.528880344417954, 0.477433844165268])
-		sig = np.asarray([[8.142333919138685e-05,-3.528365300776935e-04,2.419821012445137e-05],
-		                  [-3.528365300776935e-04,0.004714512541749,-0.001336533557575],
-		                  [2.419821012445137e-05,-0.001336533557575,0.003038826607760]])
-		
-		result = cls._pick_color(image, threshold, miu, sig)
-		return result
-	
-	# TODO green, blue, yellow
-	
-	@staticmethod
-	def resize(image, percentage):
-		w, h, c = image.shape
-		return cv2.resize(image, (int(h*percentage), int(w*percentage)))
-		
+	# @classmethod
+	# def pick_green(cls, image, threshold):
+	# 	image = cls.resize(image, 0.1)
+	#
+	# 	miu = np.asarray( [0.230604265949190, 0.528880344417954, 0.477433844165268])
+	# 	sig = np.asarray([[8.142333919138685e-05,-3.528365300776935e-04,2.419821012445137e-05],
+	# 	                  [-3.528365300776935e-04,0.004714512541749,-0.001336533557575],
+	# 	                  [2.419821012445137e-05,-0.001336533557575,0.003038826607760]])
+	#
+	# 	result = cls._pick_color(image, threshold, miu, sig)
+	# 	return result
+	#
+
+
+def resize(image, percentage):
+	w, h, c = image.shape
+	return cv2.resize(image, (int(h*percentage), int(w*percentage)))
+
+
+def get_mass_center_float(gray_img):
+	result = cv2.moments(gray_img, 1)
+	if not 0 == result['m00']:
+		x = round(result['m10'] / result['m00'])
+		y = round(result['m01'] / result['m00'])
+	else:
+		x, y = 0, 0
+	return np.asarray([x, y])
+
 
 def test_hsv2rgb():
 	hsv = np.asarray([60, 180, 180])
