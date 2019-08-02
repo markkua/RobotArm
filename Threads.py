@@ -11,6 +11,7 @@ from RealsenseManager import RealsenseManager
 from positioning import Positioning
 from Ob_detect import Ob_detect
 from RealsenseCamera import RealsenseCamera
+from ToolDetect import *
 
 from MainWindow import Ui_MainWindow
 from PyQt5.QtCore import QThread, pyqtSignal, Qt
@@ -23,10 +24,6 @@ class MainThread(QThread):
 	
 	realsenseCamera = RealsenseCamera()
 	
-	# realsense = RealsenseManager()  # 相机控制器
-	#
-	# positioner = Positioning(realsense)  # 相机定位器
-	
 	value = 0  # 用来找阈值
 	
 	# frame_start_time = 0
@@ -34,6 +31,13 @@ class MainThread(QThread):
 	"""控制的主线程"""
 	def __init__(self):
 		super().__init__()
+		self.model = create_model('mask_rcnn_tools_0030.h5')
+
+	def detect_tool(self, image):
+		
+		r = self.model.detect(image, verbose=1)[0]
+		cout, list = calculate(r)
+		return cout, list
 		
 	def run(self):
 		"""
@@ -45,14 +49,26 @@ class MainThread(QThread):
 			
 			aligned_frames = self.realsenseCamera.get_aligned_frames()
 			color_image = self.realsenseCamera.get_color_image_from_frames(aligned_frames)
-
+			
+			result_image = color_image.copy()
+			
+			cv2.imshow('color_image', color_image)
+			cv2.waitKey(0)
+			
 			# 相机定位，定位成功了再去识别
-			self.realsenseCamera.get_transform_matrix(aligned_frames)
-			if not self.realsenseCamera.if_get_position:
-				continue
+			# self.realsenseCamera.get_transform_matrix(aligned_frames)
+			# if not self.realsenseCamera.if_get_position:
+			# 	continue
 				
 			
 			# 识别目标
+			cout, target_list = self.detect_tool(color_image)
+			print('target_ls:', target_list)
+			for target in target_list:
+				center = target['center']
+				cv2.circle(result_image, center, 10, (0, 0, 255))
+			
+			self.img_signal.emit(result_image)
 			
 			
 			# ob_detect = Ob_detect()
@@ -72,6 +88,11 @@ class MainThread(QThread):
 			
 			# print("frame rate=", 1 / (time.time() - self.frame_start_time))
 		
+	def test_detect(self):
+		color_image = cv2.imread('imgdata/detect_test.jpg')
+		func = 0  # 0 return pic as well
+		cout, list = self.detect_tool(color_image)
+
 
 # class ImgShowThread(QThread):
 # 	"""	用于测试窗体显示的线程 """
@@ -114,3 +135,6 @@ class MainThread(QThread):
 # 			image = ImgProcessor.pick_color(image, self.value, 10)
 # 			self.img_signal.emit(image)
 
+if __name__ == '__main__':
+	thread = MainThread()
+	thread.test_detect()

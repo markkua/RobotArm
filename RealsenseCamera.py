@@ -54,7 +54,7 @@ class RealsenseCamera(RealsenseManager):
 				return False
 		return True
 	
-	def get_transform_matrix(self, aligned_frames, hue_width):
+	def get_transform_matrix(self, aligned_frames, hue_width=10):
 		# 检测目标点位置
 		points_xy_ls = self._match_control_points(aligned_frames, hue_width)
 		# 转成相机空间坐标
