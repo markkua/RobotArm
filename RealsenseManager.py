@@ -55,9 +55,9 @@ class RealsenseManager:
 	
 	def get_coor_in_Camera_system(self, align_frames, pixel_coor):
 		"""
-		获取指定像素点[x, y]在相机坐标系下的三维坐标[X, Y, Z]
+		获取指定像素点[x, y](必须是List), 在相机坐标系下的三维坐标[X, Y, Z]
 		:param align_frames: 对齐的帧
-		:param pixel_coor: 目标像素的坐标
+		:param pixel_coor: 目标像素的坐标, 只能传入list， 不能是array
 		:return:
 		"""
 		# 获得对齐后的深度帧
@@ -71,8 +71,10 @@ class RealsenseManager:
 		color_intrin = color_frame.profile.as_video_stream_profile().intrinsics
 		
 		align_depth_image = np.asanyarray(align_depth_frame.get_data())
+
 		# 长度单位为cm
-		align_depth_value = align_depth_image[pixel_coor[0], pixel_coor[1]] * self.depth_scale * 100  # 单位转换，100为cm，1为m
+		# realsense的x是竖的，y是横的
+		align_depth_value = align_depth_image[pixel_coor[1], pixel_coor[0]] * self.depth_scale * 100  # 单位转换，100为cm，1为m
 		
 		# 输入传感器内部参数、点的像素坐标、对应的深度值，输出点的三维坐标。
 		result_coor = rs.rs2_deproject_pixel_to_point(color_intrin, pixel_coor, align_depth_value)

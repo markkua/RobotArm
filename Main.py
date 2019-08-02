@@ -45,7 +45,7 @@ class MyMainWindow(QWidget, Ui_MainWindow):
 		Printer.print("exit", Printer.green)
 		
 	def _on_update_image_display(self, image):
-		print("update image")
+		# print("update image")
 		height, width, channel = image.shape
 		bytesPerLine = 3 * width
 		self.qImg = QImage(image.data, width, height, bytesPerLine,

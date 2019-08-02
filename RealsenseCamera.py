@@ -29,6 +29,8 @@ class RealsenseCamera(RealsenseManager):
 	# 匹配到的控制点坐标 [ [点名:str, [Camera坐标x1, y1, z1], [Robot坐标x2, y2, z2]] ]
 	_found_point_data = []
 	
+	mask_img = None
+	
 	def load_control_point_file(self, filename=None):
 		if filename:
 			fname = filename
@@ -56,11 +58,14 @@ class RealsenseCamera(RealsenseManager):
 	
 	def get_transform_matrix(self, aligned_frames, hue_width=10):
 		# 检测目标点位置
-		points_xy_ls = self._match_control_points(aligned_frames, hue_width)
+		image = self.get_color_image_from_frames(aligned_frames)
+		points_xy_ls = self._match_control_points(image, hue_width)
+		
 		# 转成相机空间坐标
 		points_XYZ_ls = []
 		for xy_point in points_xy_ls:
-			XYZ = self.get_coor_in_Camera_system(aligned_frames, xy_point[1])
+			print('xy_point=', xy_point)  # TODO
+			XYZ = self.get_coor_in_Camera_system(aligned_frames, [xy_point[1][0], xy_point[1][1]])  # 这个函数只能传入list， 不能是array
 			if XYZ is not None:
 				points_XYZ_ls.append([xy_point[0], XYZ])
 
@@ -140,15 +145,13 @@ class RealsenseCamera(RealsenseManager):
 			Printer.print(e.__str__(), Printer.red)
 			return False
 	
-	def _match_control_points(self, frames: rs.frame, hue_width: int = 10, count_threshold=30, hue_bias=0) -> List:
+	def _match_control_points(self, image, hue_width: int = 10, count_threshold=30, hue_bias=0) -> List:
 		"""
 		匹配目标点，返回[ [点名:str, [图像坐标x1, y1]] ]
 		:param frames:
 		:return:  [ [点名:str, [图像坐标x1, y1]] ]
 		"""
 		points_xy_ls = []
-		
-		image = self.get_color_image_from_frames(frames)
 		
 		hue_c_green = 0.230604265949190 * 180
 		hue_c_red = 0.957300173750032 * 180
@@ -165,10 +168,14 @@ class RealsenseCamera(RealsenseManager):
 			 ]]
 		]
 		
+		mask_ls = []
 		for hsv_range in hsv_range_ls:
-			xy = self._get_color_center_xy(image, hsv_range[1][0], hsv_range[1][1], count_threshold)
+			xy, mask = self._get_color_center_xy(image, hsv_range[1][0], hsv_range[1][1], count_threshold)
 			if xy is not None:
+				mask_ls.append(mask)
+				self.mask_img = mask
 				points_xy_ls.append([hsv_range[0], xy])
+		# self.mask_img = cv2.bitwise_or(mask_ls[0], mask_ls[1])  # TODO 多个mask
 
 		return points_xy_ls
 	
@@ -181,14 +188,17 @@ class RealsenseCamera(RealsenseManager):
 		
 		mask = cv2.inRange(hsv_image, lower, upper)
 		
+		# cv2.imshow('mask', mask)
+		
+		
 		hist = cv2.calcHist([mask], [0], None, [256], [0, 256])
 		if not hist[255] > count_threshold:
-			return None
+			return None, None
 		
 		xy = self._get_mass_center_float(mask)
 		xy = np.round(xy / scale_percentage)
 		xy = np.asarray(xy, dtype=np.int)
-		return xy
+		return xy, mask
 
 	def _update_found_points(self, camera_nameXYZ_ls) -> bool:
 		"""
@@ -214,57 +224,58 @@ class RealsenseCamera(RealsenseManager):
 				Printer.print("%s error: " % sys._getframe().f_code.co_name, Printer.red)
 				return False
 		return True
-	
-	def _get_green_control_xy(self, image, hue_width=10, count_threshold=30):
-		scale_percentage = 0.1
-		small_image = self._resize(image, scale_percentage)
-		
-		hue_c = 0.230604265949190 * 180
-		lower = np.asarray([hue_c - hue_width, 0.2 * 255, 0.35 * 255])
-		upper = np.asarray([hue_c + hue_width, 0.7 * 255, 0.75 * 255])
-		
-		hsv_image = cv2.cvtColor(small_image, cv2.COLOR_BGR2HSV)
-		hsv_image = np.asarray(hsv_image)
-		
-		mask = cv2.inRange(hsv_image, lower, upper)
-		
-		hist = cv2.calcHist([mask], [0], None, [256], [0, 256])
-		if not hist[255] > count_threshold:
-			return None
-		
-		xy = self._get_mass_center_float(mask)
-		xy = np.round(xy / scale_percentage)
-		xy = np.asarray(xy, dtype=np.int)
-		return xy
-	
-	def _get_red_control_xy(self, image, hue_width=10, count_threshold=30):
-		# 红色分两块，拼接组合
-		scale_percentage = 0.1
-		small_image = self._resize(image, scale_percentage)
-		
-		hue_c = 0.957300173750032 * 180
-		lower_1 = np.asarray([hue_c - hue_width*0.8, 0.5 * 255, 0.2 * 255])
-		upper_1 = np.asarray([180, 0.9 * 255, 0.8 * 255])
-		# lower_2 = np.asarray([0, 0.5*255, 0.2 * 255])
-		# upper_2 = np.asarray([0.5*180, 0.9 * 255, 0.8 * 255])
-		
-		hsv_image = cv2.cvtColor(small_image, cv2.COLOR_BGR2HSV)
-		hsv_image = np.asarray(hsv_image)
-		
-		mask1 = cv2.inRange(hsv_image, lower_1, upper_1)
-		# mask2 = cv2.inRange(hsv_image, lower_2, upper_2)
-		# 或运算
-		# mask = cv2.bitwise_or(mask1, mask2)
-		mask = mask1
-
-		hist = cv2.calcHist([mask], [0], None, [256], [0, 256])
-		if not hist[255] > count_threshold:
-			return None
-		
-		xy = self._get_mass_center_float(mask)
-		xy = np.round(xy / scale_percentage)
-		xy = np.asarray(xy, dtype=np.int)
-		return xy
+	#
+	# def _get_green_control_xy(self, image, hue_width=10, count_threshold=30):
+	# 	scale_percentage = 0.1
+	# 	small_image = self._resize(image, scale_percentage)
+	#
+	# 	hue_c = 0.230604265949190 * 180
+	# 	lower = np.asarray([hue_c - hue_width, 0.2 * 255, 0.35 * 255])
+	# 	upper = np.asarray([hue_c + hue_width, 0.7 * 255, 0.75 * 255])
+	#
+	# 	hsv_image = cv2.cvtColor(small_image, cv2.COLOR_BGR2HSV)
+	# 	hsv_image = np.asarray(hsv_image)
+	#
+	# 	mask = cv2.inRange(hsv_image, lower, upper)
+	#
+	# 	hist = cv2.calcHist([mask], [0], None, [256], [0, 256])
+	# 	if not hist[255] > count_threshold:
+	# 		return None
+	#
+	# 	xy = self._get_mass_center_float(mask)
+	# 	xy = np.round(xy / scale_percentage)
+	# 	xy = np.asarray(xy, dtype=np.int)
+	# 	return xy
+	#
+	# def _get_red_control_xy(self, image, hue_width=10, count_threshold=30):
+	# 	# 红色分两块，拼接组合
+	# 	scale_percentage = 0.1
+	# 	small_image = self._resize(image, scale_percentage)
+	#
+	# 	hue_c = 0.957300173750032 * 180
+	# 	lower_1 = np.asarray([hue_c - hue_width*0.8, 0.5 * 255, 0.2 * 255])
+	# 	upper_1 = np.asarray([180, 0.9 * 255, 0.8 * 255])
+	# 	# lower_2 = np.asarray([0, 0.5*255, 0.2 * 255])
+	# 	# upper_2 = np.asarray([0.5*180, 0.9 * 255, 0.8 * 255])
+	#
+	# 	hsv_image = cv2.cvtColor(small_image, cv2.COLOR_BGR2HSV)
+	# 	hsv_image = np.asarray(hsv_image)
+	#
+	# 	mask1 = cv2.inRange(hsv_image, lower_1, upper_1)
+	# 	# mask2 = cv2.inRange(hsv_image, lower_2, upper_2)
+	# 	# 或运算
+	# 	# mask = cv2.bitwise_or(mask1, mask2)
+	# 	mask = mask1
+	#
+	# 	hist = cv2.calcHist([mask], [0], None, [256], [0, 256])
+	# 	if not hist[255] > count_threshold:
+	# 		return None
+	#
+	# 	xy = self._get_mass_center_float(mask)
+	# 	xy = np.round(xy / scale_percentage)
+	# 	xy = np.asarray(xy, dtype=np.int)
+	# 	return xy
+	#
 	
 	def _get_control_point_coor(self, point_name: str):
 		"""
@@ -292,17 +303,18 @@ class RealsenseCamera(RealsenseManager):
 			x, y = 0, 0
 		return np.asarray([x, y])
 	
-	def test(self):
-		image = cv2.imread('old_py/ControlPoint/red/001.png')
-		xy_ls = self._match_control_points(image, 10)
-		print('xy_ls: ', xy_ls)
-		print("red center:", xy)
-		
-		res_img = cv2.circle(image, tuple(xy), 3, (0, 255, 255))
-		
-		cv2.imshow('green center', res_img)
-		cv2.waitKey(0)
-		
+	def test(self, image):
+		while True:
+			frame = self.get_aligned_frames()
+			image = self.get_color_image_from_frames(frame)
+
+			xy_ls = self._match_control_points(image, 10)
+			print('xy_ls: ', xy_ls)
+			
+			res_img = cv2.circle(image, tuple(xy_ls[0][1]), 3, (0, 255, 255))
+			
+			return res_img
+			
 	# end of class
 
 

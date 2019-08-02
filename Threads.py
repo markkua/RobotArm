@@ -12,6 +12,7 @@ from positioning import Positioning
 from Ob_detect import Ob_detect
 from RealsenseCamera import RealsenseCamera
 from ToolDetect import *
+from SerialPart import *
 
 from MainWindow import Ui_MainWindow
 from PyQt5.QtCore import QThread, pyqtSignal, Qt
@@ -26,16 +27,19 @@ class MainThread(QThread):
 	
 	value = 0  # 用来找阈值
 	
+	robotArm = RobotArm('COM3')
+	
 	# frame_start_time = 0
 	
 	"""控制的主线程"""
 	def __init__(self):
+		pass
 		super().__init__()
-		self.model = create_model('mask_rcnn_tools_0030.h5')
+		# self.realsenseCamera.load_control_point_file()
+		# self.model = create_model('mask_rcnn_tools_0030.h5')
 
 	def detect_tool(self, image):
-		
-		r = self.model.detect(image, verbose=1)[0]
+		r = self.model.detect([image], verbose=1)[0]
 		cout, list = calculate(r)
 		return cout, list
 		
@@ -44,49 +48,54 @@ class MainThread(QThread):
 		控制主循环
 		用同一帧进行处理
 		"""
+		
+		self.robotArm.moveObject([25.0, 10.0, 1.0], [25.0, -10.0, 1.0], 1.0)
+		
+		
+		
 		while True:
 			# self.frame_start_time = time.time()
 			
 			aligned_frames = self.realsenseCamera.get_aligned_frames()
 			color_image = self.realsenseCamera.get_color_image_from_frames(aligned_frames)
+			# print("get new frame")
 			
 			result_image = color_image.copy()
 			
-			cv2.imshow('color_image', color_image)
-			cv2.waitKey(0)
+			# print(color_image)
 			
 			# 相机定位，定位成功了再去识别
+			result_image = self.realsenseCamera.test(color_image)
 			# self.realsenseCamera.get_transform_matrix(aligned_frames)
-			# if not self.realsenseCamera.if_get_position:
+			#
+			# if self.realsenseCamera.if_get_position:
+			# 	Printer.print("camera located.", Printer.green)
+			# else:
 			# 	continue
 				
-			
 			# 识别目标
-			cout, target_list = self.detect_tool(color_image)
-			print('target_ls:', target_list)
-			for target in target_list:
-				center = target['center']
-				cv2.circle(result_image, center, 10, (0, 0, 255))
-			
-			self.img_signal.emit(result_image)
-			
-			
-			# ob_detect = Ob_detect()
-			# model = ob_detect.create_model()
-			# done_dir = ob_detect.Infer_model(color_image, model)
+			# cout, target_list = self.detect_tool(color_image)
+			# print('target_ls:', target_list)
+			# for target in target_list:
+			# 	center = target['center']
+			# 	cv2.circle(result_image, center, 10, (0, 0, 255))
 			#
-			# print("done_dir=", done_dir)
-			#done_dir包含处理好的图像信息
+			# self.img_signal.emit(result_image)
+
+			
 
 			# 坐标转换
 			
 			# 控制抓取
+			
 			
 			# 控制移动
 			
 			# 控制释放
 			
 			# print("frame rate=", 1 / (time.time() - self.frame_start_time))
+
+			
 		
 	def test_detect(self):
 		color_image = cv2.imread('imgdata/detect_test.jpg')

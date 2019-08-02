@@ -11,7 +11,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        # MainWindow._resize(1080, 720)
+        MainWindow.resize(1080, 720)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.thresholdSlider = QtWidgets.QSlider(self.centralwidget)
@@ -29,7 +29,7 @@ class Ui_MainWindow(object):
         self.startButton.setGeometry(QtCore.QRect(960, 590, 93, 51))
         self.startButton.setObjectName("startButton")
         self.imgLabel_r = QtWidgets.QLabel(self.centralwidget)
-        self.imgLabel_r.setGeometry(QtCore.QRect(10, 30, 1039, 489))
+        self.imgLabel_r.setGeometry(QtCore.QRect(190, 50, 880, 495))
         self.imgLabel_r.setStyleSheet("background-color: rgb(255, 255, 255);")
         self.imgLabel_r.setObjectName("imgLabel_r")
         # MainWindow.setCentralWidget(self.centralwidget)
