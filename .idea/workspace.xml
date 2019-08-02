@@ -2,19 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="101c23f9-c355-4481-86e3-e27a0c499b44" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/SUFT_test.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/markk.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/markk.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/RealsenseCamera.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ImgProcessor.py" beforeDir="false" afterPath="$PROJECT_DIR$/ImgProcessor.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Positioning.py" beforeDir="false" afterPath="$PROJECT_DIR$/Positioning.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MainWindow.py" beforeDir="false" afterPath="$PROJECT_DIR$/MainWindow.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Positioning.py" beforeDir="false" afterPath="$PROJECT_DIR$/positioning.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/RealsenseManager.py" beforeDir="false" afterPath="$PROJECT_DIR$/RealsenseManager.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Threads.py" beforeDir="false" afterPath="$PROJECT_DIR$/Threads.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/old_py/match_demo_0_SIFT_works.py" beforeDir="false" afterPath="$PROJECT_DIR$/old_py/match_demo_0_SIFT_works.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/old_py/taking_photo.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/positioning_data/528.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/positioning_data/output2.mp4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/positioning_data/sign_coors.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/positioning_data/template-2.jpg" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -52,8 +45,8 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/Threads.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="612">
-                  <caret line="52" column="12" selection-start-line="52" selection-start-column="12" selection-end-line="52" selection-end-column="12" />
+                <state relative-caret-position="504">
+                  <caret line="49" column="45" lean-forward="true" selection-start-line="49" selection-start-column="45" selection-end-line="49" selection-end-column="45" />
                   <folding>
                     <element signature="e#27#45#0" expanded="true" />
                   </folding>
@@ -61,20 +54,78 @@
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/Positioning.py">
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/positioning.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="493">
-                  <caret line="264" selection-start-line="264" selection-end-line="312" selection-end-column="5" />
+                <state relative-caret-position="419">
+                  <caret line="224" selection-start-line="224" selection-end-line="263" selection-end-column="22" />
                   <folding>
-                    <element signature="e#27#72#0" expanded="true" />
+                    <element signature="e#590#616#0" />
                     <element signature="e#591#1108#0" />
+                    <element signature="e#780#1094#0" />
+                    <element signature="e#881#990#0" />
+                    <element signature="e#1022#1094#0" />
+                    <element signature="e#1162#1384#0" />
                     <element signature="e#1429#1964#0" />
+                    <element signature="e#1429#1519#1" />
+                    <element signature="e#1554#1637#0" />
+                    <element signature="e#1691#1769#0" />
+                    <element signature="e#1810#1892#0" />
                     <element signature="e#2075#3216#0" />
+                    <element signature="e#2171#2255#0" />
+                    <element signature="e#2389#2659#0" />
+                    <element signature="e#2681#3132#0" />
+                    <element signature="e#3046#3107#0" />
+                    <element signature="e#3161#3216#0" />
                     <element signature="e#3432#3572#0" />
+                    <element signature="e#3417#3493#1" />
                     <element signature="e#3621#4169#0" />
+                    <element signature="e#3626#3674#1" />
+                    <element signature="e#3767#3847#0" />
+                    <element signature="e#3801#3832#0" />
+                    <element signature="e#3879#4155#0" />
+                    <element signature="e#3933#4051#0" />
+                    <element signature="e#4065#4155#0" />
                     <element signature="e#4175#4370#0" />
+                    <element signature="e#4175#4270#1" />
+                    <element signature="e#4310#4356#0" />
                     <element signature="e#4713#4796#0" />
+                    <element signature="e#5850#6327#0" />
+                    <element signature="e#6384#6628#0" />
+                    <element signature="e#7122#7376#0" />
+                    <element signature="e#7416#7655#0" />
+                    <element signature="e#7585#7676#0" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/RealsenseCamera.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="246">
+                  <caret line="56" column="62" selection-start-line="56" selection-start-column="62" selection-end-line="56" selection-end-column="62" />
+                  <folding>
+                    <element signature="e#208#218#2" />
+                    <element signature="e#582#1095#0" />
+                    <element signature="e#767#1081#0" />
+                    <element signature="e#868#977#0" />
+                    <element signature="e#1009#1081#0" />
+                    <element signature="e#1486#2017#0" />
+                    <element signature="e#1486#1576#1" />
+                    <element signature="e#1611#1694#0" />
+                    <element signature="e#1746#1824#0" />
+                    <element signature="e#1863#1945#0" />
+                    <element signature="e#2056#3180#0" />
+                    <element signature="e#2364#2628#0" />
+                    <element signature="e#2648#3096#0" />
+                    <element signature="e#3010#3071#0" />
+                    <element signature="e#3125#3180#0" />
+                    <element signature="e#3371#4169#0" />
+                    <element signature="e#4090#4556#0" />
+                    <element signature="e#5454#6087#0" />
+                    <element signature="e#5044#5983#0" />
+                    <element signature="e#5415#5618#0" />
                   </folding>
                 </state>
               </provider>
@@ -83,10 +134,33 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/RealsenseManager.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-2550">
-                  <caret line="36" column="73" selection-start-line="36" selection-start-column="73" selection-end-line="36" selection-end-column="73" />
+                <state relative-caret-position="516">
+                  <caret line="82" column="23" selection-start-line="82" selection-start-column="23" selection-end-line="82" selection-end-column="23" />
                   <folding>
                     <element signature="e#27#52#0" expanded="true" />
+                    <element signature="e#145#185#1" />
+                    <element signature="e#272#1114#0" />
+                    <element signature="e#280#1020#0" />
+                    <element signature="e#1151#1486#0" />
+                    <element signature="e#1151#1230#1" />
+                    <element signature="e#1241#1370#0" />
+                    <element signature="e#1399#1486#0" />
+                    <element signature="e#2445#2558#0" />
+                    <element signature="e#2620#2733#0" />
+                    <element signature="e#2793#3648#0" />
+                    <element signature="e#2793#2868#1" />
+                    <element signature="e#3450#3511#0" />
+                    <element signature="e#3683#4260#0" />
+                    <element signature="e#3713#4161#0" />
+                    <element signature="e#3729#4161#0" />
+                    <element signature="e#4079#4161#0" />
+                    <element signature="e#4306#5252#0" />
+                    <element signature="e#4341#5140#0" />
+                    <element signature="e#4357#5140#0" />
+                    <element signature="e#5058#5140#0" />
+                    <element signature="e#5317#6259#0" />
+                    <element signature="e#5792#5854#0" />
+                    <element signature="e#6008#6087#0" />
                   </folding>
                 </state>
               </provider>
@@ -97,10 +171,10 @@
       <split-second>
         <leaf>
           <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/Positioning.py">
+            <entry file="file://$PROJECT_DIR$/positioning.py">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="200">
-                  <caret line="203" column="26" lean-forward="true" selection-start-line="203" selection-start-column="26" selection-end-line="203" selection-end-column="43" />
+                  <caret line="203" column="26" selection-start-line="203" selection-start-column="26" selection-end-line="203" selection-end-column="43" />
                   <folding>
                     <element signature="e#27#72#0" expanded="true" />
                   </folding>
@@ -111,8 +185,8 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/ImgProcessor.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="303">
-                  <caret line="112" lean-forward="true" selection-start-line="112" selection-end-line="112" />
+                <state relative-caret-position="285">
+                  <caret line="111" column="26" selection-start-line="111" selection-start-column="26" selection-end-line="111" selection-end-column="26" />
                   <folding>
                     <element signature="e#28#38#0" expanded="true" />
                     <element signature="e#382#1712#0" />
@@ -187,11 +261,12 @@
         <option value="$PROJECT_DIR$/Main.py" />
         <option value="$PROJECT_DIR$/data/control_points.txt" />
         <option value="$PROJECT_DIR$/SUFT_test.py" />
-        <option value="$PROJECT_DIR$/Threads.py" />
         <option value="$PROJECT_DIR$/old_py/match_demo_0_SIFT_works.py" />
-        <option value="$PROJECT_DIR$/RealsenseManager.py" />
         <option value="$PROJECT_DIR$/ImgProcessor.py" />
         <option value="$PROJECT_DIR$/Positioning.py" />
+        <option value="$PROJECT_DIR$/RealsenseManager.py" />
+        <option value="$PROJECT_DIR$/Threads.py" />
+        <option value="$PROJECT_DIR$/RealsenseCamera.py" />
       </list>
     </option>
   </component>
@@ -226,7 +301,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.Positioning">
+  <component name="RunManager" selected="Python.RealsenseCamera">
     <configuration name="ImgProcessor" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="RobotArm" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -249,28 +324,6 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="Main" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="RobotArm" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Main.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <configuration name="Positioning" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="RobotArm" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -284,7 +337,29 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Positioning.py" />
+      <option name="SCRIPT_NAME" value="C:\Users\markk\OneDrive - whu.edu.cn\Documents\Coding\PythonCode\RobotArm\positioning.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="RealsenseCamera" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="RobotArm" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/RealsenseCamera.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -339,18 +414,18 @@
     </configuration>
     <list>
       <item itemvalue="Python.ImgProcessor" />
-      <item itemvalue="Python.Main" />
       <item itemvalue="Python.taking_photo" />
       <item itemvalue="Python.Positioning" />
       <item itemvalue="Python.match_demo_0_SIFT_works" />
+      <item itemvalue="Python.RealsenseCamera" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.RealsenseCamera" />
         <item itemvalue="Python.Positioning" />
         <item itemvalue="Python.match_demo_0_SIFT_works" />
         <item itemvalue="Python.ImgProcessor" />
         <item itemvalue="Python.taking_photo" />
-        <item itemvalue="Python.Main" />
       </list>
     </recent_temporary>
   </component>
@@ -372,7 +447,7 @@
       <workItem from="1564250953829" duration="20829000" />
       <workItem from="1564356988531" duration="34309000" />
       <workItem from="1564491578084" duration="26189000" />
-      <workItem from="1564658042676" duration="9178000" />
+      <workItem from="1564658042676" duration="18021000" />
     </task>
     <task id="LOCAL-00001" summary="run Realsense success.">
       <created>1563893443117</created>
@@ -458,11 +533,18 @@
       <option name="project" value="LOCAL" />
       <updated>1564612000425</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="找到二值图像重心">
+      <created>1564689705831</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1564689705832</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="162313000" />
+    <option name="totallyTimeSpent" value="171156000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -581,7 +663,8 @@
     <MESSAGE value="整理文件" />
     <MESSAGE value="【重大突破】能探测绿色、红色的小方块" />
     <MESSAGE value="【重大突破】坐标转换完成" />
-    <option name="LAST_COMMIT_MESSAGE" value="【重大突破】坐标转换完成" />
+    <MESSAGE value="找到二值图像重心" />
+    <option name="LAST_COMMIT_MESSAGE" value="找到二值图像重心" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -622,6 +705,7 @@
     <SUITE FILE_PATH="coverage/RobotArm$match_demo_2.coverage" NAME="match_demo_2 Coverage Results" MODIFIED="1563879451078" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/RobotArm$match_demo_0_works.coverage" NAME="match_demo_0_works Coverage Results" MODIFIED="1563894018240" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/RobotArm$camera_N_SIFT.coverage" NAME="camera_N_SIFT Coverage Results" MODIFIED="1563895453863" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/RobotArm$RealsenseCamera.coverage" NAME="RealsenseCamera Coverage Results" MODIFIED="1564697271499" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/RobotArm$TemplateMatcher.coverage" NAME="TemplateMatcher Coverage Results" MODIFIED="1564262633619" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/RobotArm$rs.coverage" NAME="rs Coverage Results" MODIFIED="1563891857070" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/RobotArm$re_demo_0.coverage" NAME="re_demo_0 Coverage Results" MODIFIED="1564147251978" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
@@ -629,13 +713,6 @@
     <SUITE FILE_PATH="coverage/RobotArm$match_demo_0.coverage" NAME="match_demo_0 Coverage Results" MODIFIED="1563735630166" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$USER_HOME$/.conda/envs/visual36/Lib/site-packages/pyrealsense2/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="18">
-          <caret line="1" column="15" lean-forward="true" selection-start-line="1" selection-start-column="6" selection-end-line="1" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/match_demo_1.py" />
     <entry file="file://$PROJECT_DIR$/camera_N_SIFT.py" />
     <entry file="file://$PROJECT_DIR$/match_demo_2.py" />
@@ -864,30 +941,54 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Threads.py">
+    <entry file="file://$PROJECT_DIR$/positioning.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="612">
-          <caret line="52" column="12" selection-start-line="52" selection-start-column="12" selection-end-line="52" selection-end-column="12" />
+        <state relative-caret-position="419">
+          <caret line="224" selection-start-line="224" selection-end-line="263" selection-end-column="22" />
           <folding>
-            <element signature="e#27#45#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/RealsenseManager.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2550">
-          <caret line="36" column="73" selection-start-line="36" selection-start-column="73" selection-end-line="36" selection-end-column="73" />
-          <folding>
-            <element signature="e#27#52#0" expanded="true" />
+            <element signature="e#590#616#0" />
+            <element signature="e#591#1108#0" />
+            <element signature="e#780#1094#0" />
+            <element signature="e#881#990#0" />
+            <element signature="e#1022#1094#0" />
+            <element signature="e#1162#1384#0" />
+            <element signature="e#1429#1964#0" />
+            <element signature="e#1429#1519#1" />
+            <element signature="e#1554#1637#0" />
+            <element signature="e#1691#1769#0" />
+            <element signature="e#1810#1892#0" />
+            <element signature="e#2075#3216#0" />
+            <element signature="e#2171#2255#0" />
+            <element signature="e#2389#2659#0" />
+            <element signature="e#2681#3132#0" />
+            <element signature="e#3046#3107#0" />
+            <element signature="e#3161#3216#0" />
+            <element signature="e#3432#3572#0" />
+            <element signature="e#3417#3493#1" />
+            <element signature="e#3621#4169#0" />
+            <element signature="e#3626#3674#1" />
+            <element signature="e#3767#3847#0" />
+            <element signature="e#3801#3832#0" />
+            <element signature="e#3879#4155#0" />
+            <element signature="e#3933#4051#0" />
+            <element signature="e#4065#4155#0" />
+            <element signature="e#4175#4370#0" />
+            <element signature="e#4175#4270#1" />
+            <element signature="e#4310#4356#0" />
+            <element signature="e#4713#4796#0" />
+            <element signature="e#5850#6327#0" />
+            <element signature="e#6384#6628#0" />
+            <element signature="e#7122#7376#0" />
+            <element signature="e#7416#7655#0" />
+            <element signature="e#7585#7676#0" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ImgProcessor.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="303">
-          <caret line="112" lean-forward="true" selection-start-line="112" selection-end-line="112" />
+        <state relative-caret-position="285">
+          <caret line="111" column="26" selection-start-line="111" selection-start-column="26" selection-end-line="111" selection-end-column="26" />
           <folding>
             <element signature="e#28#38#0" expanded="true" />
             <element signature="e#382#1712#0" />
@@ -895,19 +996,74 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Positioning.py">
+    <entry file="file://$PROJECT_DIR$/RealsenseManager.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="264" selection-start-line="264" selection-end-line="312" selection-end-column="5" />
+        <state relative-caret-position="516">
+          <caret line="82" column="23" selection-start-line="82" selection-start-column="23" selection-end-line="82" selection-end-column="23" />
           <folding>
-            <element signature="e#27#72#0" expanded="true" />
-            <element signature="e#591#1108#0" />
-            <element signature="e#1429#1964#0" />
-            <element signature="e#2075#3216#0" />
-            <element signature="e#3432#3572#0" />
-            <element signature="e#3621#4169#0" />
-            <element signature="e#4175#4370#0" />
-            <element signature="e#4713#4796#0" />
+            <element signature="e#27#52#0" expanded="true" />
+            <element signature="e#145#185#1" />
+            <element signature="e#272#1114#0" />
+            <element signature="e#280#1020#0" />
+            <element signature="e#1151#1486#0" />
+            <element signature="e#1151#1230#1" />
+            <element signature="e#1241#1370#0" />
+            <element signature="e#1399#1486#0" />
+            <element signature="e#2445#2558#0" />
+            <element signature="e#2620#2733#0" />
+            <element signature="e#2793#3648#0" />
+            <element signature="e#2793#2868#1" />
+            <element signature="e#3450#3511#0" />
+            <element signature="e#3683#4260#0" />
+            <element signature="e#3713#4161#0" />
+            <element signature="e#3729#4161#0" />
+            <element signature="e#4079#4161#0" />
+            <element signature="e#4306#5252#0" />
+            <element signature="e#4341#5140#0" />
+            <element signature="e#4357#5140#0" />
+            <element signature="e#5058#5140#0" />
+            <element signature="e#5317#6259#0" />
+            <element signature="e#5792#5854#0" />
+            <element signature="e#6008#6087#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Threads.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="504">
+          <caret line="49" column="45" lean-forward="true" selection-start-line="49" selection-start-column="45" selection-end-line="49" selection-end-column="45" />
+          <folding>
+            <element signature="e#27#45#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/RealsenseCamera.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="246">
+          <caret line="56" column="62" selection-start-line="56" selection-start-column="62" selection-end-line="56" selection-end-column="62" />
+          <folding>
+            <element signature="e#208#218#2" />
+            <element signature="e#582#1095#0" />
+            <element signature="e#767#1081#0" />
+            <element signature="e#868#977#0" />
+            <element signature="e#1009#1081#0" />
+            <element signature="e#1486#2017#0" />
+            <element signature="e#1486#1576#1" />
+            <element signature="e#1611#1694#0" />
+            <element signature="e#1746#1824#0" />
+            <element signature="e#1863#1945#0" />
+            <element signature="e#2056#3180#0" />
+            <element signature="e#2364#2628#0" />
+            <element signature="e#2648#3096#0" />
+            <element signature="e#3010#3071#0" />
+            <element signature="e#3125#3180#0" />
+            <element signature="e#3371#4169#0" />
+            <element signature="e#4090#4556#0" />
+            <element signature="e#5454#6087#0" />
+            <element signature="e#5044#5983#0" />
+            <element signature="e#5415#5618#0" />
           </folding>
         </state>
       </provider>

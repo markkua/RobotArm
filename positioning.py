@@ -263,56 +263,6 @@ class Positioning:
 		cv2.imshow('green center', res_img)
 		cv2.waitKey(0)
 	
-	# @staticmethod
-	# def _pick_color_mask(image, threshold, miu: np.array, sig: np.array):
-	#
-	# 	hsv_image = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
-	# 	hsv_image = np.asarray(hsv_image)
-	#
-	# 	mask = np.zeros([hsv_image.shape[0], hsv_image.shape[1], 1], dtype=np.uint8)
-	#
-	# 	signeg = np.linalg.inv(sig)
-	# 	c = 1 / (2 * pi) ** 1.5 / np.linalg.det(sig) ** 0.5
-	#
-	# 	# 置信区间
-	# 	large_miu = np.asarray([miu[0] * 180, miu[1] * 255, miu[2] * 255])
-	#
-	# 	# large_sigma = np.asarray([sig[0, 0] * 180, sig[1, 1] * 255, sig[2, 2] * 255]) * 3
-	#
-	# 	# 判断是否在 置信区间内
-	# 	def if_in_confidence(x):
-	# 		width = 10
-	# 		if not large_miu[0] - width < x[0] < large_miu[0] + width:
-	# 			return False
-	# 		return True
-	#
-	# 	h, w, chanel = hsv_image.shape
-	# 	for i in range(h):
-	# 		for j in range(w):
-	# 			xi = np.asarray(hsv_image[i][j])
-	#
-	# 			# 粗筛选
-	# 			if not if_in_confidence(xi):
-	# 				mask[i][j] = [0]
-	# 				# print("skip")
-	# 				continue
-	#
-	# 			xi = np.asarray([xi[0] / 180, xi[1] / 255, xi[2] / 255])
-	# 			temp1 = np.transpose(xi - miu)
-	# 			temp2 = np.matmul(temp1, signeg)
-	# 			temp3 = np.matmul(temp2, (xi - miu))
-	# 			upper = temp3 / -2
-	#
-	# 			pixi = c * exp(upper)
-	#
-	# 			if pixi > threshold:
-	# 				mask[i][j] = [255]
-	# 			else:
-	# 				mask[i][j] = [0]
-	# 	return mask
-	#
-
-	
 	
 if __name__ == '__main__':
 	positioning = Positioning(RealsenseManager())

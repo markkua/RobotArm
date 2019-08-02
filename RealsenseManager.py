@@ -3,6 +3,7 @@
 import pyrealsense2 as rs
 import numpy as np
 import cv2
+from typing import List
 from ConsolePrinter import Printer
 
 
@@ -54,7 +55,7 @@ class RealsenseManager:
 	
 	def get_coor_in_Camera_system(self, align_frames, pixel_coor):
 		"""
-		获取指定像素点在相机坐标系下的三维坐标
+		获取指定像素点[x, y]在相机坐标系下的三维坐标[X, Y, Z]
 		:param align_frames: 对齐的帧
 		:param pixel_coor: 目标像素的坐标
 		:return:
@@ -79,7 +80,7 @@ class RealsenseManager:
 		# 判断结果是否异常
 		if [0, 0, 0] == result_coor:
 			Printer.print("Coor error, maybe too near", Printer.red)
-		
+			return None
 		return result_coor
 	
 	@staticmethod

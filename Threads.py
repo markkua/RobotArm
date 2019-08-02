@@ -8,8 +8,9 @@ import time
 from ImgProcessor import ImgProcessor
 from ConsolePrinter import Printer
 from RealsenseManager import RealsenseManager
-from Positioning import Positioning
+from positioning import Positioning
 from Ob_detect import Ob_detect
+from RealsenseCamera import RealsenseCamera
 
 from MainWindow import Ui_MainWindow
 from PyQt5.QtCore import QThread, pyqtSignal, Qt
@@ -20,9 +21,11 @@ from PyQt5.QtWidgets import QApplication, QWidget
 class MainThread(QThread):
 	img_signal = pyqtSignal(object)  # 输出图像的信号
 	
-	realsense = RealsenseManager()  # 相机控制器
+	realsenseCamera = RealsenseCamera()
 	
-	positioner = Positioning(realsense)  # 相机定位器
+	# realsense = RealsenseManager()  # 相机控制器
+	#
+	# positioner = Positioning(realsense)  # 相机定位器
 	
 	value = 0  # 用来找阈值
 	
@@ -40,12 +43,12 @@ class MainThread(QThread):
 		while True:
 			# self.frame_start_time = time.time()
 			
-			frames = self.realsense.get_aligned_frames()
-			color_image = self.realsense.get_color_image_from_frames(frames)
+			aligned_frames = self.realsenseCamera.get_aligned_frames()
+			color_image = self.realsenseCamera.get_color_image_from_frames(aligned_frames)
 
 			# 相机定位，定位成功了再去识别
-			self.positioner.get_camera_position(frames)
-			if not self.positioner.if_get_position:
+			self.realsenseCamera.get_transform_matrix(aligned_frames)
+			if not self.realsenseCamera.if_get_position:
 				continue
 				
 			
