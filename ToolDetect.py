@@ -276,7 +276,7 @@ def calculate(r):
     cout = 0
     list = []
     for i in r['class_ids']:
-        list[cout] = {'name': '', 'RoI': np.array([]), 'center': np.array([])}
+        list.append({'name': '', 'RoI': np.array([]), 'center': np.array([])})
 
         dict = list[cout]
         dict['name'] = class_names[r['class_ids'][i]]

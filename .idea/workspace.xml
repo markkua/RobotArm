@@ -2,21 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="101c23f9-c355-4481-86e3-e27a0c499b44" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/markk.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/markk.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/testPy.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ImgProcessor.py" beforeDir="false" afterPath="$PROJECT_DIR$/old_py/ImgProcessor.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Main.py" beforeDir="false" afterPath="$PROJECT_DIR$/Main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RealseCamera.py" beforeDir="false" afterPath="$PROJECT_DIR$/RealseCamera.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RealsenseManager.py" beforeDir="false" afterPath="$PROJECT_DIR$/RealsenseManager.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SUFT_test.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Threads.py" beforeDir="false" afterPath="$PROJECT_DIR$/Threads.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/capture_hsv.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/hough_demo_0.py" beforeDir="false" afterPath="$PROJECT_DIR$/old_py/hough_demo_0.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/positioning.py" beforeDir="false" afterPath="$PROJECT_DIR$/positioning.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/robot_arm_angle.m" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sign_match_demo2_work.py" beforeDir="false" afterPath="$PROJECT_DIR$/sign_match_demo2_work.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/taking_photo.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ToolDetect.py" beforeDir="false" afterPath="$PROJECT_DIR$/ToolDetect.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -42,11 +31,11 @@
     <splitter split-orientation="horizontal" split-proportion="0.5">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file pinned="false" current-in-tab="false">
+          <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/Threads.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="200">
-                  <caret line="28" selection-start-line="28" selection-end-line="28" />
+                <state relative-caret-position="400">
+                  <caret line="89" lean-forward="true" selection-start-line="89" selection-end-line="89" />
                   <folding>
                     <element signature="e#27#37#0" expanded="true" />
                   </folding>
@@ -54,11 +43,23 @@
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="true">
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/testPy.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="333">
+                  <caret line="28" column="20" lean-forward="true" selection-start-line="28" selection-start-column="20" selection-end-line="28" selection-end-column="20" />
+                  <folding>
+                    <element signature="e#27#37#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/RealseCamera.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="230">
-                  <caret line="248" column="4" lean-forward="true" selection-start-line="248" selection-start-column="4" selection-end-line="248" selection-end-column="4" />
+                <state relative-caret-position="800">
+                  <caret line="45" selection-start-line="45" selection-end-line="45" />
                   <folding>
                     <element signature="e#27#45#0" expanded="true" />
                     <element signature="e#204#238#1" />
@@ -71,9 +72,8 @@
                     <element signature="e#1509#2177#0" />
                     <element signature="e#1452#1778#0" />
                     <element signature="e#1533#1672#0" />
-                    <element signature="e#2298#2872#0" />
                     <element signature="e#2295#2341#1" />
-                    <element signature="e#2563#2806#0" />
+                    <element signature="e#2797#4410#0" />
                     <element signature="e#2794#2957#1" />
                     <element signature="e#3327#3391#0" />
                   </folding>
@@ -85,6 +85,18 @@
       </split-first>
       <split-second>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/ToolDetect.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="220">
+                  <caret line="278" column="58" lean-forward="true" selection-start-line="278" selection-start-column="58" selection-end-line="278" selection-end-column="58" />
+                  <folding>
+                    <element signature="e#1078#1087#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/sign_match_demo2_work.py">
               <provider selected="true" editor-type-id="text-editor">
@@ -146,10 +158,10 @@
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="true">
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/RealsenseManager.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="141">
+                <state relative-caret-position="162">
                   <caret line="76" selection-start-line="76" selection-end-line="76" />
                   <folding>
                     <element signature="e#169#209#1" />
@@ -160,7 +172,6 @@
                     <element signature="e#1263#1392#0" />
                     <element signature="e#1421#1508#0" />
                     <element signature="e#1577#1722#1" />
-                    <element signature="e#2550#2663#0" />
                     <element signature="e#2725#2838#0" />
                     <element signature="e#2898#3753#0" />
                     <element signature="e#2898#2973#1" />
@@ -209,9 +220,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/match_demo_2.py" />
-        <option value="$PROJECT_DIR$/rs.py" />
-        <option value="$PROJECT_DIR$/match_demo_0_works.py" />
         <option value="$PROJECT_DIR$/positioning.py" />
         <option value="$PROJECT_DIR$/camera_N_SIFT.py" />
         <option value="$PROJECT_DIR$/number_recognition.py" />
@@ -242,10 +250,8 @@
         <option value="$PROJECT_DIR$/mrcnn/visualize.py" />
         <option value="$PROJECT_DIR$/data/control_points.txt" />
         <option value="$PROJECT_DIR$/MainWindow.py" />
-        <option value="$PROJECT_DIR$/ToolDetect.py" />
         <option value="$PROJECT_DIR$/SerialPart.py" />
         <option value="$PROJECT_DIR$/RealsenseCamera.py" />
-        <option value="$PROJECT_DIR$/Threads.py" />
         <option value="$PROJECT_DIR$/hough_demo_0.py" />
         <option value="$PROJECT_DIR$/old_py/match_demo_0_SIFT_works.py" />
         <option value="$PROJECT_DIR$/sign_match_demo.py" />
@@ -259,15 +265,18 @@
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/sign_match_demo2_work.py" />
         <option value="$PROJECT_DIR$/RealsenseManager.py" />
+        <option value="$PROJECT_DIR$/speech/VoiceRecognition.py" />
         <option value="$PROJECT_DIR$/RealseCamera.py" />
+        <option value="$PROJECT_DIR$/ToolDetect.py" />
+        <option value="$PROJECT_DIR$/my_py_tools/taking_photo.py" />
+        <option value="$PROJECT_DIR$/testPy.py" />
+        <option value="$PROJECT_DIR$/Threads.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" fullScreen="true">
-    <option name="x" value="40" />
-    <option name="y" value="102" />
     <option name="width" value="1920" />
-    <option name="height" value="994" />
+    <option name="height" value="1080" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -295,7 +304,7 @@
     <property name="last_opened_file_path" value="$USER_HOME$/.conda/envs/visual36/Scripts/pyuic5.exe" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -314,7 +323,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.RealseCamera">
+  <component name="RunManager" selected="Python.testPy">
     <configuration name="RealseCamera" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="RobotArm" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -359,7 +368,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="sign_match_demo2" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="VoiceRecognition" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="RobotArm" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -367,12 +376,12 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/speech" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="C:\Users\markk\OneDrive - whu.edu.cn\Documents\Coding\PythonCode\RobotArm\sign_match_demo2_work.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/speech/VoiceRecognition.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -381,7 +390,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="sign_match_demo2_work" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="taking_photo" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="RobotArm" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -389,12 +398,12 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/my_py_tools" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/sign_match_demo2_work.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/my_py_tools/taking_photo.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -403,7 +412,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="sign_match_demo_ORB" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="testPy" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="RobotArm" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -416,7 +425,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/sign_match_demo_ORB.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/testPy.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -426,19 +435,19 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Python.sign_match_demo2" />
-      <item itemvalue="Python.sign_match_demo_ORB" />
-      <item itemvalue="Python.sign_match_demo2_work" />
       <item itemvalue="Python.RealseCamera" />
       <item itemvalue="Python.RealsenseManager" />
+      <item itemvalue="Python.VoiceRecognition" />
+      <item itemvalue="Python.testPy" />
+      <item itemvalue="Python.taking_photo" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.testPy" />
+        <item itemvalue="Python.taking_photo" />
         <item itemvalue="Python.RealseCamera" />
+        <item itemvalue="Python.VoiceRecognition" />
         <item itemvalue="Python.RealsenseManager" />
-        <item itemvalue="Python.sign_match_demo2_work" />
-        <item itemvalue="Python.sign_match_demo2" />
-        <item itemvalue="Python.sign_match_demo_ORB" />
       </list>
     </recent_temporary>
   </component>
@@ -461,7 +470,7 @@
       <workItem from="1564356988531" duration="34309000" />
       <workItem from="1564491578084" duration="26189000" />
       <workItem from="1564658042676" duration="53831000" />
-      <workItem from="1564857680050" duration="8542000" />
+      <workItem from="1564857680050" duration="13659000" />
     </task>
     <task id="LOCAL-00001" summary="run Realsense success.">
       <created>1563893443117</created>
@@ -582,11 +591,25 @@
       <option name="project" value="LOCAL" />
       <updated>1564859721655</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="before speech added">
+      <created>1564866782594</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1564866782594</updated>
+    </task>
+    <task id="LOCAL-00019" summary="before detect added">
+      <created>1564870199595</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1564870199595</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="215508000" />
+    <option name="totallyTimeSpent" value="220625000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -606,8 +629,8 @@
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32911393" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49798927" weight="0.31772152" />
-      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.39873418" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49798927" visible="true" weight="0.31772152" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.39873418" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32911393" />
@@ -621,7 +644,7 @@
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="SciView" order="3" weight="0.3297587" />
+      <window_info anchor="right" id="SciView" order="3" weight="0.62734586" />
       <window_info anchor="right" id="Database" order="4" weight="0.3297587" />
     </layout>
     <layout-to-restore>
@@ -646,7 +669,7 @@
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="SciView" order="3" weight="0.3297587" />
-      <window_info anchor="right" id="Database" order="4" />
+      <window_info anchor="right" id="Database" order="4" weight="0.3297587" />
     </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -710,7 +733,9 @@
     <MESSAGE value="开始与目标探测结合" />
     <MESSAGE value="Serial加入主线程测试成功" />
     <MESSAGE value="【重大突破】SIFT找到目标" />
-    <option name="LAST_COMMIT_MESSAGE" value="【重大突破】SIFT找到目标" />
+    <MESSAGE value="before speech added" />
+    <MESSAGE value="before detect added" />
+    <option name="LAST_COMMIT_MESSAGE" value="before detect added" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -727,7 +752,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/Threads.py</url>
-          <line>57</line>
+          <line>61</line>
           <option name="timeStamp" value="22" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
@@ -747,8 +772,13 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/RealseCamera.py</url>
-          <line>41</line>
+          <line>45</line>
           <option name="timeStamp" value="27" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/RealseCamera.py</url>
+          <line>250</line>
+          <option name="timeStamp" value="28" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -756,13 +786,14 @@
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/RobotArm$Threads.coverage" NAME="Threads Coverage Results" MODIFIED="1564752925953" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/RobotArm$template_match.coverage" NAME="template_match Coverage Results" MODIFIED="1564066841235" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/RobotArm$taking_photo.coverage" NAME="taking_photo Coverage Results" MODIFIED="1564836562047" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/RobotArm$taking_photo.coverage" NAME="taking_photo Coverage Results" MODIFIED="1564871375120" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/my_py_tools" />
     <SUITE FILE_PATH="coverage/RobotArm$sign_match_demo2.coverage" NAME="sign_match_demo2 Coverage Results" MODIFIED="1564859664247" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/RobotArm$QRcode_demo_0.coverage" NAME="QRcode_demo_0 Coverage Results" MODIFIED="1564349534905" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/RobotArm$match_demo_1.coverage" NAME="match_demo_1 Coverage Results" MODIFIED="1563734039423" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/RobotArm$positioning.coverage" NAME="positioning Coverage Results" MODIFIED="1564061915665" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/RobotArm$TemplateMatcher__1_.coverage" NAME="TemplateMatcher (1) Coverage Results" MODIFIED="1564088385184" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/RobotArm$RealsenseManager.coverage" NAME="RealsenseManager Coverage Results" MODIFIED="1564866288650" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/RobotArm$testPy.coverage" NAME="testPy Coverage Results" MODIFIED="1564871492432" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/RobotArm$sign_match_demo.coverage" NAME="sign_match_demo Coverage Results" MODIFIED="1564831659300" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/RobotArm$match_demo_0_SIFT_works.coverage" NAME="match_demo_0_SIFT_works Coverage Results" MODIFIED="1564787009636" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/old_py" />
     <SUITE FILE_PATH="coverage/RobotArm$re_demo_1_align.coverage" NAME="re_demo_1_align Coverage Results" MODIFIED="1564083805614" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
@@ -777,13 +808,14 @@
     <SUITE FILE_PATH="coverage/RobotArm$Print_Color_2_Consolor.coverage" NAME="Print_Color_2_Consolor Coverage Results" MODIFIED="1564255361300" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/RobotArm$QRcode_demo_2.coverage" NAME="QRcode_demo_2 Coverage Results" MODIFIED="1564411860844" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/RobotArm$templet_demo0.coverage" NAME="templet_demo0 Coverage Results" MODIFIED="1563667236436" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/RobotArm$RealseCamera.coverage" NAME="RealseCamera Coverage Results" MODIFIED="1564866749436" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/RobotArm$RealseCamera.coverage" NAME="RealseCamera Coverage Results" MODIFIED="1564870098693" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/RobotArm$match_demo_2.coverage" NAME="match_demo_2 Coverage Results" MODIFIED="1563879451078" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/RobotArm$match_demo_0_works.coverage" NAME="match_demo_0_works Coverage Results" MODIFIED="1563894018240" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/RobotArm$camera_N_SIFT.coverage" NAME="camera_N_SIFT Coverage Results" MODIFIED="1563895453863" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/RobotArm$RealsenseCamera.coverage" NAME="RealsenseCamera Coverage Results" MODIFIED="1564754194081" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/RobotArm$sign_match_demo2_work.coverage" NAME="sign_match_demo2_work Coverage Results" MODIFIED="1564863944464" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/RobotArm$hough_demo_0.coverage" NAME="hough_demo_0 Coverage Results" MODIFIED="1564778337545" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/RobotArm$VoiceRecognition.coverage" NAME="VoiceRecognition Coverage Results" MODIFIED="1564869077057" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/speech" />
     <SUITE FILE_PATH="coverage/RobotArm$TemplateMatcher.coverage" NAME="TemplateMatcher Coverage Results" MODIFIED="1564262633619" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/RobotArm$rs.coverage" NAME="rs Coverage Results" MODIFIED="1563891857070" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/RobotArm$re_demo_0.coverage" NAME="re_demo_0 Coverage Results" MODIFIED="1564147251978" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
@@ -791,20 +823,6 @@
     <SUITE FILE_PATH="coverage/RobotArm$match_demo_0.coverage" NAME="match_demo_0 Coverage Results" MODIFIED="1563735630166" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/test_process.py" />
-    <entry file="file://$PROJECT_DIR$/QRcode_demo_1.py" />
-    <entry file="file://$PROJECT_DIR$/TemplateMatcher.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="210" column="29" lean-forward="true" selection-start-line="210" selection-start-column="29" selection-end-line="210" selection-end-column="29" />
-          <folding>
-            <element signature="e#27#45#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/QRcode_demo_0.py" />
-    <entry file="file://$PROJECT_DIR$/QRcode_demo_2.py" />
     <entry file="file://$USER_HOME$/.PyCharm2019.1/system/python_stubs/-1261502895/PyQt5/QtCore/QThread.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="167">
@@ -954,16 +972,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ToolDetect.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="226" column="32" selection-start-line="226" selection-start-column="32" selection-end-line="226" selection-end-column="32" />
-          <folding>
-            <element signature="e#1078#1087#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/mrcnn/model.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="18">
@@ -1100,16 +1108,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Threads.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="28" selection-start-line="28" selection-end-line="28" />
-          <folding>
-            <element signature="e#27#37#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
@@ -1177,9 +1175,33 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$USER_HOME$/.conda/envs/visual36/Lib/wave.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="246">
+          <caret line="155" column="8" selection-start-line="155" selection-start-column="8" selection-end-line="155" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.conda/envs/visual36/Lib/site-packages/pyaudio.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="115" column="27" lean-forward="true" selection-start-line="115" selection-start-column="27" selection-end-line="115" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/speech/VoiceRecognition.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="160">
+          <caret line="8" column="20" selection-start-line="8" selection-start-column="20" selection-end-line="8" selection-end-column="20" />
+          <folding>
+            <element signature="e#0#11#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/RealsenseManager.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="141">
+        <state relative-caret-position="162">
           <caret line="76" selection-start-line="76" selection-end-line="76" />
           <folding>
             <element signature="e#169#209#1" />
@@ -1190,7 +1212,6 @@
             <element signature="e#1263#1392#0" />
             <element signature="e#1421#1508#0" />
             <element signature="e#1577#1722#1" />
-            <element signature="e#2550#2663#0" />
             <element signature="e#2725#2838#0" />
             <element signature="e#2898#3753#0" />
             <element signature="e#2898#2973#1" />
@@ -1211,8 +1232,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/RealseCamera.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="230">
-          <caret line="248" column="4" lean-forward="true" selection-start-line="248" selection-start-column="4" selection-end-line="248" selection-end-column="4" />
+        <state relative-caret-position="800">
+          <caret line="45" selection-start-line="45" selection-end-line="45" />
           <folding>
             <element signature="e#27#45#0" expanded="true" />
             <element signature="e#204#238#1" />
@@ -1225,11 +1246,47 @@
             <element signature="e#1509#2177#0" />
             <element signature="e#1452#1778#0" />
             <element signature="e#1533#1672#0" />
-            <element signature="e#2298#2872#0" />
             <element signature="e#2295#2341#1" />
-            <element signature="e#2563#2806#0" />
+            <element signature="e#2797#4410#0" />
             <element signature="e#2794#2957#1" />
             <element signature="e#3327#3391#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/my_py_tools/taking_photo.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="367">
+          <caret line="58" lean-forward="true" selection-start-line="58" selection-end-line="58" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ToolDetect.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="278" column="58" lean-forward="true" selection-start-line="278" selection-start-column="58" selection-end-line="278" selection-end-column="58" />
+          <folding>
+            <element signature="e#1078#1087#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/testPy.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="333">
+          <caret line="28" column="20" lean-forward="true" selection-start-line="28" selection-start-column="20" selection-end-line="28" selection-end-column="20" />
+          <folding>
+            <element signature="e#27#37#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Threads.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="400">
+          <caret line="89" lean-forward="true" selection-start-line="89" selection-end-line="89" />
+          <folding>
+            <element signature="e#27#37#0" expanded="true" />
           </folding>
         </state>
       </provider>

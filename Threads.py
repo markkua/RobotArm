@@ -46,8 +46,6 @@ class MainThread(QThread):
 		
 		self.robotArm.moveObject([25.0, 10.0, 1.0], [25.0, -10.0, 1.0], 1.0)
 		
-		
-		
 		while True:
 			# self.frame_start_time = time.time()
 			
@@ -89,7 +87,6 @@ class MainThread(QThread):
 			# 控制释放
 			
 			# print("frame rate=", 1 / (time.time() - self.frame_start_time))
-
 			
 		
 	def test_detect(self):
