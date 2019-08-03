@@ -1,23 +1,12 @@
 # -*- encoding: utf-8 -*-
 
-import numpy as np
 import cv2
-import sys
-import time
 
-from ImgProcessor import ImgProcessor
-from ConsolePrinter import Printer
-from RealsenseManager import RealsenseManager
-from positioning import Positioning
-from Ob_detect import Ob_detect
 from realsenseCamera_old import RealsenseCamera
 from ToolDetect import *
 from SerialPart import *
 
-from MainWindow import Ui_MainWindow
-from PyQt5.QtCore import QThread, pyqtSignal, Qt
-from PyQt5.QtGui import QImage, QPixmap
-from PyQt5.QtWidgets import QApplication, QWidget
+from PyQt5.QtCore import QThread, pyqtSignal
 
 
 class MainThread(QThread):

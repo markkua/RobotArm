@@ -37,7 +37,7 @@ class RealsenseManager:
 			Printer.print("Camera ready", Printer.green)
 		except RuntimeError as e:
 			Printer.print("Camera init fail: " + e.__str__(), Printer.red)
-		
+
 	def get_aligned_frames(self):
 		"""
         获取对齐的帧, 深度向颜色对齐, 失败返回None
@@ -73,8 +73,7 @@ class RealsenseManager:
 		
 		align_depth_image = np.asanyarray(align_depth_frame.get_data())
 
-		# 长度单位为cm
-		# realsense的x是竖的，y是横的
+		# 长度单位为cm， 图像寻址先行后列
 		align_depth_value = align_depth_image[pixel_coor[1], pixel_coor[0]] * self.depth_scale * 100  # 单位转换，100为cm，1为m
 		
 		# 输入传感器内部参数、点的像素坐标、对应的深度值，输出点的三维坐标。

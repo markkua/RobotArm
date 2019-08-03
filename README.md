@@ -1,4 +1,4 @@
-# Positioning Method
+# RobotArm Project (IC Summer School)
 
 
 ## 反算相机坐标系
@@ -11,4 +11,13 @@ for sign in [made_signs]:
 	列方程
 
 least_squares_method()
+```
+
+## 代码结构（调用关系）
+```
+|-- Main
+    |-- Threads
+        |-- MainThread
+    |-- 
+
 ```

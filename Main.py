@@ -1,19 +1,11 @@
 # -*- encoding: utf-8 -*-
 
-import numpy as np
-import cv2
-import sys
-
-from ImgProcessor import ImgProcessor
-from ConsolePrinter import Printer
 from Threads import *
 
-import time
-
 from MainWindow import Ui_MainWindow
-from PyQt5.QtCore import QThread, pyqtSignal, Qt
 from PyQt5.QtGui import QImage, QPixmap
 from PyQt5.QtWidgets import QApplication, QWidget
+from ConsolePrinter import Printer
 
 
 class MyMainWindow(QWidget, Ui_MainWindow):

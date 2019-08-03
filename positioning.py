@@ -2,16 +2,13 @@
 
 from RealsenseManager import RealsenseManager
 from ConsolePrinter import Printer
-import ImgProcessor
+from old_py import ImgProcessor
 import pyrealsense2 as rs
 
 import cv2
-from typing import List
-import os
 import sys
 import numpy as np
-from math import sin, cos, pi, sqrt, exp
-import time
+from math import sqrt
 
 
 class Positioning:

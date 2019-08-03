@@ -45,7 +45,7 @@ def match_template(template_img, draw_img, target_kp, target_descrip, threshold,
 		# 使用得到的变换矩阵对原图像的四个角进行变换，获得在目标图像上对应的坐标
 		pts = np.float32([[0, 0], [0, h - 1], [w - 1, h - 1], [w - 1, 0]]).reshape(-1, 1, 2)
 		dst = cv2.perspectiveTransform(pts, M)
-		center = [np.mean(dst[:, 0, 0]), np.mean(dst[:, 0, 1])]
+		center = np.asarray([np.mean(dst[:, 0, 0]), np.mean(dst[:, 0, 1])])
 		print('dst:', dst)
 		print('center:', center)
 		result_img = cv2.polylines(result_img, [np.int32(dst)], True, [0, 0, 255], 2, cv2.LINE_AA)
