@@ -40,17 +40,19 @@ class DatasetCapture:
 					cv2.destroyAllWindows()
 					break
 				elif key == ord('s') or key == ord(' '):
-					filename = path + "%03d" % count + '.png'
+					# filename = path + "%03d" % count + '.png'
+					filename = path + int(time.time()).__str__() + '.jpg'
 					count += 1
 					cv2.imwrite(filename, images)
 					print('\033[32m image saved at %s\033[0m' % filename)
+					cv2.waitKey(1000)
 		finally:
 			cv2.destroyAllWindows()
 		
 
 if __name__ == '__main__':
 	capture = DatasetCapture()
-	path = "./ControlPoint/green/"
+	path = "imgdata/"
 	print("working dir: ", path)
 	capture.start_photograph(path=path)
 	# capture.start_photograph(path="data/")

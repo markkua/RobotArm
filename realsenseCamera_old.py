@@ -22,7 +22,6 @@ class RealsenseCamera(RealsenseManager):
 	coor_filename = "data/control_points.txt"
 	
 	trans_para = np.zeros((6, 1), dtype=np.float)
-	if_get_position = False  # 是否成功解算相机位置
 	
 	control_points = []  # [ [点名:str, [Robot坐标x2, y2, z2]] ]
 	
@@ -190,7 +189,6 @@ class RealsenseCamera(RealsenseManager):
 		
 		# cv2.imshow('mask', mask)
 		
-		
 		hist = cv2.calcHist([mask], [0], None, [256], [0, 256])
 		if not hist[255] > count_threshold:
 			return None, None
@@ -290,8 +288,8 @@ class RealsenseCamera(RealsenseManager):
 
 	@staticmethod
 	def _resize(image, percentage):
-		w, h, c = image.shape
-		return cv2.resize(image, (int(h * percentage), int(w * percentage)))
+		h, w, c = image.shape
+		return cv2.resize(image, (int(w * percentage), int(h * percentage)))
 	
 	@staticmethod
 	def _get_mass_center_float(gray_img):

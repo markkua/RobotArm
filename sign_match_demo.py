@@ -4,18 +4,16 @@
 import numpy as np
 import cv2
 import time
+from RealseCamera import RealsenseCamera
 
 
-def template_match(template_imgname: str, target_imgname, output_imgname=None, threshold=0.7):
+def template_match(template, target, threshold=0.7):
 	print("start matching:")
 	MIN_MATCH_COUNT = 10  # 设置最低特征点匹配数量为10
 
-	template = cv2.imread(template_imgname, cv2.IMREAD_COLOR)  # queryImage
-	target = cv2.imread(target_imgname, cv2.IMREAD_COLOR)  # trainImage
-	
 	# 缩小尺寸
-	template = resize_img(template, 0.5)
-	target = resize_img(target, 0.5)
+	# template = resize_img(template, 0.5)
+	# target = resize_img(target, 0.5)
 	
 	start_time = time.time()
 	
@@ -62,7 +60,7 @@ def template_match(template_imgname: str, target_imgname, output_imgname=None, t
 	else:
 		print("Not enough matches are found - %d/%d" % (len(good_match), MIN_MATCH_COUNT))
 		matchesMask = None
-		
+	
 	# Test
 	print("match mask:", matchesMask)
 	
@@ -75,16 +73,16 @@ def template_match(template_imgname: str, target_imgname, output_imgname=None, t
 	                   # singlePointColor=(0, 0, 255),
 	                   matchesMask=matchesMask,
 	                   flags=2)
-
+	
 	end_time = time.time()
-	print("Matching time: ", end_time-start_time)
+	print("Matching time: ", end_time - start_time)
 	
 	result_image = cv2.drawMatches(template, key_point1, target, key_point2, good_match, None, **draw_params)
 	
-	print("Done.")
+	# print("Done.")
 	
 	return result_image
-	# return target
+# return target
 
 
 def resize_img(img, percentage):
@@ -94,13 +92,17 @@ def resize_img(img, percentage):
 
 
 if __name__ == '__main__':
-	# template = 'data/template-2.jpg'
-	template = 'matchdata/template.jpg'
-	# target = 'data/img-2-2.jpg'
-	# target = 'positioning_data/001.png'
-	target = 'matchdata/target1.jpg'
-	output = 'matchdata/detect_test_out.jpg'
-	final_image = template_match(template, target, output, threshold=0.7)
-	cv2.imwrite(output, final_image)
-	cv2.imshow('result', final_image)
-	cv2.waitKey(0)
+	realsense = RealsenseCamera()
+	
+	template = cv2.imread('imgdata/matchdata/template.jpg')
+	
+	cv2.namedWindow('result', cv2.WINDOW_AUTOSIZE)
+	
+	while True:
+		image = realsense.get_color_image_from_frames(realsense.get_aligned_frames())
+		final_image = template_match(template, image, 0.8)
+		cv2.imshow('result', final_image)
+		
+		key = cv2.waitKey(1)
+		if ord('q') == key:
+			break
