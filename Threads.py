@@ -5,6 +5,7 @@ import cv2
 from realsenseCamera_old import RealsenseCamera
 from ToolDetect import *
 from SerialPart import *
+from speech.VoiceRecognition import *
 
 from PyQt5.QtCore import QThread, pyqtSignal
 
@@ -17,6 +18,8 @@ class MainThread(QThread):
 	value = 0  # 用来找阈值
 	
 	robotArm = RobotArm('COM3')
+	
+	voiceRecognition = VoiceRecognition()
 	
 	# frame_start_time = 0
 	
@@ -31,6 +34,9 @@ class MainThread(QThread):
 		r = self.model.detect([image], verbose=1)[0]
 		cout, list = calculate(r)
 		return cout, list
+	
+	def voice(self):
+		self.voiceRecognition.run()
 		
 	def run(self):
 		"""

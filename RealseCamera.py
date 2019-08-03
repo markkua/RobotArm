@@ -35,7 +35,11 @@ class RealsenseCamera(RealsenseManager):
 		
 		# 检测目标点位置
 		image = self.get_color_image_from_frames(aligned_frames)
-		point_xy_dic = self._find_markers(image)
+		point_xy_dic, display_img = self._find_markers(image)
+		
+		# TODO
+		cv2.imshow('markers', display_img)
+		cv2.waitKey(5000)
 		
 		# 转成相机空间坐标
 		for pname, xy in point_xy_dic.items():
@@ -45,7 +49,7 @@ class RealsenseCamera(RealsenseManager):
 	
 		# 解转换参数
 		self.if_get_position_flag = self._solve_7_paras(sigma_threshold=0.1)
-	
+		
 	def _solve_7_paras(self, sigma_threshold=0.1) -> bool:
 		n_pt = self._found_point_data_dic.__len__()
 		n_equ = n_pt * 3  # 方程数
@@ -103,6 +107,10 @@ class RealsenseCamera(RealsenseManager):
 		"""
 		if not self.if_get_position_flag:
 			Printer.print("No camera position, Cannot trans coor.", Printer.red)
+			return None
+		
+		if len(xy) != 2:
+			Printer.print('coor trans len(xy) != 2', Printer.red)
 			return None
 		
 		XYZ = self.get_coor_in_Camera_system(aligned_frames, xy)
@@ -173,7 +181,7 @@ class RealsenseCamera(RealsenseManager):
 			if marker_center is not None:
 				result_xy_dic[imgname] = marker_center
 		
-		return result_xy_dic
+		return result_xy_dic, display_img
 		
 	def _match_template_SIFT(self, template_img, target_kp, target_des, threshold, draw_img=None, min_match_count=25):
 		"""
@@ -242,8 +250,9 @@ if __name__ == '__main__':
 	# 测试
 	found_point_dic = realsense.get_found_point_dic()
 	xy = found_point_dic['sign1']
+	print('sign1 xy=', xy)
 	XYZ = realsense.coor_trans_positive(aligned_frames, xy)
-	print(XYZ)
+	print('sign1 XYZ=', XYZ)
 	
 	
 	
