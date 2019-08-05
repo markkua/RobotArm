@@ -48,19 +48,7 @@ class MyMainWindow(QWidget, Ui_MainWindow):
 	def _on_slider_change_value(self, value):
 		self.slider_lable.setText('%f' % (self.thresholdSlider.value() / 255))
 		self.main_thread.value = self.thresholdSlider.value() / 255
-		
-	def detect_test(self):
-		for i in range(20):
-			frames = self.realsense.get_aligned_frames()
-			color_image = self.realsense.get_color_image_from_frames(frames)
-			
-			# 识别目标
-			ob_detect = Ob_detect()
-			model = ob_detect.create_model()
-			done_dir = ob_detect.Infer_model(color_image, model)
-			
-			print("done_dir=", done_dir)
-
+	
 
 if __name__ == '__main__':
 	app = QApplication(sys.argv)

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
+ <author>MarkKe</author>
  <class>MainWindow</class>
  <widget class="QMainWindow" name="MainWindow">
   <property name="geometry">
@@ -11,7 +12,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>ArmMonitor</string>
+   <string>Monitor</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QSlider" name="thresholdSlider">
@@ -94,6 +95,9 @@
      <width>1080</width>
      <height>26</height>
     </rect>
+   </property>
+   <property name="defaultUp">
+    <bool>true</bool>
    </property>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>

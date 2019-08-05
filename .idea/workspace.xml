@@ -2,13 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="101c23f9-c355-4481-86e3-e27a0c499b44" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/RealseCamera_svd.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/control_point_data/old/coors1.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RealseCamera.py" beforeDir="false" afterPath="$PROJECT_DIR$/RealseCamera_before_svd.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sign_match_demo.py" beforeDir="false" afterPath="$PROJECT_DIR$/sign_match_demo.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sign_match_demo2_work.py" beforeDir="false" afterPath="$PROJECT_DIR$/sign_match_demo2_work.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sign_match_demo_ORB.py" beforeDir="false" afterPath="$PROJECT_DIR$/sign_match_demo_ORB.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/svd_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/svd_test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Main.py" beforeDir="false" afterPath="$PROJECT_DIR$/Main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MainWindow.ui" beforeDir="false" afterPath="$PROJECT_DIR$/MainWindow.ui" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RealsenseManager.py" beforeDir="false" afterPath="$PROJECT_DIR$/RealsenseManager.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -37,8 +36,8 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/Main.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="600">
-                  <caret line="30" column="17" selection-start-line="30" selection-start-column="17" selection-end-line="30" selection-end-column="17" />
+                <state relative-caret-position="233">
+                  <caret line="50" column="4" selection-start-line="50" selection-start-column="4" selection-end-line="50" selection-end-column="4" />
                   <folding>
                     <element signature="e#27#48#0" expanded="true" />
                   </folding>
@@ -46,38 +45,70 @@
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/Threads.py">
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/RealsenseManager.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="20">
-                  <caret line="18" column="4" selection-start-line="18" selection-start-column="4" selection-end-line="18" selection-end-column="4" />
+                <state relative-caret-position="140">
+                  <caret line="34" column="12" lean-forward="true" selection-start-line="34" selection-start-column="12" selection-end-line="34" selection-end-column="12" />
                   <folding>
-                    <element signature="e#27#37#0" expanded="true" />
+                    <element signature="e#169#209#1" />
                   </folding>
                 </state>
               </provider>
             </entry>
           </file>
           <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/RealseCamera_before_svd.py">
+            <entry file="file://$PROJECT_DIR$/MainWindow.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="360">
-                  <caret line="59" column="13" selection-start-line="59" selection-start-column="13" selection-end-line="59" selection-end-column="13" />
+                <state relative-caret-position="306">
+                  <caret line="42" selection-start-line="42" selection-end-line="42" />
                 </state>
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="true">
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/RealseCamera_svd.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="222">
-                  <caret line="101" column="62" lean-forward="true" selection-start-line="101" selection-start-column="62" selection-end-line="101" selection-end-column="62" />
+                <state relative-caret-position="460">
+                  <caret line="107" column="19" lean-forward="true" selection-start-line="107" selection-start-column="19" selection-end-line="107" selection-end-column="19" />
                   <folding>
-                    <element signature="e#27#45#0" expanded="true" />
-                    <element signature="e#5492#6177#0" />
-                    <element signature="e#6220#6885#0" />
-                    <element signature="e#7007#8925#0" />
-                    <element signature="e#9031#10098#0" />
+                    <element signature="e#238#272#1" />
+                    <element signature="e#713#845#0" />
+                    <element signature="e#930#1518#0" />
+                    <element signature="e#1208#1323#0" />
+                    <element signature="e#1363#1452#0" />
+                    <element signature="e#1546#1890#0" />
+                    <element signature="e#1700#1756#0" />
+                    <element signature="e#1961#2539#0" />
+                    <element signature="e#2377#2471#0" />
+                    <element signature="e#2624#3129#0" />
+                    <element signature="e#2661#2746#0" />
+                    <element signature="e#2772#2840#0" />
+                    <element signature="e#3035#3113#0" />
+                    <element signature="e#3183#3496#0" />
+                    <element signature="e#3183#3285#1" />
+                    <element signature="e#3325#3410#0" />
+                    <element signature="e#3549#4234#0" />
+                    <element signature="e#3747#4070#0" />
+                    <element signature="e#3828#3964#0" />
+                    <element signature="e#4277#4942#0" />
+                    <element signature="e#4277#4352#1" />
+                    <element signature="e#4660#4903#0" />
+                    <element signature="e#5073#6991#0" />
+                    <element signature="e#5073#5262#1" />
+                    <element signature="e#5870#5934#0" />
+                    <element signature="e#5981#6850#0" />
+                    <element signature="e#5981#6073#0" />
+                    <element signature="e#6862#6972#0" />
+                    <element signature="e#7036#7069#0" />
+                    <element signature="e#7097#8164#0" />
+                    <element signature="e#7163#7487#0" />
+                    <element signature="e#7541#7899#0" />
+                    <element signature="e#8195#10899#0" />
+                    <element signature="e#8266#9183#0" />
+                    <element signature="e#8502#8538#0" />
+                    <element signature="e#8816#9084#0" />
+                    <element signature="e#9186#9225#0" />
                   </folding>
                 </state>
               </provider>
@@ -88,25 +119,13 @@
       <split-second>
         <leaf>
           <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/svd_test.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="380">
-                  <caret line="40" lean-forward="true" selection-start-line="40" selection-end-line="40" />
-                  <folding>
-                    <element signature="e#0#18#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/RealsenseManager.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="161">
-                  <caret line="91" column="24" selection-start-line="91" selection-start-column="24" selection-end-line="91" selection-end-column="24" />
-                  <folding>
-                    <element signature="e#169#209#1" />
-                  </folding>
+            <entry file="file://$PROJECT_DIR$/README.md">
+              <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+                <state split_layout="SPLIT">
+                  <first_editor relative-caret-position="353">
+                    <caret line="32" column="12" selection-start-line="32" selection-start-column="12" selection-end-line="32" selection-end-column="12" />
+                  </first_editor>
+                  <second_editor />
                 </state>
               </provider>
             </entry>
@@ -181,8 +200,6 @@
         <option value="$PROJECT_DIR$/sign_match_demo_surf.py" />
         <option value="$PROJECT_DIR$/sign_match_demo_ORB.py" />
         <option value="$PROJECT_DIR$/sign_match_demo2.py" />
-        <option value="$PROJECT_DIR$/Main.py" />
-        <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/sign_match_demo2_work.py" />
         <option value="$PROJECT_DIR$/speech/VoiceRecognition.py" />
         <option value="$PROJECT_DIR$/ToolDetect.py" />
@@ -193,9 +210,11 @@
         <option value="$PROJECT_DIR$/RealseCamera_4para.py" />
         <option value="$PROJECT_DIR$/RealseCamera_shift.py" />
         <option value="$PROJECT_DIR$/RealseCamera.py" />
-        <option value="$PROJECT_DIR$/RealsenseManager.py" />
         <option value="$PROJECT_DIR$/svd_test.py" />
         <option value="$PROJECT_DIR$/RealseCamera_svd.py" />
+        <option value="$PROJECT_DIR$/README.md" />
+        <option value="$PROJECT_DIR$/Main.py" />
+        <option value="$PROJECT_DIR$/RealsenseManager.py" />
       </list>
     </option>
   </component>
@@ -326,7 +345,7 @@
       <workItem from="1565001143863" duration="13389000" />
       <workItem from="1565026408063" duration="1829000" />
       <workItem from="1565030152987" duration="85000" />
-      <workItem from="1565030307425" duration="9601000" />
+      <workItem from="1565030307425" duration="12113000" />
     </task>
     <task id="LOCAL-00001" summary="run Realsense success.">
       <created>1563893443117</created>
@@ -489,11 +508,18 @@
       <option name="project" value="LOCAL" />
       <updated>1565040373420</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="修改SVD">
+      <created>1565042136686</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1565042136686</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="274438000" />
+    <option name="totallyTimeSpent" value="276950000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -508,12 +534,12 @@
     <frame x="0" y="0" width="1536" height="864" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" weight="0.13404825" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.13404825" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32911393" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49731904" visible="true" weight="0.31772152" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49731904" visible="true" weight="0.31772152" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39873418" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -543,16 +569,16 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32911393" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.49731904" visible="true" weight="0.32911393" />
+      <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.49731904" weight="0.32911393" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
-      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50268096" side_tool="true" visible="true" weight="0.32911393" />
-      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.49798927" weight="0.32911393" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50268096" side_tool="true" weight="0.32911393" />
+      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.49798927" visible="true" weight="0.32911393" />
       <window_info anchor="bottom" id="Python Console" order="12" weight="0.32911393" />
       <window_info anchor="bottom" id="Concurrent Activities Diagram" order="13" weight="0.32911393" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="SciView" order="3" visible="true" weight="0.16689008" />
+      <window_info anchor="right" id="SciView" order="3" weight="0.16689008" />
       <window_info anchor="right" id="Database" order="4" weight="0.3297587" />
     </layout-to-restore>
   </component>
@@ -623,7 +649,8 @@
     <MESSAGE value="RealseCamera 在小角度可行" />
     <MESSAGE value="修改RealsCamera" />
     <MESSAGE value="【重大突破】用SVD解算坐标成功" />
-    <option name="LAST_COMMIT_MESSAGE" value="【重大突破】用SVD解算坐标成功" />
+    <MESSAGE value="修改SVD" />
+    <option name="LAST_COMMIT_MESSAGE" value="修改SVD" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -783,13 +810,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/MainWindow.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="42" lean-forward="true" selection-start-line="42" selection-end-line="42" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/mrcnn/model.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="18">
@@ -885,16 +905,6 @@
           <folding>
             <element signature="e#66#84#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor>
-            <caret column="19" selection-start-column="19" selection-end-column="19" />
-          </first_editor>
-          <second_editor />
         </state>
       </provider>
     </entry>
@@ -1078,16 +1088,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Main.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="600">
-          <caret line="30" column="17" selection-start-line="30" selection-start-column="17" selection-end-line="30" selection-end-column="17" />
-          <folding>
-            <element signature="e#27#48#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/Downloads/TimeNCoor/MyCoors.cs">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -1102,26 +1102,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="383">
           <caret line="55" column="16" selection-start-line="55" selection-start-column="12" selection-end-line="55" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Threads.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="20">
-          <caret line="18" column="4" selection-start-line="18" selection-start-column="4" selection-end-line="18" selection-end-column="4" />
-          <folding>
-            <element signature="e#27#37#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/RealsenseManager.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="161">
-          <caret line="91" column="24" selection-start-line="91" selection-start-column="24" selection-end-line="91" selection-end-column="24" />
-          <folding>
-            <element signature="e#169#209#1" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1141,24 +1121,103 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/svd_test.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="380">
-          <caret line="40" lean-forward="true" selection-start-line="40" selection-end-line="40" />
+        <state relative-caret-position="500">
+          <caret line="40" selection-start-line="40" selection-end-line="40" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Threads.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="20">
+          <caret line="18" column="4" selection-start-line="18" selection-start-column="4" selection-end-line="18" selection-end-column="4" />
+          <folding>
+            <element signature="e#27#37#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="353">
+            <caret line="32" column="12" selection-start-line="32" selection-start-column="12" selection-end-line="32" selection-end-column="12" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/RealseCamera_svd.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="222">
-          <caret line="101" column="62" lean-forward="true" selection-start-line="101" selection-start-column="62" selection-end-line="101" selection-end-column="62" />
+        <state relative-caret-position="460">
+          <caret line="107" column="19" lean-forward="true" selection-start-line="107" selection-start-column="19" selection-end-line="107" selection-end-column="19" />
           <folding>
-            <element signature="e#27#45#0" expanded="true" />
-            <element signature="e#5492#6177#0" />
-            <element signature="e#6220#6885#0" />
-            <element signature="e#7007#8925#0" />
-            <element signature="e#9031#10098#0" />
+            <element signature="e#238#272#1" />
+            <element signature="e#713#845#0" />
+            <element signature="e#930#1518#0" />
+            <element signature="e#1208#1323#0" />
+            <element signature="e#1363#1452#0" />
+            <element signature="e#1546#1890#0" />
+            <element signature="e#1700#1756#0" />
+            <element signature="e#1961#2539#0" />
+            <element signature="e#2377#2471#0" />
+            <element signature="e#2624#3129#0" />
+            <element signature="e#2661#2746#0" />
+            <element signature="e#2772#2840#0" />
+            <element signature="e#3035#3113#0" />
+            <element signature="e#3183#3496#0" />
+            <element signature="e#3183#3285#1" />
+            <element signature="e#3325#3410#0" />
+            <element signature="e#3549#4234#0" />
+            <element signature="e#3747#4070#0" />
+            <element signature="e#3828#3964#0" />
+            <element signature="e#4277#4942#0" />
+            <element signature="e#4277#4352#1" />
+            <element signature="e#4660#4903#0" />
+            <element signature="e#5073#6991#0" />
+            <element signature="e#5073#5262#1" />
+            <element signature="e#5870#5934#0" />
+            <element signature="e#5981#6850#0" />
+            <element signature="e#5981#6073#0" />
+            <element signature="e#6862#6972#0" />
+            <element signature="e#7036#7069#0" />
+            <element signature="e#7097#8164#0" />
+            <element signature="e#7163#7487#0" />
+            <element signature="e#7541#7899#0" />
+            <element signature="e#8195#10899#0" />
+            <element signature="e#8266#9183#0" />
+            <element signature="e#8502#8538#0" />
+            <element signature="e#8816#9084#0" />
+            <element signature="e#9186#9225#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MainWindow.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="42" selection-start-line="42" selection-end-line="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="233">
+          <caret line="50" column="4" selection-start-line="50" selection-start-column="4" selection-end-line="50" selection-end-column="4" />
+          <folding>
+            <element signature="e#27#48#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/RealsenseManager.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="140">
+          <caret line="34" column="12" lean-forward="true" selection-start-line="34" selection-start-column="12" selection-end-line="34" selection-end-column="12" />
+          <folding>
+            <element signature="e#169#209#1" />
           </folding>
         </state>
       </provider>

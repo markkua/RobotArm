@@ -26,6 +26,13 @@ class RealsenseManager:
 			# 深度传感器
 			self.depth_sensor = self.profile.get_device().first_depth_sensor()
 			self.depth_sensor.set_option(rs.option.visual_preset, 4)
+			
+			# 设备设置
+			self.device = rs.context().query_devices()[0]
+			self.advnced_mode = rs.rs400_advanced_mode(self.device)
+			self.set_disparityShift(1000)
+			self.set_depthUnits(100)
+			
 			# 深度标尺
 			self.depth_scale = self.depth_sensor.get_depth_scale()
 			print('depth_scale=', self.depth_scale)
@@ -95,6 +102,7 @@ class RealsenseManager:
 		except Exception as e:
 			Printer.print('pixelxy2cameraXYZ error' + e.__str__(), Printer.red)
 			return None
+
 	@staticmethod
 	def get_color_image_from_frames(frames):
 		color_frame = frames.get_color_frame()
@@ -106,7 +114,25 @@ class RealsenseManager:
 		depth_frame = frames.get_depth_frame()
 		depth_image = np.asanyarray(depth_frame.get_data())
 		return depth_image
-		
+	
+	@classmethod
+	def get_color_map_depth_image_from_frames(cls, frames):
+		depth_image = cls.get_depth_image_from_frames(frames)
+		depth_colormap = cv2.applyColorMap(cv2.convertScaleAbs(depth_image, alpha=0.03), cv2.COLORMAP_JET)
+		return depth_colormap
+	
+	def set_disparityShift(self, disparityShift: int):
+		depth_table_control_group = self.advnced_mode.get_depth_table()
+		if 45 < disparityShift < 150:
+			depth_table_control_group.disparityShift = disparityShift
+			self.advnced_mode.set_depth_table(depth_table_control_group)
+	
+	def set_depthUnits(self, depthUnits: int):
+		depth_table_control_group = self.advnced_mode.get_depth_table()
+		if 0 < depthUnits < 10000:
+			depth_table_control_group.depthUnits = depthUnits
+			self.advnced_mode.set_depth_table(depth_table_control_group)
+	
 	@staticmethod
 	def _filter_depth_frame(depth_frame):
 		"""
