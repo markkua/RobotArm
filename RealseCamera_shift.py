@@ -19,6 +19,9 @@ class RealsenseCamera(RealsenseManager):
 	trans_para_7 = np.zeros((6, 1), dtype=np.float)
 	trans_para_4 = np.zeros((4, 1), dtype=np.float)
 	
+	shift = np.zeros((3), dtype=float)
+	
+	
 	if_get_position_flag = False  # 是否成功解算相机位置
 	
 	_cp_coor_dic = {}  # 控制点坐标 { 点名str : [Robot坐标X， Y， Z] }
@@ -47,20 +50,41 @@ class RealsenseCamera(RealsenseManager):
 		# 转成相机空间坐标
 		for pname, xy in point_xy_dic.items():
 			XYZ = self.pixelxy2cameraXYZ(aligned_frames, xy)
-
+			
 			if XYZ is not None:
 				self._found_point_XYZc_dic[pname] = XYZ
 	
 		# 解转换参数
-		if self._solve_7_paras(sigma_threshold=sigma_threshold):
+		# if self._solve_7_paras(sigma_threshold=sigma_threshold):
 		# if self._solve_perspect_M():
 		# if self._solve_para_4():
+		if self._solve_shift():
 			self.if_get_position_flag = True
 			Printer.print('transform matrix get.', Printer.green)
 		else:
 			self.if_get_position_flag = False
 		return display_img
-		
+	
+	def _solve_shift(self):
+		if self._found_point_XYZc_dic.__len__() < 2:
+			return False
+		dx = []
+		dy = []
+		dz = []
+		for pname, XYZ1 in self._found_point_XYZc_dic.items():
+			xyz2 = self._cp_coor_dic[pname]
+			x1, y1, z1 = XYZ1
+			x2, y2, z2 = xyz2
+			dx.append(x2 - x1)
+			dy.append(y2 - y1)
+			dz.append(z2 - z1)
+		dx = np.mean(np.asarray(dx))
+		dz = np.mean(np.asarray(dy))
+		dy = np.mean(np.asarray(dz))
+		self.shift = np.asarray([dx, dy, dz])
+		self.if_get_position_flag = True
+		return True
+	
 	def _solve_7_paras(self, sigma_threshold) -> bool:
 		n_pt = self._found_point_XYZc_dic.__len__()
 		n_equ = n_pt * 3  # 方程数
@@ -204,14 +228,17 @@ class RealsenseCamera(RealsenseManager):
 		if not self.if_get_position_flag:
 			# Printer.print("No camera position, Cannot trans coor.", Printer.red)
 			return None
+		#
+		# x1, y1, z1 = XYZ
+		# B = np.asarray([
+		# 	[1, 0, 0, 0, -z1, y1],
+		# 	[0, 1, 0, z1, 0, -x1],
+		# 	[0, 0, 1, -y1, x1, 0]
+		# ])
+		# XYZ2 = np.matmul(B, self.trans_para_7).reshape(3) + XYZ
 		
-		x1, y1, z1 = XYZ
-		B = np.asarray([
-			[1, 0, 0, 0, -z1, y1],
-			[0, 1, 0, z1, 0, -x1],
-			[0, 0, 1, -y1, x1, 0]
-		])
-		XYZ2 = np.matmul(B, self.trans_para_7).reshape(3) + XYZ
+		XYZ2 = np.asarray(XYZ) + self.shift
+		
 		return XYZ2
 	
 	def load_control_point_files(self, path: str):
@@ -380,56 +407,41 @@ if __name__ == '__main__':
 		print('time=', time.time() - start_time)
 
 		print('found point:', found_point_dic)
-
-		# if 'sign2' in found_point_dic.keys():
-		# 	xyz2 = found_point_dic['sign2']
-		# 	xy_pixel = realsense.point_xy_dic['sign2']
-		# 	print('sign2 xyz=', xyz2)
-		# 	# XYZ = realsense.coor_trans_pixelxy2worldXYZ(aligned_frames, xy_pixel)
-		# 	XYZ = realsense.coor_trans_cameraXYZ2worldXYZ(xyz2)
-		# 	print('sign2 XYZ=', XYZ)
-		#
-		# if 'sign3' in found_point_dic.keys():
-		# 	xyz3 = found_point_dic['sign3']
-		# 	xy_pixel = realsense.point_xy_dic['sign3']
-		# 	print('sign3 xyz=', xyz3)
-		# 	XYZ = realsense.coor_trans_cameraXYZ2worldXYZ(xyz3)
-		# 	print('sign3 XYZ=', XYZ)
-		# if found_point_dic.__len__() == 3:
-		# 	print(found_point_dic)
-		# 	pass
 		
-		if 'sign4' in found_point_dic.keys() and 'sign3' in found_point_dic.keys() and 'sign5' in found_point_dic.keys():
+		if realsense.if_get_position_flag:
+			print('shift=', realsense.shift)
+			
+		if 'sign3' in found_point_dic.keys():  #  and 'sign5' in found_point_dic.keys():
 			xy3 = realsense.point_xy_dic['sign3']
-			xy4 = realsense.point_xy_dic['sign4']
-			xy5 = realsense.point_xy_dic['sign5']
+			# xy4 = realsense.point_xy_dic['sign4']
+			# xy5 = realsense.point_xy_dic['sign5']
 			
 			xyz3 = found_point_dic['sign3']
-			xyz3[0] *= -1
-			xyz4 = found_point_dic['sign4']
-			xyz3[0] *= -1
-			xyz5 = found_point_dic['sign5']
-			xyz5[0] *= -1
+			# xyz3[0] *= -1
+			# xyz4 = found_point_dic['sign4']
+			# xyz3[0] *= -1
+			# xyz5 = found_point_dic['sign5']
+			# xyz5[0] *= -1
 
 			XYZ3 = realsense.coor_trans_pixelxy2worldXYZ(aligned_frames, xy3)
 			print('xy3=', xy3)
 			print('xyz3=', xyz3)
 			print('XYZ3=', XYZ3)
-			XYZ4 = realsense.coor_trans_pixelxy2worldXYZ(aligned_frames, xy4)
-			print('xy4=', xy4)
-			print('xyz4=', xyz4)
-			print('XYZ4=', XYZ4)
-			XYZ5 = realsense.coor_trans_pixelxy2worldXYZ(aligned_frames, xy5)
-			print('xy5=', xy5)
-			print('xyz5=', xyz5)
-			print('XYZ5=', XYZ5)
-		#
-		#
-		# 	#
-		# 	# delta = np.asarray(xyz3) - np.asarray(xyz2)
-		# 	# print('delta=', delta)
-		# 	# print('distance=', sum(delta**2)**0.5)
-		#
+			# XYZ4 = realsense.coor_trans_pixelxy2worldXYZ(aligned_frames, xy4)
+			# print('xy4=', xy4)
+			# print('xyz4=', xyz4)
+			# print('XYZ4=', XYZ4)
+			# XYZ5 = realsense.coor_trans_pixelxy2worldXYZ(aligned_frames, xy5)
+			# print('xy5=', xy5)
+			# print('xyz5=', xyz5)
+			# print('XYZ5=', XYZ5)
+
+
+			#
+			# delta = np.asarray(xyz3) - np.asarray(xyz2)
+			# print('delta=', delta)
+			# print('distance=', sum(delta**2)**0.5)
+
 		# key = cv2.waitKey(1)
 		# if 27 == key:
 		# 	break

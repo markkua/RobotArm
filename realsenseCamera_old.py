@@ -64,7 +64,7 @@ class RealsenseCamera(RealsenseManager):
 		points_XYZ_ls = []
 		for xy_point in points_xy_ls:
 			print('xy_point=', xy_point)  # TODO
-			XYZ = self.get_coor_in_Camera_system(aligned_frames, [xy_point[1][0], xy_point[1][1]])  # 这个函数只能传入list， 不能是array
+			XYZ = self.pixelxy2cameraXYZ(aligned_frames, [xy_point[1][0], xy_point[1][1]])  # 这个函数只能传入list， 不能是array
 			if XYZ is not None:
 				points_XYZ_ls.append([xy_point[0], XYZ])
 

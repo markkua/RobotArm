@@ -11,6 +11,7 @@
       <w>imgname</w>
       <w>kdtree</w>
       <w>keypoints</w>
+      <w>pixelxy</w>
       <w>pname</w>
       <w>realsense</w>
       <w>webcam</w>

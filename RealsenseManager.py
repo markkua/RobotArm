@@ -54,13 +54,16 @@ class RealsenseManager:
 			Printer.print('Get aligned frames error: %s' % e.__str__(), Printer.red)
 			return None
 	
-	def get_coor_in_Camera_system(self, align_frames, pixel_coor):
+	def pixelxy2cameraXYZ(self, align_frames, pixel_coor):
 		"""
 		获取指定像素点[x, y](必须是List), 在相机坐标系下的三维坐标[X, Y, Z]
 		:param align_frames: 对齐的帧
 		:param pixel_coor: 目标像素的坐标, 只能传入list， 不能是array
 		:return:
 		"""
+
+		pixel_coor = np.asarray(np.round(pixel_coor), dtype=np.int)
+		
 		# 获得对齐后的深度帧
 		align_depth_frame = align_frames.get_depth_frame()
 		color_frame = align_frames.get_color_frame()
@@ -72,19 +75,25 @@ class RealsenseManager:
 		color_intrin = color_frame.profile.as_video_stream_profile().intrinsics
 		
 		align_depth_image = np.asanyarray(align_depth_frame.get_data())
-
-		# 长度单位为cm， 图像寻址先行后列
-		align_depth_value = align_depth_image[pixel_coor[1], pixel_coor[0]] * self.depth_scale * 100  # 单位转换，100为cm，1为m
-		
-		# 输入传感器内部参数、点的像素坐标、对应的深度值，输出点的三维坐标。
-		result_coor = rs.rs2_deproject_pixel_to_point(color_intrin, pixel_coor, align_depth_value)
-		
-		# 判断结果是否异常
-		if [0, 0, 0] == result_coor:
-			Printer.print("Coor error, maybe too near", Printer.red)
+		try:
+			# 长度单位为cm， 图像寻址先行后列
+			align_depth_value = align_depth_image[pixel_coor[1], pixel_coor[0]] * self.depth_scale * 100  # 单位转换，100为cm，1为m
+			# 输入传感器内部参数、点的像素坐标、对应的深度值，输出点的三维坐标。
+			XYZ = rs.rs2_deproject_pixel_to_point(color_intrin, list(pixel_coor), align_depth_value)
+			# 判断结果是否异常
+			if [0, 0, 0] == XYZ:
+				Printer.print("Coor error, maybe too near", Printer.red)
+				return None
+			else:
+				# 坐标系变换
+				XYZ[2] *= -1
+				temp = XYZ[0]
+				XYZ[0] = XYZ[1]
+				XYZ[1] = temp
+				return XYZ
+		except Exception as e:
+			Printer.print('pixelxy2cameraXYZ error' + e.__str__(), Printer.red)
 			return None
-		return result_coor
-	
 	@staticmethod
 	def get_color_image_from_frames(frames):
 		color_frame = frames.get_color_frame()
@@ -191,7 +200,7 @@ class RealsenseManager:
 			cv2.namedWindow('Color image', cv2.WINDOW_AUTOSIZE)
 			cv2.imshow('Color image', color_image)
 			
-			coor = self.get_coor_in_Camera_system(aligned_frames, point)
+			coor = self.pixelxy2cameraXYZ(aligned_frames, point)
 			print(coor)
 			# depth = (depth_frame.get_distance(point[0], point[1])) * 100
 			# print("depth=", depth)

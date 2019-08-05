@@ -47,14 +47,13 @@ class RealsenseCamera(RealsenseManager):
 		# 转成相机空间坐标
 		for pname, xy in point_xy_dic.items():
 			XYZ = self.pixelxy2cameraXYZ(aligned_frames, xy)
-
 			if XYZ is not None:
 				self._found_point_XYZc_dic[pname] = XYZ
 	
 		# 解转换参数
-		if self._solve_7_paras(sigma_threshold=sigma_threshold):
+		# if self._solve_7_paras(sigma_threshold=sigma_threshold):
 		# if self._solve_perspect_M():
-		# if self._solve_para_4():
+		if self._solve_para_4():
 			self.if_get_position_flag = True
 			Printer.print('transform matrix get.', Printer.green)
 		else:
@@ -172,28 +171,22 @@ class RealsenseCamera(RealsenseManager):
 			return None
 		
 		# 七参数
-		XYZ = self.pixelxy2cameraXYZ(aligned_frames, xy)
-		if XYZ is None:
+		XYZ_c = self.pixelxy2cameraXYZ(aligned_frames, xy)
+		if XYZ_c is None:
 			return None
-		
-		XYZ = np.asarray(XYZ)
-		XYZ = self._coor_trans_cameraXYZ2worldXYZ(XYZ)
-		if 3 != XYZ.size:
+		#
+		XYZ_c = np.asarray(XYZ_c)
+		if 3 != XYZ_c.size:
 			Printer.print("coor trans error: xyz size wrong.", Printer.red)
 			return None
-		
-		return XYZ
+		XYZ_r = self._coor_trans_cameraXYZ2worldXYZ(XYZ_c)
+		return XYZ_r
 	
 		# 投影变换方法
 		# pts = np.asarray([xy[0], xy[1], 1])
 		# dst = np.matmul(pts, self.perspective_matrix)
 		#
 		# XYZ = np.asarray([dst[0], dst[1], 0])
-		
-		# 四参数
-		# XYZ = np.asarray([
-		#
-		# ])
 		
 	def _coor_trans_cameraXYZ2worldXYZ(self, XYZ):
 		"""
@@ -205,13 +198,21 @@ class RealsenseCamera(RealsenseManager):
 			# Printer.print("No camera position, Cannot trans coor.", Printer.red)
 			return None
 		
+		# 七参数
+		# x1, y1, z1 = XYZ
+		# B = np.asarray([
+		# 	[1, 0, 0, 0, -z1, y1],
+		# 	[0, 1, 0, z1, 0, -x1],
+		# 	[0, 0, 1, -y1, x1, 0]
+		# ])
+		# XYZ2 = np.matmul(B, self.trans_para_7).reshape(3) + XYZ
+		
+		# 四参数
 		x1, y1, z1 = XYZ
 		B = np.asarray([
-			[1, 0, 0, 0, -z1, y1],
-			[0, 1, 0, z1, 0, -x1],
-			[0, 0, 1, -y1, x1, 0]
+		
 		])
-		XYZ2 = np.matmul(B, self.trans_para_7).reshape(3) + XYZ
+		
 		return XYZ2
 	
 	def load_control_point_files(self, path: str):
@@ -398,31 +399,26 @@ if __name__ == '__main__':
 		# if found_point_dic.__len__() == 3:
 		# 	print(found_point_dic)
 		# 	pass
-		
-		if 'sign4' in found_point_dic.keys() and 'sign3' in found_point_dic.keys() and 'sign5' in found_point_dic.keys():
-			xy3 = realsense.point_xy_dic['sign3']
-			xy4 = realsense.point_xy_dic['sign4']
+		#
+		if 'sign5' in found_point_dic.keys() and 'sign6' in found_point_dic.keys():
 			xy5 = realsense.point_xy_dic['sign5']
+			xy6 = realsense.point_xy_dic['sign6']
 			
-			xyz3 = found_point_dic['sign3']
-			xyz3[0] *= -1
-			xyz4 = found_point_dic['sign4']
-			xyz3[0] *= -1
 			xyz5 = found_point_dic['sign5']
-			xyz5[0] *= -1
+			xyz6 = found_point_dic['sign6']
 
-			XYZ3 = realsense.coor_trans_pixelxy2worldXYZ(aligned_frames, xy3)
-			print('xy3=', xy3)
-			print('xyz3=', xyz3)
-			print('XYZ3=', XYZ3)
-			XYZ4 = realsense.coor_trans_pixelxy2worldXYZ(aligned_frames, xy4)
-			print('xy4=', xy4)
-			print('xyz4=', xyz4)
-			print('XYZ4=', XYZ4)
+			# xyz5[0] *= -1
+
 			XYZ5 = realsense.coor_trans_pixelxy2worldXYZ(aligned_frames, xy5)
 			print('xy5=', xy5)
 			print('xyz5=', xyz5)
 			print('XYZ5=', XYZ5)
+			
+			XYZ6 = realsense.coor_trans_pixelxy2worldXYZ(aligned_frames, xy6)
+			print('xy6=', xy6)
+			print('xyz6=', xyz6)
+			print('XYZ6=', XYZ6)
+			
 		#
 		#
 		# 	#
