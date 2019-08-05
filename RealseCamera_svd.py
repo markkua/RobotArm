@@ -99,7 +99,8 @@ class RealsenseCamera(RealsenseManager):
 		R = np.matmul(V.T, U.T)
 		
 		if np.linalg.det(R) < 0:
-			V[:, 0] *= -1
+			Printer.print('Reflection Detected.', Printer.red)
+			V[:, 2] *= -1
 			R = np.matmul(V.T, U.T)
 		
 		t = centroid_B.T - np.matmul(R, centroid_A.T)

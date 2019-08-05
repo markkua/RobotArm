@@ -25,11 +25,13 @@ def rigid_transform_3D(A: np.array, B: np.array):
 	H = np.matmul(AA.T, BB)
 	
 	U, S, V = np.linalg.svd(H)
+	print('S', S)
 	
 	R = np.matmul(V.T, U.T)
 	
 	if np.linalg.det(R) < 0:
-		V[:, 0] *= -1
+		print('Reflection Detected.')
+		V[:, 2] *= -1
 		R = np.matmul(V.T, U.T)
 	
 	t = centroid_B.T - np.matmul(R, centroid_A.T)
