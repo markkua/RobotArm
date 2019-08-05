@@ -7,61 +7,60 @@ from math import sqrt
 # R = 3x3 rotation matrix
 # t = 3x1 column vector
 
-def rigid_transform_3D(A, B):
-	# # centroid_A, B
-	# centroid_A = np.mean(A, axis=0)
-	# centroid_B = np.mean(B, axis=0)
-	#
-	# # N = size(A, 1); 点数
-	# N = A.shape[0]
-	#
-	# H = (A - repmat(centroid_A, N, 1))
-	# ' * (B - repmat(centroid_B, N, 1));
-	#
-	# [U, S, V] = svd(H);
-	#
-	# R = V * U';
-	# if det(R) < 0
-	# 	printf('Reflection detected\n');
-	# V(:, 3) = -1 * V(:, 3);
-	# R = V * U';
-	# end
-	#
-	# t = -R * centroid_A
-	# ' + centroid_B';
-	# detr = det(R)
-	assert len(A) == len(B)
+def rigid_transform_3D(A: np.array, B: np.array):
 
-	N = A.shape[0]  # total points
-
+	N = A.shape[0]
+	
+	# centroid_A, B
 	centroid_A = np.mean(A, axis=0)
 	centroid_B = np.mean(B, axis=0)
+	
+	centroid_A = centroid_A.reshape((1, N))
+	centroid_B = centroid_B.reshape((1, N))
 
-	# centre the points
+	
 	AA = A - np.tile(centroid_A, (N, 1))
 	BB = B - np.tile(centroid_B, (N, 1))
-
-	# dot is matrix multiplication for array
-	H = np.matmul(np.transpose(AA), BB)
-
-	U, S, Vt = np.linalg.svd(H)
-
-	# R = Vt.T * U.T
-	R = np.matmul(Vt.T, U.T)
 	
-	# special reflection case
+	H = np.matmul(AA.T, BB)
+	
+	U, S, V = np.linalg.svd(H)
+	
+	R = np.matmul(V.T, U.T)
+	
 	if np.linalg.det(R) < 0:
-		print("Reflection detected")
-		Vt[2, :] *= -1
-		R = np.matmul(Vt.T, U.T)
-
-	# t = -R * centroid_A.T + centroid_B.T
-	t = np.matmul(-1*R, centroid_B.T)
-
+		V[:, 0] *= -1
+		R = np.matmul(V.T, U.T)
+	
+	t = centroid_B.T - np.matmul(R, centroid_A.T)
+	
 	return R, t
 
 
 if __name__ == '__main__':
+	
+	R = np.array([
+		[-0.474089119526847, 0.842437682869845, - 0.256004408608807],
+		[- 0.513280773442789, - 0.500674161172318, - 0.697042489342198],
+		[- 0.715389652119900, - 0.199058119189552, 0.669771237680812]
+	], dtype=np.float64)
+	t = np.random.random((3, 1))
+	
+	A = np.random.random((3, 3))
+	
+	B = np.matmul(R, A.T) + np.tile(t, (1, 3))
+	B = B.T
+	
+	R2, t2 = rigid_transform_3D(A, B)
+	
+	errR = R2 - R
+	errt = t2 - t
+	print('errR=', errR)
+	print('errt=', errt)
+	
+	
+	
+	
 	# B = np.asarray([
 	# 	[-11.071537017822266, 11.890090942382812, -47.500003814697266],
 	# 	[0.10266775637865067, 18.987825393676758, -47.500003814697266],
@@ -72,26 +71,26 @@ if __name__ == '__main__':
 	# 	[27.2, 23.5, 0.],
 	# 	[33.2, 0.5, 0.]
 	# ])
+	# #
+	# # A = np.asarray([
+	# # 	[14.235121, 25.112, 13.256123],
+	# # 	[25.2326, 19.1552, 36.16623],
+	# # 	[13.2151, 25.36552, 36.22669]
+	# # ])
+	# #
+	# # B = np.asarray([
+	# # 	[104.227490000000, 376.327710716590, 318.766978183650],
+	# # 	[172.041690000000, 597.831942815900, 676.272897862500],
+	# # 	[172.626210000000, 446.078270287700, 666.463645021100]
+	# # ]
+	# # )
 	#
-	A = np.asarray([
-		[14.235121, 25.112, 13.256123],
-		[25.2326, 19.1552, 36.16623],
-		[13.2151, 25.36552, 36.22669]
-	])
-	
-	B = np.asarray([
-		[104.227490000000, 376.327710716590, 318.766978183650],
-		[172.041690000000, 597.831942815900, 676.272897862500],
-		[172.626210000000, 446.078270287700, 666.463645021100]
-	]
-	)
-	
-	R, t = rigid_transform_3D(A, B)
-	print('R:', R)
-	print('t:', t)
-	
-	err = B - np.matmul(R, A) - t
-	print('err:', err)
+	# R, t = rigid_transform_3D(A, B)
+	# print('R:', R)
+	# print('t:', t)
+	#
+	# err = B - np.matmul(R, A) - t
+	# print('err:', err)
 	
 
 """
