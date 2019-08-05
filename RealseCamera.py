@@ -34,7 +34,7 @@ class RealsenseCamera(RealsenseManager):
 		self.load_control_point_files(control_point_path)
 		Printer.print('control point files loaded.', Printer.green)
 	
-	def get_transform_matrix(self, aligned_frames, sigma_threshold=10) -> np.array:
+	def get_transform_matrix(self, aligned_frames, sigma_threshold=1) -> np.array:
 		self._found_point_XYZc_dic.clear()
 		
 		# 检测目标点位置
@@ -101,6 +101,7 @@ class RealsenseCamera(RealsenseManager):
 			VTV = np.matmul(V.transpose(), V)
 			sigma = sqrt(VTV[0, 0] / r)
 			print('sigma=', sigma)
+			
 			if sigma > sigma_threshold:
 				Printer.print("sigma > %f" % sigma_threshold, Printer.yellow)
 				return False
@@ -303,7 +304,7 @@ class RealsenseCamera(RealsenseManager):
 				good_match.append(m)
 		
 		if len(good_match) > min_match_count:
-			Printer.print("matches found - %d/%d" % (len(good_match), min_match_count), Printer.green)
+			# Printer.print("matches found - %d/%d" % (len(good_match), min_match_count), Printer.green)
 			# 获取关键点的坐标
 			src_pts = np.float32([template_kp[m.queryIdx].pt for m in good_match]).reshape(-1, 1, 2)
 			dst_pts = np.float32([target_kp[m.trainIdx].pt for m in good_match]).reshape(-1, 1, 2)
@@ -319,7 +320,7 @@ class RealsenseCamera(RealsenseManager):
 			cv2.polylines(draw_img, [np.int32(dst)], True, [0, 0, 255], 2, cv2.LINE_AA)
 			cv2.circle(draw_img, (center[0], center[1]), 3, (0, 255, 0), 3)
 		else:
-			Printer.print("matches found - %d/%d" % (len(good_match), min_match_count), Printer.yellow)
+			# Printer.print("matches found - %d/%d" % (len(good_match), min_match_count), Printer.yellow)
 			center = None
 		
 		return center
@@ -367,10 +368,8 @@ if __name__ == '__main__':
 
 		# 测试
 		start_time = time.time()
-		display_img = realsense.get_transform_matrix(aligned_frames, sigma_threshold=100)
+		display_img = realsense.get_transform_matrix(aligned_frames, sigma_threshold=1)
 
-		cv2.imshow('test', cv2.resize(display_img, (int(1920/2), int(1080/2))))
-		cv2.waitKey(1)
 
 		# if realsense.if_get_position_flag:
 		# 	perspectiveImg = cv2.warpPerspective(image, realsense.perspective_matrix, (400, 600))
@@ -380,7 +379,14 @@ if __name__ == '__main__':
 		print('time=', time.time() - start_time)
 
 		print('found point:', found_point_dic)
-
+		
+		test_xy = [1920/2, 1080/2]
+		cv2.circle(display_img, (int(test_xy[0]), int(test_xy[1])), 5, (255, 0, 0), thickness=3)
+		test_XYZ = realsense.coor_trans_pixelxy2worldXYZ(aligned_frames, test_xy)
+		print('testXYZ=', test_XYZ)
+		
+		cv2.imshow('test', cv2.resize(display_img, (int(1920 / 2), int(1080 / 2))))
+		cv2.waitKey(1)
 		# if 'sign2' in found_point_dic.keys():
 		# 	xyz2 = found_point_dic['sign2']
 		# 	xy_pixel = realsense.point_xy_dic['sign2']
@@ -398,31 +404,31 @@ if __name__ == '__main__':
 		# if found_point_dic.__len__() == 3:
 		# 	print(found_point_dic)
 		# 	pass
-		
-		if 'sign4' in found_point_dic.keys() and 'sign3' in found_point_dic.keys() and 'sign5' in found_point_dic.keys():
-			xy3 = realsense.point_xy_dic['sign3']
-			xy4 = realsense.point_xy_dic['sign4']
-			xy5 = realsense.point_xy_dic['sign5']
-			
-			xyz3 = found_point_dic['sign3']
-			xyz3[0] *= -1
-			xyz4 = found_point_dic['sign4']
-			xyz3[0] *= -1
-			xyz5 = found_point_dic['sign5']
-			xyz5[0] *= -1
-
-			XYZ3 = realsense.coor_trans_pixelxy2worldXYZ(aligned_frames, xy3)
-			print('xy3=', xy3)
-			print('xyz3=', xyz3)
-			print('XYZ3=', XYZ3)
-			XYZ4 = realsense.coor_trans_pixelxy2worldXYZ(aligned_frames, xy4)
-			print('xy4=', xy4)
-			print('xyz4=', xyz4)
-			print('XYZ4=', XYZ4)
-			XYZ5 = realsense.coor_trans_pixelxy2worldXYZ(aligned_frames, xy5)
-			print('xy5=', xy5)
-			print('xyz5=', xyz5)
-			print('XYZ5=', XYZ5)
+		#
+		# if 'sign4' in found_point_dic.keys() and 'sign3' in found_point_dic.keys() and 'sign5' in found_point_dic.keys():
+		# 	xy3 = realsense.point_xy_dic['sign3']
+		# 	xy4 = realsense.point_xy_dic['sign4']
+		# 	xy5 = realsense.point_xy_dic['sign5']
+		#
+		# 	xyz3 = found_point_dic['sign3']
+		# 	xyz3[0] *= -1
+		# 	xyz4 = found_point_dic['sign4']
+		# 	xyz3[0] *= -1
+		# 	xyz5 = found_point_dic['sign5']
+		# 	xyz5[0] *= -1
+		#
+		# 	XYZ3 = realsense.coor_trans_pixelxy2worldXYZ(aligned_frames, xy3)
+		# 	print('xy3=', xy3)
+		# 	print('xyz3=', xyz3)
+		# 	print('XYZ3=', XYZ3)
+		# 	XYZ4 = realsense.coor_trans_pixelxy2worldXYZ(aligned_frames, xy4)
+		# 	print('xy4=', xy4)
+		# 	print('xyz4=', xyz4)
+		# 	print('XYZ4=', XYZ4)
+		# 	XYZ5 = realsense.coor_trans_pixelxy2worldXYZ(aligned_frames, xy5)
+		# 	print('xy5=', xy5)
+		# 	print('xyz5=', xyz5)
+		# 	print('XYZ5=', XYZ5)
 		#
 		#
 		# 	#

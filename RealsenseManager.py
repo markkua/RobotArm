@@ -69,6 +69,7 @@ class RealsenseManager:
 		color_frame = align_frames.get_color_frame()
 		
 		if not color_frame or not align_depth_frame:
+			Printer.print('pixelxy2cameraXYZ error. no color_frame', Printer.red)
 			return None
 		
 		# 获得颜色帧的内参
