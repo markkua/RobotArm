@@ -50,7 +50,7 @@ COCO_WEIGHTS_PATH = os.path.join(ROOT_DIR, "mask_rcnn_coco.h5")
 # through the command line argument --logs
 DEFAULT_LOGS_DIR = os.path.join(ROOT_DIR, "logs")
 #all classes in this datasets
-class_names = ['BG', 'screwdriver', 'pincer','scissor','pen']
+class_names = ['BG', 'screwdriver', 'pincer','alien','pen']
 
 ############################################################
 #  Configurations
@@ -205,31 +205,37 @@ def create_model(path=None):
         weights_path = COCO_WEIGHTS_PATH
 
     #创建模型
+    print(weights_path)
     model = modellib.MaskRCNN(mode="inference", config=config,
                                   model_dir='logs')
     #载入权重文件
-    model.load_weights(weights_path, by_name=True, exclude=[
-        "mrcnn_class_logits", "mrcnn_bbox_fc",
-        "mrcnn_bbox", "mrcnn_mask"])
+    model.load_weights(weights_path, by_name=True)
 
     return model
 
-def ob_evaluate(model, image_path=None, video_path=None):
-    assert image_path or video_path
+def ob_evaluate(model, image, sampleImg=None, video_path=None):
+    # CHANGE: input Img rather than img_path BY Kevin 2019.8.5
+    # assert image or video_path
 
     # Image or video?
-    if image_path:
+    if (image is not None):
         # Run model detection and generate the color splash effect
-        print("Running on {}".format(args.image))
+        # print("Running on {}".format(args.image))
         # Read image
-        image = skimage.io.imread(args.image)
+        # image = skimage.io.imread(args.image)
         # Detect objects
-        r = model.detect([image], verbose=1)[0]
-
+        r = model.detect([image], verbose=0)[0]
+        print("r['class_ids'].size = {}".format(r['class_ids'].size))
         #to visualize the result, do not annotation
-        visualize.display_instances(image, r['rois'], r['masks'], r['class_ids'],
-                                    class_names, r['scores'])
-        return r
+        if sampleImg is None:
+            sampleImg = visualize.display_instances(image, r['rois'], r['masks'], r['class_ids'],
+                                   class_names, r['scores'])
+        else:
+            sampleImg = visualize.display_instances(sampleImg, r['rois'], r['masks'], r['class_ids'],
+                                   class_names, r['scores'])
+        print("OK")
+
+        return r, sampleImg
         # Save output
         #file_name = "splash_{:%Y%m%dT%H%M%S}.png".format(datetime.datetime.now())
         #skimage.io.imsave(file_name, splash)
@@ -275,15 +281,15 @@ def calculate(r):
         return 0,[]
     cout = 0
     list = []
-    for i in r['class_ids']:
+    for i in range(r['class_ids'].size):
         list.append({'name': '', 'RoI': np.array([]), 'center': np.array([])})
 
         dict = list[cout]
         dict['name'] = class_names[r['class_ids'][i]]
         dict['RoI'] = r['rois'][i]
-        center_x = (r['rois'][0][1] + r['rois'][0][3])/2
-        center_y = (r['rois'][0][0] + r['rois'][0][2])/2
-        dict['center'] = np.array([center_x,center_y])
+        center_x = (r['rois'][i][1] + r['rois'][i][3])/2
+        center_y = (r['rois'][i][0] + r['rois'][i][2])/2
+        dict['center'] = np.array([center_x, center_y])
         cout = cout + 1
     #cout 代表图像中有多少个object，list中每一个元素都是一个字典，存储类名，RoI和中心点坐标
     return cout,list

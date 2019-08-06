@@ -3,11 +3,11 @@ from SerialPart import *
 import threading
 from RealseCamera_svd import RealsenseCamera
 from ToolDetect import *
-from VoiceRecognition import VoiceRecognition
+from VoiceRecognition import *
 from PyQt5.QtCore import QThread, pyqtSignal
 
 
-class MainThread:
+class MainThread(QThread):
     img_signal = pyqtSignal(object)  # 输出图像的信号
     realsenseCamera = RealsenseCamera()
     aligned_frames = 0      # a bunch of images
@@ -28,37 +28,28 @@ class MainThread:
 
     # Workspace Area
     pickArea = (11, 10.5, 30, 26)
-    toolBox = ({'id':1, 'name':'screwdriver', 'pos':(15, 24), 'wide':0.0},
-               {'id':2, 'name':'pincer', 'pos':(25, 11), 'wide':0.5},
+    toolBox = ({'id':1, 'name':'screwdriver', 'pos':(15, -24), 'wide':0.0},
+               {'id':2, 'name':'pincer', 'pos':(25, -11), 'wide':0.5},
                {'id':3, 'name':'alien', 'pos':(25, 0), 'wide':4.0},
                {'id':4, 'name':'pen', 'pos':(25, 0), 'wide':0.0})
     toolInHand = 'BY1'
 
     # robotArm
-    # robotArm = RobotArm('COM3')
+    robotArm = RobotArm('COM3')
 
     #voice recognition
     voiceRecognition = VoiceRecognition()
 
     exitFlag = 0
     # init: load data
-    def __init__(self):
-        self.t1 = threading.Thread(target=self._mainT, args=(), daemon=True)
-        self.t2 = threading.Thread(target=self._audioT, args=(), daemon=True)
+    def init(self):
 
-        # self.aligned_frames = self.realsenseCamera.get_aligned_frames()
-        # self.marked_img = self.calied_img = self.color_image = self.realsenseCamera.get_color_image_from_frames(self.aligned_frames)
+        self.aligned_frames = self.realsenseCamera.get_aligned_frames()
+        self.marked_img = self.calied_img = self.color_image = self.realsenseCamera.get_color_image_from_frames(self.aligned_frames)
         self.model = create_model("mask_rcnn_tools_0030.h5")
 
-        # self._camCalibrate()
+        self._camCalibrate()
         # lack: Transform, voicRec
-        pass
-
-    # start: Start the main Thread
-    def start(self):
-        # self.t1.start()
-        # self.t2.start()
-        self._mainT()
         pass
 
     # stop: Actually there's no way to stop
@@ -66,8 +57,12 @@ class MainThread:
         self.exitFlag = 1
         pass
 
-    def _mainT(self):
-         while self.exitFlag != 1:
+    # start: Start the main Thread
+    def run(self):
+        print('running...')
+        self.init()
+        print('init done')
+        while self.exitFlag != 1:
             # 1. Motion Detection
             last_color_image = self.color_image
             color_image = self.realsenseCamera.get_color_image_from_frames(self.realsenseCamera.get_aligned_frames())
@@ -95,7 +90,7 @@ class MainThread:
                 print('Central', self._getCentral())
 
                 # 3. get Coordinate
-                if (self.realsenseCamera.if_get_position_flag is not True):
+                if (self.needCali):
                     self._camCalibrate()
                 realXYZ, self.toolInHand = self._getCentral()
                 if(realXYZ[0] != 0 or realXYZ[1] != 0):
@@ -106,12 +101,13 @@ class MainThread:
                     targetXYZ = (targetXYZ[0], targetXYZ[1], 0.2)
                     print('Coord Obtained')
                     print('---------Finish----------')
+                    print('tool is:' + self.toolInHand)
                     print('Actual Coord:', realXYZ)
                     realXYZ[2] = 0.2
 
                     # 4. Move Arm
-                    # self.robotArm.moveObject(fromXYZ=realXYZ, toXYZ=targetXYZ, wide=w)
-                    # self.robotArm.resetArm()
+                    self.robotArm.moveObject(fromXYZ=realXYZ, toXYZ=targetXYZ, wide=w)
+                    self.robotArm.resetArm()
 
                     print('exec Finish')
                 else:
@@ -138,7 +134,7 @@ class MainThread:
                         toolName = i['name']
                 xyData, self.toolInHand = self._getCentral(toolName)
                 if (xyData[0] != 0 or xyData[1] != 0):
-                    if (self.realsenseCamera.if_get_position_flag is not True):
+                    if (self.needCali):
                         self._camCalibrate()
                     realXYZ = self.realsenseCamera.coor_trans_pixelxy2worldXYZ(self.aligned_frames, xyData)
                     for i in self.toolBox:
@@ -152,8 +148,8 @@ class MainThread:
                     realXYZ[2] = 0.2
 
                     # 4. Move Arm
-                    # self.robotArm.moveObject(fromXYZ=realXYZ, toXYZ=targetXYZ, wide=w)
-                    # self.robotArm.resetArm()
+                    self.robotArm.moveObject(fromXYZ=realXYZ, toXYZ=targetXYZ, wide=w)
+                    self.robotArm.resetArm()
 
                     print('exec Finish')
                 else:
@@ -162,13 +158,10 @@ class MainThread:
             pass
 
     # _audioStart: Start the audio detection thread
-    def _audioT(self):
-        while self.exitFlag != 1:
-            # press the Buttum
-            # Run this
-            self.isVoiceGet = voice.run()
-            while self.isVoiceGet:
-                pass
+    def audioT(self):
+        # press the Buttum
+        # Run this
+        self.isVoiceGet = self.voiceRecognition.run()
         pass
 
     # camCalibrate: Calibrate the cam
@@ -177,9 +170,12 @@ class MainThread:
         while(self.realsenseCamera.if_get_position_flag is not True):
             aligned_frames = self.realsenseCamera.get_aligned_frames()
             tmpimg = self.realsenseCamera.get_transform_matrix(aligned_frames)
-            cv2.imshow("Positioning", tmpimg)
-            cv2.waitKey(1);
-        cv2.destroyWindow("Positioning")
+            
+            self.marked_img = tmpimg
+        #     cv2.imshow("Positioning", tmpimg)
+        #     cv2.waitKey(1)
+        # cv2.destroyWindow("Positioning")
+        self.needCali = 0
         print("TF_Matrix Obtained!")
         pass
 
@@ -206,6 +202,9 @@ class MainThread:
             for i in self.recList:
                 c = i['center']
                 c = self.realsenseCamera.coor_trans_pixelxy2worldXYZ(self.aligned_frames, c)
+                if c is None:
+                    c = (0, 0)
+                    continue
                 if(c[0] > self.pickArea[0] and c[0] < self.pickArea[2] and c[1] > self.pickArea[1] and c[1] < self.pickArea[3]):
                     cent = c
                     name = i['name']
@@ -213,6 +212,8 @@ class MainThread:
             for i in self.recList:
                 if(i['name'] == name):
                     cent = self.realsenseCamera.coor_trans_pixelxy2worldXYZ(self.aligned_frames, i['center'])
+                if cent is None:
+                    cent = (0, 0)
 
         return cent, name
 
@@ -223,4 +224,6 @@ class MainThread:
 
 if __name__ == '__main__':
     r = MainThread()
-    r.start()
+    r.init()
+    r.run()
+    r.t1.join()

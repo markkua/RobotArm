@@ -86,8 +86,8 @@ class RealsenseCamera(RealsenseManager):
 		centroid_A = np.mean(A, axis=0)
 		centroid_B = np.mean(B, axis=0)
 		
-		centroid_A = centroid_A.reshape((1, N))
-		centroid_B = centroid_B.reshape((1, N))
+		centroid_A = centroid_A.reshape((1, 3))
+		centroid_B = centroid_B.reshape((1, 3))
 		
 		AA = A - np.tile(centroid_A, (N, 1))
 		BB = B - np.tile(centroid_B, (N, 1))
